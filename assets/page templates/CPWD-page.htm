@@ -1,0 +1,58 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="CPWD-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<form action="&mvt:global:secure_sessionurl;Screen=CPWD" method="post" autocomplete="off" id="js-cpwd-form" class="column whole medium-half medium-centered cpwd-form">
+			<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+			<input type="hidden" name="Action" value="CPWD" />
+			<h4><small>For security purposes, please enter your current password.</small></h4>
+			<div class="form-row">
+				<mvt:if expr="g.Customer_Temporary_Password">
+					<label for="l-Customer_CurrentPassword" class="required">Current Password:</label>
+					<input type="password" name="Customer_CurrentPassword" value="&mvte:global:Customer_Temporary_Password;" id="l-Customer_CurrentPassword" readonly />
+				<mvt:else>
+					<mvt:if expr="g.Customer_CurrentPassword_Invalid">
+						<label for="l-Customer_CurrentPassword" class="required error">Current Password:</label>
+						<input type="password" name="Customer_CurrentPassword" value="" id="l-Customer_CurrentPassword" />
+					<mvt:else>
+						<label for="l-Customer_CurrentPassword" class="required">Current Password:</label>
+						<input type="password" name="Customer_CurrentPassword" value="" id="l-Customer_CurrentPassword" />
+					</mvt:if>
+				</mvt:if>
+			</div>
+			<hr noshade="noshade" />
+			<p><strong>Please enter your new password.</strong></p>
+			<div class="form-row">
+				<mvt:if expr="g.Customer_Password_Invalid">
+					<label for="l-Customer_Password" class="required error">New Password:</label>
+				<mvt:else>
+					<label for="l-Customer_Password" class="required">New Password:</label>
+				</mvt:if>
+				<input type="password" name="Customer_Password" value="" id="l-Customer_Password" />
+			</div>
+			<div class="form-row">
+				<mvt:if expr="g.Customer_VerifyPassword_Invalid">
+					<label for="l-Customer_VerifyPassword" class="required error">Confirm Password:</label>
+				<mvt:else>
+					<label for="l-Customer_VerifyPassword" class="required">Confirm Password:</label>
+				</mvt:if>
+				<input type="password" name="Customer_VerifyPassword" value="" id="l-Customer_VerifyPassword" />
+			</div>
+			<div class="form-row align-right">
+				<input type="submit" value="Submit" title="Submit" class="button button-square" />
+			</div>
+		</form>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="CPWD-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</mvt:item>
+</html>

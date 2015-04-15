@@ -1,0 +1,38 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<mvt:if expr="NOT ISNULL l.settings:category:metafield:title">
+	<title>&mvt:category:metafield:title;</title>         
+<mvt:else>
+	<title>&mvt:category:name;: &mvt:store:name;</title>
+</mvt:if>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+<mvt:if expr="g.CatListingOffset OR g.CatListingNextOffset">
+	<mvt:if expr="g.CatListingOffset GT 0">
+		<link rel="prev" href="http://&mvt:global:domain:name;/&mvt:seo_settings:cat_lit;&mvt:seo_settings:url_delim;&mvta:category:code;.&mvt:seo_settings:suffix;?CatListingOffset=&mvta:global:CatListingPrevOffset;" />
+	</mvt:if>
+	<mvt:if expr="g.CatListingNextOffset GT 0">
+		<link rel="next" href="http://&mvt:global:domain:name;/&mvt:seo_settings:cat_lit;&mvt:seo_settings:url_delim;&mvta:category:code;.&mvt:seo_settings:suffix;?CatListingOffset=&mvta:global:CatListingNextOffset;" />
+	</mvt:if>
+</mvt:if>
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="CTGY-header-item.htm" />
+	</div>
+	<div class="row prod-ctgy-hdft-header">
+		<mvt:item name="prod_ctgy_hdft" param="ctgy_header" />
+	</div>
+	<mvt:item name="subcategory_listing"  file="CTGY-subcategory_listing-item.htm" />
+	<mvt:if expr="l.settings:category_product_count GT 0">
+		<mvt:item name="category_listing"  file="CTGY-prodlist-item.htm" />
+	</mvt:if>
+	<div class="row prod-ctgy-hdft-footer">
+		<mvt:item name="prod_ctgy_hdft" param="ctgy_footer" />
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="CTGY-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

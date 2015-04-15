@@ -1,0 +1,30 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="INVC-header-item.htm" />
+	</div>
+	<div class="row bg-white main-content-row">
+		<div class="column whole">
+			<h4>Thank you for your order. Please keep this confirmation for your records.</h4>
+			<p><strong>Order #:</strong> &mvt:order:id;</p>
+			<p class="clearfix"><strong>Date:</strong> &mvt:order:date; &mvt:order:time;<a href="&mvt:global:secure_sessionurl;Screen=ORDP&Store_Code=&mvta:global:Store_Code;&Order_ID=&mvt:order:id;&Order_BillEmail=&mvte:global:order:bill_email;&Order_BillZip=&mvte:global:order:bill_zip;" title="Print Order Confirmation" target="_blank" id="js-print-confirmation" class="button button-mini button-square float-right hide medium-inline-block">Print Order Confirmation</a></p>
+			<mvt:item name="messages" />
+		</div>
+	</div>
+	<div class="row bg-white main-content-row customer-fields">
+		<mvt:item name="order_customer"  file="cssui-invccustfields-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row order-contents">
+		<mvt:item name="order_contents"  file="INVC-order_contents-item.htm" />
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="INVC-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</mvt:item>
+</html>

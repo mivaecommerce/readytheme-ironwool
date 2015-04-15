@@ -1,0 +1,30 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="FPWD-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<form action="&mvt:global:secure_sessionurl;Screen=ACLN" method="post" autocomplete="off" id="js-fpwd-form" class="column whole medium-half medium-centered fpwd-form">
+			<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+			<input type="hidden" name="Action" value="EMPW" />
+			<p>Enter the email address associated with your account. If you no longer use the email address associated with your account, please contact customer support.</p>
+			<div class="form-row">
+				<label for="l-Customer_LoginEmail" class="required">Email Address:</label>
+				<input type="email" name="Customer_LoginEmail" id="l-Customer_LoginEmail" required />
+			</div>
+			<div class="form-row align-right">
+				<input type="submit" value="Submit" title="Submit" class="button button-square" />
+			</div>
+		</form>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="FPWD-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</mvt:item>
+</html>

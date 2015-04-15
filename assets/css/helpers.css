@@ -1,0 +1,1031 @@
+/*
+------------------------ =HELPER CLASSES ------------------------ */
+
+	/* ------------------------ alignment ------------------------ */
+	.align-center {
+		text-align: center;
+	}
+	.align-justify {
+		text-align: justify;
+	}
+	.align-left {
+		text-align: left;
+	}
+	.align-right {
+		text-align: right;
+	}
+	.align-baseline {
+		vertical-align: baseline;
+	}
+	.align-bottom {
+		vertical-align: bottom;
+	}
+	.align-middle {
+		vertical-align: middle;
+	}
+	.align-top {
+		vertical-align: top;
+	}
+	.vertical-align-parent {
+		-webkit-transform-style: preserve-3d;
+	}
+	.vertical-align {
+		position: relative;
+		top: 50%;
+		-webkit-transform: translateY(-50%);
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
+	}
+		.ie8 .vertical-align {
+			display: table-cell;
+			vertical-align: middle;
+		}
+		/* ------------------------ x-small breakpoint ------------------------ */
+		@media only screen and (min-width: 480px) {
+			.x-small-align-center {
+				text-align: center;
+			}
+			.x-small-align-justify {
+				text-align: justify;
+			}
+			.x-small-align-left {
+				text-align: left;
+			}
+			.x-small-align-right {
+				text-align: right;
+			}
+			.x-small-align-baseline {
+				vertical-align: baseline;
+			}
+			.x-small-align-bottom {
+				vertical-align: bottom;
+			}
+			.x-small-align-middle {
+				vertical-align: middle;
+			}
+			.x-small-align-top {
+				vertical-align: top;
+			}
+		}
+		/* ------------------------ small breakpoint ------------------------ */
+		@media only screen and (min-width: 640px) {
+			.small-align-center {
+				text-align: center;
+			}
+			.small-align-justify {
+				text-align: justify;
+			}
+			.small-align-left {
+				text-align: left;
+			}
+			.small-align-right {
+				text-align: right;
+			}
+			.small-align-baseline {
+				vertical-align: baseline;
+			}
+			.small-align-bottom {
+				vertical-align: bottom;
+			}
+			.small-align-middle {
+				vertical-align: middle;
+			}
+			.small-align-top {
+				vertical-align: top;
+			}
+		}
+		/* ------------------------ medium breakpoint ------------------------ */
+		@media only screen and (min-width: 768px) {
+			.medium-align-center {
+				text-align: center;
+			}
+			.medium-align-justify {
+				text-align: justify;
+			}
+			.medium-align-left {
+				text-align: left;
+			}
+			.medium-align-right {
+				text-align: right;
+			}
+			.medium-align-baseline {
+				vertical-align: baseline;
+			}
+			.medium-align-bottom {
+				vertical-align: bottom;
+			}
+			.medium-align-middle {
+				vertical-align: middle;
+			}
+			.medium-align-top {
+				vertical-align: top;
+			}
+		}
+		/* ------------------------ large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.large-align-center {
+				text-align: center;
+			}
+			.large-align-justify {
+				text-align: justify;
+			}
+			.large-align-left {
+				text-align: left;
+			}
+			.large-align-right {
+				text-align: right;
+			}
+			.large-align-baseline {
+				vertical-align: baseline;
+			}
+			.large-align-bottom {
+				vertical-align: bottom;
+			}
+			.large-align-middle {
+				vertical-align: middle;
+			}
+			.large-align-top {
+				vertical-align: top;
+			}
+		}
+		/* ------------------------ x-large breakpoint ------------------------ */
+		@media only screen and (min-width: 1170px) {
+			.x-large-align-center {
+				text-align: center;
+			}
+			.x-large-align-justify {
+				text-align: justify;
+			}
+			.x-large-align-left {
+				text-align: left;
+			}
+			.x-large-align-right {
+				text-align: right;
+			}
+			.x-large-align-baseline {
+				vertical-align: baseline;
+			}
+			.x-large-align-bottom {
+				vertical-align: bottom;
+			}
+			.x-large-align-middle {
+				vertical-align: middle;
+			}
+			.x-large-align-top {
+				vertical-align: top;
+			}
+		}
+
+	/* ------------------------ positioning (floating) ------------------------ */
+	.clear {
+		clear: both;
+	}
+	.clear-height {
+		height: auto !important;
+		line-height: normal !important;
+	}
+	.float-left {
+		float: left;
+	}
+	.float-none {
+		float: none;
+	}
+	.float-right {
+		float: right;
+	}
+		/* ------------------------ x-small breakpoint ------------------------ */
+		@media only screen and (min-width: 480px) {
+			.x-small-float-left {
+				float: left;
+			}
+			.x-small-float-none {
+				float: none;
+			}
+			.x-small-float-right {
+				float: right;
+			}
+		}
+		/* ------------------------ small breakpoint ------------------------ */
+		@media only screen and (min-width: 640px) {
+			.small-float-left {
+				float: left;
+			}
+			.small-float-none {
+				float: none;
+			}
+			.small-float-right {
+				float: right;
+			}
+		}
+		/* ------------------------ medium breakpoint ------------------------ */
+		@media only screen and (min-width: 768px) {
+			.medium-float-left {
+				float: left;
+			}
+			.medium-float-none {
+				float: none;
+			}
+			.medium-float-right {
+				float: right;
+			}
+		}
+		/* ------------------------ large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.large-float-left {
+				float: left;
+			}
+			.large-float-none {
+				float: none;
+			}
+			.large-float-right {
+				float: right;
+			}
+		}
+		/* ------------------------ x-large breakpoint ------------------------ */
+		@media only screen and (min-width: 1170px) {
+			.x-large-float-left {
+				float: left;
+			}
+			.x-large-float-none {
+				float: none;
+			}
+			.x-large-float-right {
+				float: right;
+			}
+		}
+
+	/* ------------------------ image positioning (floating) ------------------------ */
+	.img-left {
+		float: left;
+		margin: 0.20rem 0.75rem 0.75rem 0;
+	}
+	.img-right {
+		float: right;
+		margin: 0.20rem 0 0.75rem 0.75rem;
+	}
+		/* ------------------------ x-small breakpoint ------------------------ */
+		@media only screen and (min-width: 480px) {
+			.x-small-img-left {
+				float: left;
+				margin: 0.20rem 0.75rem 0.75rem 0;
+			}
+			.x-small-img-right {
+				float: right;
+				margin: 0.20rem 0 0.75rem 0.75rem;
+			}
+		}
+		/* ------------------------ small breakpoint ------------------------ */
+		@media only screen and (min-width: 640px) {
+			.small-img-left {
+				float: left;
+				margin: 0.20rem 0.75rem 0.75rem 0;
+			}
+			.small-img-right {
+				float: right;
+				margin: 0.20rem 0 0.75rem 0.75rem;
+			}
+		}
+		/* ------------------------ medium breakpoint ------------------------ */
+		@media only screen and (min-width: 768px) {
+			.medium-img-left {
+				float: left;
+				margin: 0.20rem 0.75rem 0.75rem 0;
+			}
+			.medium-img-right {
+				float: right;
+				margin: 0.20rem 0 0.75rem 0.75rem;
+			}
+		}
+		/* ------------------------ large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.large-img-left {
+				float: left;
+				margin: 0.20rem 0.75rem 0.75rem 0;
+			}
+			.large-img-right {
+				float: right;
+				margin: 0.20rem 0 0.75rem 0.75rem;
+			}
+		}
+		/* ------------------------ x-large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.x-large-img-left {
+				float: left;
+				margin: 0.20rem 0.75rem 0.75rem 0;
+			}
+			.x-large-img-right {
+				float: right;
+				margin: 0.20rem 0 0.75rem 0.75rem;
+			}
+		}
+
+	/* ------------------------ breaker (<br /> substitutes for non-specific sections) ------------------------ */
+	.breaker {
+		display: block;
+		height: 0.75rem;
+	}
+		@media only screen and (min-width: 640px) {
+			.breaker {
+				height: 1rem;
+			}
+		}
+		@media only screen and (min-width: 768px) {
+			.breaker {
+				height: 1.50rem;
+			}
+		}
+
+	/* ------------------------ display ------------------------ */
+	.all-hidden {
+		display: none;
+		visibility: hidden;
+	}
+	.all-shown {
+		display: block;
+		visibility: visible;
+	}
+	.hide {
+		display: none;
+	}
+	.show {
+		display: block;
+	}
+	.inline {
+		display: inline;
+	}
+	.inline-block {
+		display: inline-block;
+	}
+	.invisible {
+		visibility: hidden;
+	}
+	.visible {
+		visibility: visible;
+	}
+		/* ------------------------ x-small breakpoint ------------------------ */
+		@media only screen and (min-width: 480px) {
+			.x-small-all-shown {
+				display: block;
+				visibility: visible;
+			}
+			.x-small-all-hidden {
+				display: none;
+				visibility: hidden;
+			}
+			.x-small-hide {
+				display: none;
+			}
+			.x-small-show {
+				display: block;
+			}
+			.x-small-inline {
+				display: inline;
+			}
+			.x-small-inline-block {
+				display: inline-block;
+			}
+			.x-small-invisible {
+				visibility: hidden;
+			}
+			.x-small-visible {
+				visibility: visible;
+			}
+		}
+		/* ------------------------ small breakpoint ------------------------ */
+		@media only screen and (min-width: 640px) {
+			.small-all-shown {
+				display: block;
+				visibility: visible;
+			}
+			.small-all-hidden {
+				display: none;
+				visibility: hidden;
+			}
+			.small-hide {
+				display: none;
+			}
+			.small-show {
+				display: block;
+			}
+			.small-inline {
+				display: inline;
+			}
+			.small-inline-block {
+				display: inline-block;
+			}
+			.small-invisible {
+				visibility: hidden;
+			}
+			.small-visible {
+				visibility: visible;
+			}
+		}
+		/* ------------------------ medium breakpoint ------------------------ */
+		@media only screen and (min-width: 768px) {
+			.medium-all-shown {
+				display: block;
+				visibility: visible;
+			}
+			.medium-all-hidden {
+				display: none;
+				visibility: hidden;
+			}
+			.medium-hide {
+				display: none;
+			}
+			.medium-show {
+				display: block;
+			}
+			.medium-inline {
+				display: inline;
+			}
+			.medium-inline-block {
+				display: inline-block;
+			}
+			.medium-invisible {
+				visibility: hidden;
+			}
+			.medium-visible {
+				visibility: visible;
+			}
+		}
+		/* ------------------------ large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.large-all-shown {
+				display: block;
+				visibility: visible;
+			}
+			.large-all-hidden {
+				display: none;
+				visibility: hidden;
+			}
+			.large-hide {
+				display: none;
+			}
+			.large-show {
+				display: block;
+			}
+			.large-inline {
+				display: inline;
+			}
+			.large-inline-block {
+				display: inline-block;
+			}
+			.large-invisible {
+				visibility: hidden;
+			}
+			.large-visible {
+				visibility: visible;
+			}
+		}
+		/* ------------------------ x-large breakpoint ------------------------ */
+		@media only screen and (min-width: 1170px) {
+			.x-large-all-shown {
+				display: block;
+				visibility: visible;
+			}
+			.x-large-all-hidden {
+				display: none;
+				visibility: hidden;
+			}
+			.x-large-hide {
+				display: none;
+			}
+			.x-large-show {
+				display: block;
+			}
+			.x-large-inline {
+				display: inline;
+			}
+			.x-large-inline-block {
+				display: inline-block;
+			}
+			.x-large-invisible {
+				visibility: hidden;
+			}
+			.x-large-visible {
+				visibility: visible;
+			}
+		}
+		
+	.visuallyhidden {
+		border: 0;
+		clip: rect(0 0 0 0);
+		margin: -1px;
+		overflow: hidden;
+		padding: 0;
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		/* http://css-tricks.com/places-its-tempting-to-use-display-none-but-dont/ */
+	}
+
+	/* ------------------------ remove borders ------------------------ */
+	.nb,
+	button.nb,
+	input.nb,
+	select.nb,
+	textarea.nb {
+		border: none;
+	}
+	.ntb,
+	button.ntb,
+	input.ntb,
+	select.ntb,
+	textarea.ntb {
+		border-top: none;
+	}
+	.nrb,
+	button.nrb,
+	input.nrb,
+	select.nrb,
+	textarea.nrb {
+		border-right: none;
+	}
+	.nbb,
+	button.nbb,
+	input.nbb,
+	select.nbb,
+	textarea.nbb {
+		border-bottom: none;
+	}
+	.nlb,
+	button.nlb,
+	input.nlb,
+	select.nlb,
+	textarea.nlb {
+		border-left: none;
+	}
+
+	/* ------------------------ remove margins ------------------------ */
+	.nm {
+		margin: 0;
+	}
+	.ntm {
+		margin-top: 0;
+	}
+	.nrm {
+		margin-right: 0;
+	}
+	.nbm {
+		margin-bottom: 0;
+	}
+	.nlm {
+		margin-left: 0;
+	}
+		/* ------------------------ x-small breakpoint ------------------------ */
+		@media only screen and (min-width: 480px) {
+			.x-small-nm {
+				margin: 0;
+			}
+			.x-small-ntm {
+				margin-top: 0;
+			}
+			.x-small-nrm {
+				margin-right: 0;
+			}
+			.x-small-nbm {
+				margin-bottom: 0;
+			}
+			.x-small-nlm {
+				margin-left: 0;
+			}
+		}
+		/* ------------------------ small breakpoint ------------------------ */
+		@media only screen and (min-width: 640px) {
+			.small-nm {
+				margin: 0;
+			}
+			.small-ntm {
+				margin-top: 0;
+			}
+			.small-nrm {
+				margin-right: 0;
+			}
+			.small-nbm {
+				margin-bottom: 0;
+			}
+			.small-nlm {
+				margin-left: 0;
+			}
+		}
+		/* ------------------------ medium breakpoint ------------------------ */
+		@media only screen and (min-width: 768px) {
+			.medium-nm {
+				margin: 0;
+			}
+			.medium-ntm {
+				margin-top: 0;
+			}
+			.medium-nrm {
+				margin-right: 0;
+			}
+			.medium-nbm {
+				margin-bottom: 0;
+			}
+			.medium-nlm {
+				margin-left: 0;
+			}
+		}
+		/* ------------------------ large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.large-nm {
+				margin: 0;
+			}
+			.large-ntm {
+				margin-top: 0;
+			}
+			.large-nrm {
+				margin-right: 0;
+			}
+			.large-nbm {
+				margin-bottom: 0;
+			}
+			.large-nlm {
+				margin-left: 0;
+			}
+		}
+		/* ------------------------ x-large breakpoint ------------------------ */
+		@media only screen and (min-width: 1170px) {
+			.x-large-nm {
+				margin: 0;
+			}
+			.x-large-ntm {
+				margin-top: 0;
+			}
+			.x-large-nrm {
+				margin-right: 0;
+			}
+			.x-large-nbm {
+				margin-bottom: 0;
+			}
+			.x-large-nlm {
+				margin-left: 0;
+			}
+		}
+
+	/* ------------------------ remove padding ------------------------ */
+	.np {
+		padding: 0;
+	}
+	.ntp {
+		padding-top: 0;
+	}
+	.nrp {
+		padding-right: 0;
+	}
+	.nbp {
+		padding-bottom: 0;
+	}
+	.nlp {
+		padding-left: 0;
+	}
+		/* ------------------------ x-small breakpoint ------------------------ */
+		@media only screen and (min-width: 480px) {
+			.x-small-np {
+				padding: 0;
+			}
+			.x-small-ntp {
+				padding-top: 0;
+			}
+			.x-small-nrp {
+				padding-right: 0;
+			}
+			.x-small-nbp {
+				padding-bottom: 0;
+			}
+			.x-small-nlp {
+				padding-left: 0;
+			}
+		}
+		/* ------------------------ small breakpoint ------------------------ */
+		@media only screen and (min-width: 640px) {
+			.small-np {
+				padding: 0;
+			}
+			.small-ntp {
+				padding-top: 0;
+			}
+			.small-nrp {
+				padding-right: 0;
+			}
+			.small-nbp {
+				padding-bottom: 0;
+			}
+			.small-nlp {
+				padding-left: 0;
+			}
+		}
+		/* ------------------------ medium breakpoint ------------------------ */
+		@media only screen and (min-width: 768px) {
+			.medium-np {
+				padding: 0;
+			}
+			.medium-ntp {
+				padding-top: 0;
+			}
+			.medium-nrp {
+				padding-right: 0;
+			}
+			.medium-nbp {
+				padding-bottom: 0;
+			}
+			.medium-nlp {
+				padding-left: 0;
+			}
+		}
+		/* ------------------------ large breakpoint ------------------------ */
+		@media only screen and (min-width: 960px) {
+			.large-np {
+				padding: 0;
+			}
+			.large-ntp {
+				padding-top: 0;
+			}
+			.large-nrp {
+				padding-right: 0;
+			}
+			.large-nbp {
+				padding-bottom: 0;
+			}
+			.large-nlp {
+				padding-left: 0;
+			}
+		}
+		/* ------------------------ x-large breakpoint ------------------------ */
+		@media only screen and (min-width: 1170px) {
+			.x-large-np {
+				padding: 0;
+			}
+			.x-large-ntp {
+				padding-top: 0;
+			}
+			.x-large-nrp {
+				padding-right: 0;
+			}
+			.x-large-nbp {
+				padding-bottom: 0;
+			}
+			.x-large-nlp {
+				padding-left: 0;
+			}
+		}
+
+	/* ------------------------ browers goodies ------------------------ */
+	.corners {
+		border-radius: 0.25rem;
+	}
+	.no-corners {
+		border-radius: 0;
+	}
+	.shadows {
+		box-shadow: 0 2px 4px 0 rgba(51, 51, 51, .3);
+	}
+	.bottom-shadow {
+		box-shadow: 0 6px 8px -6px rgba(0, 0, 0, .2);
+	}
+	.text-shadow {
+		text-shadow: 1px 1px 1px rgba(51, 51, 51, .3);
+	}
+
+	/* ------------------------ alerts and messages ------------------------ */
+	.message {
+		background-color: #e6e6e6;
+		border-radius: 0.25rem;
+		color: #5a6c7f;
+		margin: 1.50rem 0;
+		padding: 0.75rem 1rem;
+	}
+		.message.closable .close {
+			color: #333;
+			font-size: 2rem;
+			line-height: 1;
+			margin-top: -1rem;
+			opacity: 0.3;
+			position: absolute;
+			top: 50%;
+			right: 0.25rem;
+			text-decoration: none;
+		}
+		.message br:first-child {
+			display: none;
+		}
+		.message p,
+		.message ol,
+		.message ul {
+			margin-bottom: 0;
+		}
+		.message-info {
+			background: #e4f4fd;
+			border: 1px solid #a8cce2;
+			color: #407ea1;
+		}
+		.message-success {
+			background: #e6f4d8;
+			border: 1px solid #a5d76f;
+			color: #61801b;
+		}
+		.message-warning {
+			background: #f9f9d5;
+			border: 1px solid #d6cd77;
+			color: #7c7548;
+		}
+		.message-error {
+			background: #fbe3e3;
+			border: 1px solid #f7b5b7;
+			color: #d34047;
+		}
+
+	/* ------------------------ what??? they have an old brower ------------------------ */
+	.message.browsehappy {
+		margin: 0 0 0 -300px;
+		position: fixed;
+		top: 0;
+		left: 50%;
+		width: 600px;
+		z-index: 99999;
+	}
+
+	/* ------------------------ tags ------------------------ */
+	.tag {
+		border-radius: 0.25rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		line-height: 1;
+		padding: 0.25rem 0.375rem;
+		vertical-align: baseline;
+		white-space: nowrap;
+	}
+
+	/* ------------------------ notifications ------------------------ */
+	.notification {
+		border-radius: 1.25rem;
+		font-size: 0.75rem;
+		line-height: 1;
+		padding: 0.25rem 0.5rem;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: baseline;
+	}
+
+	/* ------------------------ For Image Replacements ------------------------ */
+	.ir {
+		overflow: hidden;
+		text-indent: 100%;
+		white-space: nowrap;
+	}
+		.ir br {
+			display: none;
+		}
+	
+	/* ------------------------ The Magnificent Clearfix ------------------------ */
+	.clearfix:before,
+	.clearfix:after {
+		content: " ";
+		display: table;
+	}
+	.clearfix:after {
+		clear: both;
+	}
+	.clearfix {
+		zoom: 1;
+	}
+
+	/* ------------------------ embedded content ------------------------ */
+	audio,
+	video {
+		width: 100%;
+	}
+	audio:focus,
+	video:focus {
+		outline: 1px dotted #222;
+	}
+	embed,
+	img,
+	object,
+	video {
+		height: auto;
+		max-width: 100%;
+	}
+		img.constrain {
+			max-height: 100%;
+		}
+	iframe {
+		max-width: 100%;
+	}
+	embed,
+	object {
+		height: 100%;
+	}
+	figcaption {
+		font-size: 0.75rem;
+		font-style: italic;
+		margin-top: 0.50rem;
+	}
+	.flex-video {
+		height: 0;
+		overflow: hidden;
+		margin-bottom: 1rem;
+		padding-top: 1.5625rem;
+		padding-bottom: 67.5%;
+		position: relative;
+	}
+		.flex-video.widescreen {
+			padding-bottom: 57.25%;
+		}
+		.flex-video.vimeo {
+			padding-top: 0;
+		}
+		.flex-video iframe,
+		.flex-video object,
+		.flex-video embed,
+		.flex-video video {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	img {
+		vertical-align: middle;
+		-ms-interpolation-mode: bicubic;
+	}
+
+	/* ------------------------ syntactical elements ------------------------ */
+	code,
+	kbd,
+	pre,
+	samp {
+		color: #444;
+		font-size: 0.875rem;
+		font-family: Monaco, "Lucida Sans Typewriter", Consolas,  "Courier New", monospace;
+	}
+	code {
+		background: #f8f8f8;
+		border: 1px solid #dedede;
+		border-radius: 0.178rem;
+		margin: 0;
+		padding: 0.064rem 0.317rem;
+		white-space: nowrap;
+	}
+	kbd {
+		background: #f8f8f8;
+		border: 1px solid #dedede;
+		border-radius: 0.238rem;
+		box-shadow: 0 1px 0 #dedede, inset 0 0 0 1px #fff;
+		margin-bottom: 1px;
+		padding: 0.064rem 0.317rem;
+		position: relative;
+		top: -1px;
+		white-space: nowrap;
+	}
+	pre {
+		position: relative;
+		overflow: auto;
+		padding: 1rem;
+		background: #222;
+		box-shadow: inset 0 0 0.356rem hsla(0, 0%, 0%, 0.6);
+		color: #ccc;
+		-moz-hyphens: none;
+		-ms-hyphens: none;
+		-webkit-hyphens: none;
+		hyphens: none;
+		-moz-tab-size: 4;
+		tab-size: 4;
+		white-space: pre;
+		word-wrap: normal;
+		word-break: normal;
+	}
+		pre code {
+			background: transparent;
+			border: none;
+			border-radius: 0;
+			color: inherit;
+			display: block;
+			height: 100%;
+			margin: 0;
+			overflow: auto;
+			padding: 0;
+			white-space: pre;
+		}
+		
+/* ------------------------ heading-decoration ------------------------ */
+.heading-decoration:before {
+	border: solid #8d8d8d;
+	border-width: 2px 0;
+	content: '';
+	display: block;
+	height: 0.50rem;
+	margin-top: -0.25rem;
+	position: absolute;
+	top: 50%;
+	right: 0.75rem;
+	left: 0.75rem;
+}
+	.heading-decoration span,
+	.heading-decoration .readytheme-banner {
+		background: #f4f4f4;
+		display: inline;
+		padding: 0 1rem;
+		position: relative;
+	}

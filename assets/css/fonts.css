@@ -1,0 +1,98 @@
+/*
+------------------------ =FONTS [use @font-face] ------------------------ */
+.playfair {
+	font-family: "Playfair Display", Baskerville, "Palatino Linotype", Palatino, "Century Schoolbook L", "Times New Roman", serif
+}
+
+/* ------------------------ Elegant Icon Font [http://www.elegantthemes.com/blog/resources/elegant-icon-font] ------------------------ */
+@font-face {
+	font-family: 'ElegantIcons';
+	src:url('../fonts/ElegantIcons.eot');
+	src:url('../fonts/ElegantIcons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/ElegantIcons.woff') format('woff'),
+		url('../fonts/ElegantIcons.ttf') format('truetype'),
+		url('../fonts/ElegantIcons.svg#ElegantIcons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	content: attr(data-icon);
+	font-family: 'ElegantIcons';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+}
+
+
+/* ------------------------ Custom Suivant Icon Font ------------------------ */
+@font-face {
+	font-family: 'Suivant';
+	src: url('../fonts/Suivant.eot?-d1oe69');
+	src: url('../fonts/Suivant.eot?#iefix-d1oe69') format('embedded-opentype'),
+		 url('../fonts/Suivant.woff?-d1oe69') format('woff'),
+		 url('../fonts/Suivant.ttf?-d1oe69') format('truetype'),
+		 url('../fonts/Suivant.svg?-d1oe69#Suivant') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+[class^="rt-icon-"],
+[class*=" rt-icon-"] {
+	font-family: 'Suivant';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+}
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-rt-icon]:before {
+	content: attr(data-rt-icon);
+	font-family: 'Suivant';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: 1;
+	speak: none;
+	text-transform: none;
+}
+
+.rt-icon-account:before {
+	content: "\61";
+}
+.rt-icon-address:before {
+	content: "\62";
+}
+.rt-icon-arrow-left:before {
+	content: "\63";
+}
+.rt-icon-arrow-right:before {
+	content: "\64";
+}
+.rt-icon-basket:before {
+	content: "\65";
+}
+.rt-icon-mail:before {
+	content: "\66";
+}
+.rt-icon-minus:before {
+	content: "\67";
+}
+.rt-icon-orders:before {
+	content: "\68";
+}
+.rt-icon-plus:before {
+	content: "\69";
+}
+.rt-icon-search:before {
+	content: "\6a";
+}

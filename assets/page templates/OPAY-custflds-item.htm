@@ -1,0 +1,64 @@
+<div class="basket-product-row">
+	<p class="column whole h6">Ship To:</p>
+	<address class="column whole">
+		<mvt:if expr="g.Basket:ship_fname OR g.Basket:ship_lname">
+			<strong>&mvte:global:Basket:ship_fname; &mvte:global:Basket:ship_lname;</strong><br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:ship_comp">
+			&mvte:global:Basket:ship_comp;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:ship_addr1 OR g.Basket:ship_addr2 OR g.Basket:ship_city OR g.Basket:ship_state OR g.Basket:ship_zip OR g.Basket:ship_cntry">
+			&mvte:global:Basket:ship_addr1;&nbsp;
+			<mvt:if expr="g.Basket:ship_addr2">
+				&mvte:global:Basket:ship_addr2;<br />
+			</mvt:if>
+			<mvt:if expr="( NOT ISNULL g.Basket:ship_city ) AND ( NOT ISNULL g.Basket:ship_state )">
+				&mvte:global:Basket:ship_city;,
+			<mvt:else>
+				&mvte:global:Basket:ship_city;
+			</mvt:if>
+			&mvte:global:Basket:ship_state; &mvte:global:Basket:ship_zip; &mvte:global:Basket:ship_cntry;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:ship_email">
+			Email: &mvte:global:Basket:ship_email;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:ship_phone">
+			Phone: &mvte:global:Basket:ship_phone;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:ship_fax">
+			Fax: &mvte:global:Basket:ship_fax;<br />
+		</mvt:if>
+	</address>
+</div>
+<div class="basket-product-row">
+	<p class="column whole h6">Bill To:</p>
+	<address class="column whole">
+		<mvt:if expr="g.Basket:bill_fname OR g.Basket:bill_lname">
+			<strong>&mvte:global:Basket:bill_fname; &mvte:global:Basket:bill_lname;</strong><br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:bill_comp">
+			&mvte:global:Basket:bill_comp;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:bill_addr1 OR g.Basket:bill_addr2 OR g.Basket:bill_city OR g.Basket:bill_state OR g.Basket:bill_zip OR g.Basket:bill_cntry">
+			&mvte:global:Basket:bill_addr1;&nbsp;
+			<mvt:if expr="g.Basket:bill_addr2">
+				&mvte:global:Basket:bill_addr2;<br />
+			</mvt:if>
+			<mvt:if expr="( NOT ISNULL g.Basket:bill_city ) AND ( NOT ISNULL g.Basket:bill_state )">
+				&mvte:global:Basket:bill_city;,
+			<mvt:else>
+				&mvte:global:Basket:bill_city;
+			</mvt:if>
+			&mvte:global:Basket:bill_state; &mvte:global:Basket:bill_zip; &mvte:global:Basket:bill_cntry;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:bill_email">
+			Email: &mvte:global:Basket:bill_email;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:bill_phone">
+			Phone: &mvte:global:Basket:bill_phone;<br />
+		</mvt:if>
+		<mvt:if expr="g.Basket:bill_fax">
+			Fax: &mvte:global:Basket:bill_fax;<br />
+		</mvt:if>
+	</address>
+</div>

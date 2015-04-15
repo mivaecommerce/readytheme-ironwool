@@ -1,0 +1,48 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="ORDL-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow">
+		<div class="breaker"></div>
+		<div class="column whole medium-two-fifths">
+			<h4>Returning Customers</h4>
+			<p>Returning guests, sign in using your email address and the password that you created with us.</p>
+			<form method="post" action="&mvte:global:secure_sessionurl;Screen=OCST" id="js-ordl-form" class="inline-labeling" autocomplete="off">
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<input type="hidden" name="Action" value="LOGN" />
+				<div class="form-row">
+					<label for="l-Customer_LoginEmail" class="required &mvt:global:invalid_credentials;">Email Address:</label>
+					<input type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" id="l-Customer_LoginEmail" />
+				</div>
+				<div class="form-row">
+					<label for="l-Customer_Password" class="required &mvt:global:invalid_credentials;">Password:</label>
+					<input type="password" name="Customer_Password" id="l-Customer_Password" />
+				</div>
+				<div class="form-row align-right">
+					<mvt:item name="buttons" param="Login"  file="cssui-buttonLogin-item.htm" />
+				</div>
+			</form>
+			<p><small>Forgot your password? <a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=FPWD" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
+		</div>
+		<div class="column whole medium-two-fifths medium-offset-one-fifth">
+			<h4>New Customers</h4>
+			<p>For faster future checkouts and online access to your order history, create your personal account now.</p>
+			<p class="align-right"><a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=ACNT&Order=1" title="Create Your Account" class="button button-square bg-gray charcoal">Create Your Account</a></p>
+			<hr noshade />
+			<h4>Guest Checkout</h4>
+			<p>Finalize your order without creating an account.</p>
+			<p class="align-right"><a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=OCST" title="Continue As A Guest" class="button button-square bg-gray charcoal">Continue As A Guest</a></p>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="ORDL-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

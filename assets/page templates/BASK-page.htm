@@ -1,0 +1,20 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="BASK-header-item.htm" />
+	</div>
+	<div class="row basket-contents bg-white bottom-shadow">
+		<mvt:item name="messages" />
+		<mvt:item name="basket"  file="BASK-basket-item.htm" />
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="BASK-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

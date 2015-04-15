@@ -1,0 +1,109 @@
+</div>
+				</div>
+				<!-- end column-right -->
+				<mvt:if expr="l.settings:page:code CIN g.screenCheck">
+				<mvt:else>
+					<div class="column-left column hide large-show large-one-fourth large-pull-three-fourths x-large-one-fifth x-large-pull-four-fifths nlp">
+						<mvt:item name="category_tree"  file="" />
+					</div>
+				</mvt:if>
+				<!-- end column-left -->
+			</div>
+			<!-- end main -->
+			<div class="bottom-wrap"></div>
+			<!-- end bottom-wrap -->
+		</div>
+		<!-- end wrap -->
+	</main>
+	<!-- end main -->
+</div>
+<!-- end site-wrapper -->
+<footer class="bg-gray footer">
+	<div class="row wrap">
+		<div class="hide large-show column one-fourth">
+			<h5>Our Story</h5>
+			<mvt:item name="readytheme" param="contentsection( 'footer_about_us' )" />
+		</div>
+		<div class="hide medium-show column one-fourth">
+			<h5>Categories</h5>
+			<mvt:item name="readytheme" param="navigationset( 'footer_categories' )" />
+		</div>
+		<div class="hide medium-show column one-fourth">
+			<h5>Helpful Links</h5>
+			<div id="js-footer-links">
+				<mvt:item name="readytheme" param="navigationset( 'helpful_links' )" />
+			</div>
+		</div>
+		<div class="column whole medium-half large-one-fourth">
+			<h5 class="hide medium-show">Contact</h5>
+			<ul class="hide medium-show no-list footer-contact">
+				<li data-rt-icon="&#x62;">&mvt:global:store:address; &mvt:global:store:city;, &mvt:global:store:state; &mvt:global:store:zip;</li>
+				<li data-icon="&#xe090;">&mvt:global:store:phone;</li>
+				<li data-rt-icon="&#x66;"><a href="emailto:&mvte:global:storeEmailB64;" rel="nofollow">Email Us</a></li>
+			</ul>
+
+			<mvt:if expr="l.settings:readytheme:social_active">
+				<h5>Connect With Us</h5>
+				<div class="footer-social">
+					<mvt:if expr="l.settings:readytheme:social_facebook">
+						<a href="&mvt:readytheme:social_facebook;" title="Facebook" target="_blank" data-icon="&#xe093;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_twitter">
+						<a href="&mvt:readytheme:social_twitter;" title="Twitter" target="_blank" data-icon="&#xe094;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_instagram">
+						<a href="&mvt:readytheme:social_instagram;" title="Instagram" target="_blank" data-icon="&#xe09a;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_googleplus">
+						<a href="&mvt:readytheme:social_googleplus;" title="Google+" target="_blank" data-icon="&#xe096;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_youtube">
+						<a href="&mvt:readytheme:social_youtube;" title="YouTube" target="_blank" data-icon="&#xe0a3;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_vimeo">
+						<a href="&mvt:readytheme:social_vimeo;" title="Vimeo" target="_blank" data-icon="&#xe09c;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_pinterest">
+						<a href="&mvt:readytheme:social_pinterest;" title="Pinterest" target="_blank" data-icon="&#xe095;"></a>
+					</mvt:if>
+					<mvt:if expr="l.settings:readytheme:social_flickr">
+						<a href="&mvt:readytheme:social_flickr;" title="Flickr" target="_blank" data-icon="&#xe0a6;"></a>
+					</mvt:if>
+				</div>
+			</mvt:if>
+			<div><mvt:item name="readytheme" param="trustsymbol" /></div>
+		</div>
+	</div>
+</footer>
+<!-- end footer -->
+<div class="bg-gray disclaimers">
+	<div class="row wrap">
+		<p class="column whole nm">Copyright &copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:company;. | <a href="http://www.miva.com/" title="Ecommerce Shopping Cart Software by Miva Merchant" target="_blank" rel="nofollow">Ecommerce Shopping Cart Software by Miva, Inc.</a></p>
+	</div>
+</div>
+<!-- end disclaimers -->
+<footer class="mobile-footer row medium-all-hidden bg-white">
+	<div class="column one-fourth align-center"><a href="http://&mvt:global:domain:name;/"><span data-icon="&#xe074;"></span><small>HOME</small></a></div>
+	<div class="column one-fourth align-center toggle-slide-left"><span data-icon="&#x61;"></span><small>SHOP</small></div>
+
+	<div class="column one-fourth align-center"><a href="&mvt:global:sessionurl;Screen=BASK&amp;Store_Code=&mvta:store:code;" id="js-mobile-footer-basket"><span data-icon="&#xe07a;"></span><small>CART</small></a></div>
+	<div class="column one-fourth align-center toggle-slide-bottom"><span data-icon="&#xe060;"></span><small>LINKS</small></div>
+</footer>
+<!-- end mobile-footer -->
+<nav id="js-mobile-footer-links" class="mobile-menu mobile-menu-bottom mobile-footer-links medium-hide">
+	<div class="mobile-menu-header">LINKS<a href="" class="silver close-mobile-menu">&times;</a></div>
+</nav>
+<!-- end mobile-footer-links -->
+<div id="js-chaser" class="back-to-top bg-charcoal"><span data-icon="&#x42;" title="Back to Top"></span></div>
+<!-- end back-to-top -->
+<!--[if lt IE 9]>
+	<script src="../js/vendor.ie.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+	<script src="../js/vendor.min.js"></script>
+<!--<![endif]-->
+<script src="../js/plugins.js"></script>
+<script src="../js/scripts.js"></script>
+<!--[if lt IE 9]>
+	<script src="../js/rem.min.js"></script>
+<![endif]-->

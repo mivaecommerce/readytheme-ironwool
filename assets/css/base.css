@@ -1,0 +1,152 @@
+/*
+------------------------ BASE ELEMENTS ------------------------ */
+*,
+*:before,
+*:after { /* Apply a natural box layout model to all elements */
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*For IE 10 (desktop) to work in it's new "snap mode" you need to use this */
+@-moz-viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+@-ms-viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+@-o-viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+@-webkit-viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+@viewport {
+	width: device-width;
+	zoom: 1.0;
+}
+html,
+body { /* Set <html> and <body> to inherit the height of the viewport */
+	min-height: 100%;
+	overflow-x: hidden;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+	background: #fff;
+	font-size: 100%;
+	overflow-y: scroll;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+}
+	/* ------------------------ boxed layout ------------------------ */
+	.boxed,
+	.boxed .stuck {
+		border: solid #ebebeb;
+		border-width: 0 1px;
+		margin: 0 auto;
+		max-width: 1600px;
+	}
+
+	/* ------------------------ set conditional content based on browser width for pairing CSS and JavaScript breakpoints  ------------------------ */
+	body:after {
+		content: 'nano';
+		display: none;
+	}
+	@media screen and (min-width: 480px) {
+		body:after {
+			content: 'x-small';
+		}
+	}
+	@media screen and (min-width: 640px) {
+		body:after {
+			content: 'small';
+		}
+	}
+	@media screen and (min-width: 768px) {
+		body:after {
+			content: 'medium';
+		}
+	}
+	@media screen and (min-width: 960px) {
+		body:after {
+			content: 'large';
+		}
+	}
+	@media screen and (min-width: 1170px) {
+		body:after {
+			content: 'x-large';
+		}
+	}
+
+
+/* ------------------------ global elements ------------------------ */
+address,
+blockquote,
+dl,
+fieldset,
+figure,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+menu,
+ol,
+p,
+pre,
+summary,
+table,
+ul {
+	margin: 0;
+	margin-bottom: 1rem;
+}
+::-moz-selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+::selection {
+	background: #b3d4fc;
+	text-shadow: none;
+}
+::selection:window-inactive {
+	background: #dedede;
+}
+img::selection {
+	background: transparent;
+}
+img::-moz-selection {
+	background: transparent;
+}
+[disabled] {
+	cursor: not-allowed;
+}
+
+/* ------------------------ back to top link ------------------------ */
+.back-to-top {
+	color: #fff;
+	cursor: pointer;
+	display: none;
+	position: fixed;
+	right: 2rem;
+	bottom: 6rem;
+	text-align: center;
+}
+	.back-to-top span {
+		display: inline-block;
+		font-size: 2rem;
+		line-height: 2rem;
+		vertical-align: middle;
+		width: 2rem;
+		height: 2rem;
+	}

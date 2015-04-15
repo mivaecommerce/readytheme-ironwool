@@ -1,0 +1,32 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="RGFT-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<div class="column whole">
+			<form method="post" action="&mvte:global:secure_sessionurl;Screen=&mvta:global:Screen;" autocomplete="off" id="js-rgft-form" class="column whole medium-half">
+				<input type="hidden" name="Action" value="RDGC" />
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<div class="form-row">
+					<label for="l-GiftCertificate_Code" class="required">Enter Gift Certificate Code:</label>
+					<input type="text" name="GiftCertificate_Code" value="" id="l-GiftCertificate_Code" />
+				</div>
+				<div class="form-row align-right">
+					<mvt:item name="buttons" param="ApplyGiftCert"  file="cssui-buttonApplyGiftCert-item.htm" />
+				</div>
+			</form>
+			<p class="column whole">Current Balance: <strong>&mvt:customer:formatted_credit;</strong></p>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="RGFT-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

@@ -1,0 +1,57 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: Checkout: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<h2 class="align-center">Special Offers<small class="show">Offer valid for this order only</small></h2>
+		<mvt:item name="hdft" param="header"  file="OUSM-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row product-information">
+		<form method="post" action="&mvt:global:secure_sessionurl;Screen=OSEL">
+			<input type="hidden" name="Action" value="AUPM" />
+			<input type="hidden" name="Attributes" value="Yes" />
+			<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+			<input type="hidden" name="Upsell_Product_Count" value="&mvte:global:Upsold_Product_Count;" />
+			<mvt:item name="tax" />
+			<div class="column whole cart-contents">
+				<div class="row hide medium-show basket-header-row">
+					<div class="column one-eighth align-center">Buy</div>
+					<div class="column half">Product</div>
+					<div class="column one-eighth align-right">Regularly</div>
+					<div class="column one-eighth align-right">Special</div>
+					<div class="column one-eighth align-right">Save <MvEVAL EXPR="{l.formattedsavings}"></div>
+				</div>
+				<mvt:foreach iterator="upsold_product" array="upsale">
+					<div class="row basket-product-row">
+						<div class="column one-fifth medium-one-eighth align-center">
+							<mvt:if expr="l.settings:upsold_product:selected">
+								<input type="checkbox" name="Upsell_Selected[&mvt:upsold_product:index;]" value="Yes" checked />
+							<mvt:else>
+								<input type="checkbox" name="Upsell_Selected[&mvt:upsold_product:index;]" value="Yes" />
+							</mvt:if>
+							<input type="hidden" name="Product[&mvt:upsold_product:index;]:code" value="&mvte:upsold_product:code;" />
+						</div>
+						<div class="column four-fifths medium-half">
+							&mvt:upsold_product:name;<br />
+							SKU: &mvt:upsold_product:code;
+						</div>
+						<div class="breaker clear medium-all-hidden"></div>
+						<div class="column one-third medium-one-eighth align-right"><span class="show medium-hide small">Regularly</span>&mvt:upsold_product:formatted_price;</div>
+						<div class="column one-third medium-one-eighth align-right"><span class="show medium-hide small">Special</span>&mvt:upsold_product:formatted_upsell_price;</div>
+						<div class="column one-third medium-one-eighth align-right"><span class="show medium-hide small">Save</span>&mvt:upsold_product:formatted_upsell_savings;</div>
+					</div>
+				</mvt:foreach>
+			</div>
+			<div class="breaker clear"></div>
+			<p class="column whole align-right"><mvt:item name="buttons" param="Continue"  file="cssui-buttonContinue-item.htm" /></p>
+		</form>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="OUSM-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

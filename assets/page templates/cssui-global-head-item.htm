@@ -1,0 +1,120 @@
+<base href="&mvt:global:basehref;" />
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<mvt:assign name="g.screenCheck" value="'ABAL,ACAD,ACED,AFAD,AFCL,AFED,ACLN,BASK,CEML,CPWD,FPWD,GFTL,INVC,LOGN,LOGOUT,OCST,OPAY,OPRC,ORHL,ORDH,ORDL,ORDS,OSEL,OUS1,OUSL,OUSM,PLMT,PRINTP,RGFT,SFNT,UATM,UATR'" />
+<mvt:assign name="g.storeEmailB64" value="crypto_base64_encode(g.store:email)" />
+<mvt:assign name="g.protocol_relative_url" value="substring_var(g.sessionurl, 6, len_var(g.sessionurl))" />
+<mvt:assign name="g.screenWidth" value="g.request_cookies:ress_width" />
+<mvt:if expr="l.settings:page:code EQ 'SFNT' OR l.settings:page:code EQ 'BASK' OR g.secure">
+	<link rel="canonical" href="http://&mvta:global:domain:name;/" />
+<mvt:elseif expr="l.settings:page:code EQ 'CTGY'">
+	<link rel="canonical" href="http://&mvta:global:domain:name;/&mvt:seo_settings:cat_lit;&mvt:seo_settings:url_delim;&mvta:category:code;.&mvt:seo_settings:suffix;" />
+<mvt:elseif expr="l.settings:page:code EQ 'PROD' OR l.settings:page:code EQ 'PATR'">
+	<mvt:assign name="g.socialURL" value="'http://' $ g.domain:name $ '/' $ l.settings:seo_settings:prod_lit $ l.settings:seo_settings:url_delim $ l.settings:product:code  $ '.' $ l.settings:seo_settings:suffix" />
+	<mvt:assign name="g.encodedProdName" value="encodeentities(l.settings:product:name)" />
+	<mvt:assign name="g.socialText" value="'Check out the deal on ' $ l.settings:product:name $ ' at ' $ g.store:name" />
+	<mvt:assign name="g.socialImage" value="'http://' $ g.domain:name $ g.domain:image_root $ l.settings:product:customfield_values:productimagecustomfields:main" />
+	<link rel="canonical" href="&mvt:global:socialURL;" />
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@TWITTER_ACCOUNT">
+	<meta name="twitter:creator" content="@TWITTER_ACCOUNT">
+	<meta name="twitter:title" content="&mvt:global:encodedProdName;">
+	<meta name="twitter:description" content="&mvte:global:socialText;">
+	<meta name="twitter:image:src" content="&mvt:global:socialImage;">
+	<meta property="og:title" content="&mvt:global:encodedProdName;" />
+	<meta property="og:type" content="product" />
+	<meta property="og:image" content="&mvt:global:socialImage;" />
+	<meta property="og:url" content="&mvt:global:socialURL;" />
+	<meta property="og:site_name" content="&mvte:global:store:name;" />
+	<meta property="og:description" content="&mvte:global:socialText;" />
+<mvt:else>
+	<link rel="canonical" href="http://&mvta:global:domain:name;/&mvta:page:code;.&mvt:seo_settings:suffix;" />
+</mvt:if>
+<mvt:if expr="NOT ISNULL l.settings:product:metafield:keywords">
+	<meta name="keywords" content="&mvt:product:metafield:keywords;" />
+<mvt:elseif expr="NOT ISNULL l.settings:category:metafield:keywords">
+	<meta name="keywords" content="&mvt:category:metafield:keywords;" />
+<mvt:else>
+	<meta name="keywords" content="SEO: META KEYWORDS" />
+</mvt:if>
+<mvt:if expr="NOT ISNULL l.settings:product:metafield:description">
+	<meta name="description" content="&mvt:product:metafield:description;" />
+<mvt:elseif expr="NOT ISNULL l.settings:category:metafield:description">
+	<meta name="description" content="&mvt:category:metafield:description;" />
+<mvt:else>
+	<meta name="description" content="SEO: META DESCRIPTION" />
+</mvt:if>
+<link href="../css/css.php" rel="stylesheet" />
+<mvt:item name="head" param="css_list" />
+<mvt:item name="readytheme" param="css" />
+<link href="https://fonts.googleapis.com/css?family=Lato:400,300,700,900,400italic|Playball" rel="stylesheet" data-norem />
+<!--[if lt IE 9]>
+	<script src="../js/modernizr.js"></script>
+	<script src="../js/respond.min.js"></script>
+<![endif]-->
+<link href="../humans.txt" rel="author" />
+
+<mvt:comment>
+	These link the font/css files in the Framework Export.
+	<link href="../css/base.css" />
+	<link href="../css/buttons.css" />
+	<link href="../css/colors.css" />
+	<link href="../css/fonts.css" />
+	<link href="../css/forms.css" />
+	<link href="../css/helpers.css" />
+	<link href="../css/magnific-popup.css" />
+	<link href="../css/normalize.css" />
+	<link href="../css/pages.css" />
+	<link href="../css/print.css" />
+	<link href="../css/scaffolding.css" />
+	<link href="../css/slider.css" />
+	<link href="../css/structure.css" />
+	<link href="../css/tables.css" />
+	<link href="../css/theme.css" />
+	<link href="../css/typography.css" />
+	
+	<link href="../fonts/ElegantIcons.eot" />
+	<link href="../fonts/ElegantIcons.svg" />
+	<link href="../fonts/ElegantIcons.ttf" />
+	<link href="../fonts/ElegantIcons.woff" />
+	<link href="../fonts/Suivant.eot" />
+	<link href="../fonts/Suivant.svg" />
+	<link href="../fonts/Suivant.ttf" />
+	<link href="../fonts/Suivant.woff" />
+	
+	<link href="../js/jquery.magnific-popup.min.js" />
+	<link href="../js/jquery.slick.min.js" />
+	<link href="../js/modernizr.js" />
+	<link href="../js/plugins.js" />
+	<link href="../js/rem.min.js" />
+	<link href="../js/respond.min.js" />
+	<link href="../js/scripts.js" />
+	<link href="../js/vendor.min.js" />
+	<link href="../js/vendor.ie.min.js" />
+	
+	<link href="../images/img_ajax_processing.gif" />
+	<link href="../images/img_email_empty.gif" />
+	<link href="../images/img_email_facebook.png" />
+	<link href="../images/img_email_instagram.png" />
+	<link href="../images/img_email_pinterest.png" />
+	<link href="../images/img_email_twitter.png" />
+	<link href="../images/img_slider_loader.gif" />
+	<link href="../images/img_transparent.gif" />
+
+	<link href="../forms/contactForm.php" />
+	<link href="../forms/token.php" />
+	<link href="../forms/clearCookie.php" />
+	
+	<link href="../images/icons/logo_amex.png" />
+	<link href="../images/icons/logo_discover.png" />
+	<link href="../images/icons/logo_mastercard.png" />
+	<link href="../images/icons/logo_visa.png" />
+	<link href="../images/icons/logo_paypal.png" />
+	<link href="../images/icons/logo_cvv.png" />
+	<link href="../images/icons/logo_check.png" />
+
+	<link href="../404.html" />
+	<link href="../robots.txt" />
+
+</mvt:comment>

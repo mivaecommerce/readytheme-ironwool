@@ -1,0 +1,139 @@
+<mvt:foreach iterator="attribute" array="attributes">
+	<mvt:assign name="l.settings:attributeID" value="'l-' $ tolower(l.settings:attribute:code)" />
+	<input type="hidden" name="Product_Attributes[&mvte:attribute:index;]:code" value="&mvte:attribute:code;" data-attribute-type="&mvte:attribute:type;" />
+	<mvt:if expr="l.settings:attribute:template_code NE 0">
+		<input type="hidden" name="Product_Attributes[&mvte:attribute:index;]:template_code" value="&mvte:attribute:template_code;" />
+	</mvt:if>
+	<mvt:if expr="l.settings:attribute:type EQ 'text'">
+		<div class="form-row">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="&mvt:attributeID;" title="&mvte:attribute:prompt;" class="required">&mvte:attribute:prompt;</label>
+			<mvt:else>
+				<label for="&mvt:attributeID;" title="&mvte:attribute:prompt;">&mvte:attribute:prompt;</label>
+			</mvt:if>
+			<input type="text" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:attribute:value;" id="&mvt:attributeID;" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:attribute:price;" data-regular-price="" />
+		</div>
+	<mvt:elseif expr="l.settings:attribute:type EQ 'memo'">
+		<div class="form-row">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="&mvt:attributeID;" title="&mvte:attribute:prompt;" class="required">&mvte:attribute:prompt;</label>
+			<mvt:else>
+				<label for="&mvt:attributeID;" title="&mvte:attribute:prompt;">&mvte:attribute:prompt;</label>
+			</mvt:if>
+			<textarea name="Product_Attributes[&mvt:attribute:index;]:value" id="&mvt:attributeID;" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:attribute:price;" data-regular-price="">&mvte:attribute:value;</textarea>
+		</div>
+	<mvt:elseif expr="l.settings:attribute:type EQ 'radio'">
+		<div class="form-row">
+			<mvt:if expr="l.settings:attribute:required">
+				<legend for="&mvt:attributeID;" title="&mvte:attribute:prompt;" class="nm required">&mvte:attribute:prompt;</legend>
+			<mvt:else>
+				<legend for="&mvt:attributeID;" title="&mvte:attribute:prompt;" class="nm normal">&mvte:attribute:prompt;</legend>
+			</mvt:if>
+			<mvt:foreach iterator="option" array="attribute:options">
+				<mvt:assign name="l.settings:optionID" value="'l-' $ tolower(l.settings:option:code)" />
+				<label for="&mvt:optionID;" title="&mvt:option:prompt;" class="show">
+					<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+						<input type="radio" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:option:code;" id="&mvt:optionID;" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:option:price;" data-regular-price="" checked />
+					<mvt:else>
+						<input type="radio" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:option:code;" id="&mvt:optionID;" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:option:price;" data-regular-price="" />
+					</mvt:if>
+					<mvt:if expr="l.settings:option:image">
+						<img src="&mvte:option:image;" alt="&mvte:option:prompt;" title="&mvte:option:prompt;" />
+					<mvt:else>
+						&mvte:option:prompt;
+						<mvt:if expr="l.settings:option:price">
+							<mvt:if expr="l.settings:option:price GT 0">
+								&nbsp;<mvt:eval expr="'+ $' $ abs(rnd(l.settings:option:price, 2))" />
+							<mvt:else>
+								&nbsp;<mvt:eval expr="'- $' $ abs(rnd(l.settings:option:price, 2))" />
+							</mvt:if>
+						</mvt:if>
+					</mvt:if>
+				</label>
+			</mvt:foreach>
+		</div>
+	<mvt:elseif expr="(l.settings:attribute:type EQ 'select') OR (l.settings:attribute:type EQ 'swatch-select')">
+		<div class="form-row">
+			<mvt:if expr="l.settings:attribute:type EQ 'swatch-select'">
+				<mvt:assign name="g.hasSwatches" value="'1'" />
+			</mvt:if>
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="&mvt:attributeID;" title="&mvt:attribute:prompt;" class="required">&mvt:attribute:prompt;</label>
+			<mvt:else>
+				<label for="&mvt:attributeID;" title="&mvt:attribute:prompt;">&mvt:attribute:prompt;</label>
+			</mvt:if>
+			<select name="Product_Attributes[&mvt:attribute:index;]:value" id="&mvt:attributeID;" data-attribute="&mvte:attribute:code;">
+				<mvt:foreach iterator="option" array="attribute:options">
+					<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+						<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
+							&mvte:option:prompt;
+							<mvt:if expr="l.settings:option:price">
+								<mvt:if expr="l.settings:option:price GT 0">
+									&nbsp;<mvt:eval expr="' +$' $ abs(rnd(l.settings:option:price, 2))" />
+								<mvt:else>
+									&nbsp;<mvt:eval expr="' -$' $ abs(rnd(l.settings:option:price, 2))" />
+								</mvt:if>
+							</mvt:if>
+						</option>
+					<mvt:else>
+						<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
+							&mvte:option:prompt;
+							<mvt:if expr="l.settings:option:price">
+								<mvt:if expr="l.settings:option:price GT 0">
+									&nbsp;<mvt:eval expr="' +$' $ abs(rnd(l.settings:option:price, 2))" />
+								<mvt:else>
+									&nbsp;<mvt:eval expr="' -$' $ abs(rnd(l.settings:option:price, 2))" />
+								</mvt:if>
+							</mvt:if>
+						</option>
+					</mvt:if>
+				</mvt:foreach>
+			</select>
+		</div>
+	<mvt:elseif expr="l.settings:attribute:type EQ 'checkbox'">
+		<div class="form-row">
+			<mvt:if expr="l.settings:attribute:required">
+				<label for="&mvt:attributeID;" title="&mvte:attribute:prompt;" class="required">
+					<mvt:if expr="g.Product_Attributes[l.settings:attribute:index]:value">
+						<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" value="Yes" id="&mvt:attributeID;" checked="checked" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:attribute:price;" data-regular-price="" />
+					<mvt:else>
+						<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" id="&mvt:attributeID;" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:attribute:price;" data-regular-price="" />
+					</mvt:if>
+					<mvt:if expr="l.settings:attribute:image">
+						<img src="&mvte:attribute:image;" alt="&mvte:attribute:prompt;" title="&mvte:attribute:prompt;" />
+					<mvt:else>
+						&mvte:attribute:prompt;
+						<mvt:if expr="l.settings:attribute:price">
+							<mvt:if expr="l.settings:attribute:price GT 0">
+								&nbsp;<mvt:eval expr="' +$' $ abs(rnd(l.settings:attribute:price, 2))" />
+							<mvt:else>
+								&nbsp;<mvt:eval expr="' -$' $ abs(rnd(l.settings:attribute:price, 2))" />
+							</mvt:if>
+						</mvt:if>
+					</mvt:if>
+				</label>
+			<mvt:else>
+				<label for="&mvt:attributeID;" title="&mvte:attribute:prompt;">
+					<mvt:if expr="g.Product_Attributes[l.settings:attribute:index]:value">
+						<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" value="Yes" id="&mvt:attributeID;" checked="checked" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:attribute:price;" data-regular-price="" />
+					<mvt:else>
+						<input type="checkbox" name="Product_Attributes[&mvte:attribute:index;]:value" id="&mvt:attributeID;" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:attribute:price;" data-regular-price="" />
+					</mvt:if>
+					<mvt:if expr="l.settings:attribute:image">
+						<img src="&mvte:attribute:image;" alt="&mvte:attribute:prompt;" title="&mvte:attribute:prompt;" />
+					<mvt:else>
+						&mvte:attribute:prompt;
+						<mvt:if expr="l.settings:attribute:price">
+							<mvt:if expr="l.settings:attribute:price GT 0">
+								&nbsp;<mvt:eval expr="' +$' $ abs(rnd(l.settings:attribute:price, 2))" />
+							<mvt:else>
+								&nbsp;<mvt:eval expr="' -$' $ abs(rnd(l.settings:attribute:price, 2))" />
+							</mvt:if>
+						</mvt:if>
+					</mvt:if>
+				</label>
+			</mvt:if>
+		</div>				
+	</mvt:if>
+</mvt:foreach>
+<input type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />" id="js-product-attribute-count" />

@@ -1,0 +1,46 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="ORDP-header-item.htm" />
+	</div>
+	<div class="row">
+		<div class="column whole">
+			<p>
+				<strong>&mvt:global:store:name;</strong><br />
+				&mvt:global:store:address;, &mvt:global:store:city;, &mvt:global:store:state; &mvt:global:store:zip;<br />
+				Email: &mvt:global:store:email;<br />
+				Phone: &mvt:global:store:phone;
+				<mvt:if expr="NOT ISNULL g.store:fax">
+					<br />Fax: &mvt:global:store:fax;
+				</mvt:if>
+			</p>
+			<h5 class="page-title">Order Confirmation</h5>
+			<mvt:item name="messages" />
+		</div>
+	</div>
+	<div class="row customer-fields">
+		<mvt:item name="order_customer"  file="cssui-invccustfields-item.htm" />
+	</div>
+	<div class="row order-contents">
+		<mvt:item name="view_order"  file="ORDP-view_order-item.htm" />
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="ORDP-footer-item.htm" />
+	</div>
+	<!--[if lt IE 9]>
+		<script src="../js/vendor.ie.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+		<script src="../js/vendor.min.js"></script>
+	<!--<![endif]-->
+	<script src="../js/plugins.js"></script>
+	<script src="../js/scripts.js"></script>
+	<!--[if lt IE 9]>
+		<script src="../js/rem.min.js"></script>
+	<![endif]-->
+</mvt:item>
+</html>

@@ -1,0 +1,479 @@
+/*
+------------------------ TYPOGRAPHY ------------------------ */
+html,
+button,
+select,
+input,
+textarea {
+	color: #4d4d4d;
+}
+body {
+	font-family: "Maven Pro", Helvetica, Arial, sans-serif;
+	font-size: 1rem;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: left;
+}
+a,
+a:active,
+a:visited {
+	outline: none;
+	text-decoration: none;
+    -webkit-transition: 0.2s ease-in-out all;
+    transition: 0.2s ease-in-out all;
+}
+a {
+	color: #7d7d7d;
+}
+a:hover {
+	color: #1ac8e2;
+	outline: none;
+}
+a:active {
+	color: #1ac8e2;
+}
+	.touch a,
+	.touch a:hover {
+		text-decoration: none;
+	}
+.decoration,
+.decoration:hover {
+	text-decoration: underline;
+}
+.no-decoration,
+.no-decoration:hover {
+	text-decoration: none;
+}
+abbr,
+acronym,
+dfn[title] {
+	border-bottom: 1px dotted #999;
+	cursor: help;
+}
+	abbr a {
+		text-decoration: none;
+	}
+acronym {
+	text-transform: uppercase;
+}
+blockquote {
+	border-left: 0.375rem solid #efefef;
+	font: italic 1.333rem Baskerville, "Baskerville Old Face", "Hoefler Text",  Garamond, "Times New Roman", serif;
+	padding-left: 1rem;
+}
+	blockquote p {
+		margin: 0;
+	}
+	blockquote p + p {
+		margin-top: 1.50rem;
+	}
+	blockquote cite {
+		color: #777;
+		font: italic 0.75rem Arial, Helvetica, sans-serif;
+	}
+		blockquote cite:before {
+			content: "\2014 \0020";
+		}
+		blockquote cite a {
+			color: #777;
+		}
+	blockquote.blockquote-reverse {
+		border-left: 0 none;
+		border-right: .375rem solid #efefef;
+		padding-left: 0;
+		padding-right: 1rem;
+		text-align: right;
+	}
+caption,
+p,
+table,
+textarea,
+td,
+th {
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word;
+}
+dl dt {
+	color: #222;
+	font-weight: 700;
+}
+dl dd {
+	margin: 0;
+}
+del {
+	color: #777;
+	text-decoration: line-through;
+}
+details {
+	cursor: pointer;
+}
+em,
+i,
+cite {
+	font-style: italic;
+}
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4,
+h5,
+.h5,
+h6,
+.h6 {
+	color: #4d4d4d;
+	font-weight: 700;
+}
+h1,
+.h1 {
+	font-size: 1.50rem;
+	line-height: 1;
+}
+h2,
+.h2 {
+	font-size: 1.25rem;
+	line-height: 1.2;
+}
+h3,
+.h3 {
+	font-size: 1.125rem;
+	line-height: 1.33333;
+}
+h4,
+.h4 {
+	font-size: 1rem;
+	line-height: 1.5;
+}
+h5,
+.h5 {
+	font-size: 0.875rem;
+	line-height: 1.71429;
+}
+h6,
+.h6 {
+	font-size: 0.75rem;
+	line-height: 2;
+}
+
+	/* ------------------------ medium breakpoint ------------------------ */
+	@media only screen and (min-width: 768px) {
+		h1,
+		.h1 {
+			font-size: 2rem;
+			line-height: 1.5;
+		}
+		h2,
+		.h2 {
+			font-size: 1.50rem;
+			line-height: 1;
+		}
+		h3,
+		.h3 {
+			font-size: 1.25rem;
+			line-height: 1.2;
+		}
+		h4,
+		.h4 {
+			font-size: 1.125rem;
+			line-height: 1.33333;
+		}
+		h5,
+		.h5 {
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+		h6,
+		.h6 {
+			font-size: 0.875rem;
+			line-height: 1.71429;
+		}
+	}
+	/* ------------------------ large breakpoint ------------------------ */
+	@media only screen and (min-width: 960px) {
+		h1,
+		.h1 {
+			font-size: 2.25rem;
+			line-height: 1.33333;
+		}
+		h2,
+		.h2 {
+			font-size: 1.875rem;
+			line-height: 1.6;
+		}
+		h3,
+		.h3 {
+			font-size: 1.50rem;
+			line-height: 1;
+		}
+		h4,
+		.h4 {
+			font-size: 1.25rem;
+			line-height: 1.2;
+		}
+		h5,
+		.h5 {
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+		h6,
+		.h6 {
+			font-size: 0.875rem;
+			line-height: 1.71429;
+		}
+	}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a,
+h6 a,
+.h1 a,
+.h2 a,
+.h3 a,
+.h4 a,
+.h5 a,
+.h6 a {
+	font-weight: inherit;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small,
+.h1 small,
+.h2 small,
+.h3 small,
+.h4 small,
+.h5 small,
+.h6 small {
+	font-size: 65%;
+	line-height: 1;
+}
+
+hr {
+	border: 0;
+	border-bottom: 1px solid #dfe1e1;
+	margin: 1rem 0;
+}
+	hr.symbol {
+		border: 0;
+		height: 1.333rem;
+		margin: 0 0 1rem;
+		padding: 1rem 0;
+	}
+		hr.symbol:before {
+			border: 0;
+			color: #222;
+			content: "⁂";
+			display: block;
+			font-size: 1.333rem;
+			line-height: 1;
+			text-align: center;
+			width: 100%;
+		}
+ins,
+mark {
+	background: #ff9;
+	color: #222;
+	text-decoration: none;
+}
+nav ul,
+nav ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ol {
+	list-style: decimal;
+}
+	ol ol {
+		list-style: upper-alpha;
+	}
+		ol ol ol {
+			list-style: lower-roman;
+		}
+			ol ol ol ol {
+				list-style: lower-alpha;
+			}
+ul {
+	list-style: disc;
+}
+	ul ul {
+		list-style: circle;
+	}
+		ul ul ul {
+			list-style: square;
+		}
+			ul ul ul ul {
+				list-style: decimal-leading-zero;
+			}
+ol ol,
+ol ul,
+ul ul,
+ul ol {
+	margin-bottom: 0;
+}
+.no-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+	/* ------------------------ lined list ------------------------ */
+	.lined-list li {
+		border-bottom: 1px solid #dfe1e1;
+		padding-bottom: 0.25rem;
+		padding-top: 0.25rem;
+	}
+		.lined-list li:last-child,
+		.lined-list li.last-child,
+		.lined-list li li {
+			border-bottom: none;
+		}
+
+	/* ------------------------ inline list ------------------------ */
+	.inline-list {
+		display: block;
+		margin-left: 0px;
+	}
+		.inline-list li {
+			display: inline;
+			margin-right: 1.50rem;
+		}
+		.inline-list li:last-child,
+		.inline-list li.last-child {
+			margin-right: 0;
+		}
+
+	/* ------------------------ inline lined list ------------------------ */
+	.lined-list.inline-list li {
+		margin-right: 0.75rem;
+	}
+		.lined-list.inline-list li:after {
+			color: #dfe1e1;
+			content: "|";
+			margin-left: 0.75rem;
+		}
+		.lined-list.inline-list li:last-child:after,
+		.lined-list.inline-list li.last-child:after {
+			content: "";
+		}
+	
+.run-in {
+	color: #222;
+	float: left;
+	font-size: 1rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	margin: 0;
+	margin-right: 0.317rem;
+	text-transform: uppercase;
+}
+small,
+.small {
+	display: inline-block;
+	font-size: 0.75em;
+	line-height: 2;
+}
+.micro {
+	font-size: 0.625rem;
+	line-height: 2.4;
+}
+.small-caps {
+	font-family: inherit;
+	font-size: 1.125rem;
+	font-weight: 700;
+	letter-spacing: 2px;
+	line-height: inherit;
+	text-transform: uppercase;
+}
+sub,
+sup {
+	font-size: 0.75rem;
+}
+	sup {
+		top: -0.475rem;
+	}		
+	sub {
+		bottom: -0.238rem;
+	}
+var {
+	font-style: normal;
+}
+
+	
+/*
+------------------------ =Weights, Styles and Case ------------------------ */
+.light {
+	font-weight: 300;
+}
+.normal {
+	font-weight: 400;
+}
+.medium {
+	font-weight: 500;
+}
+.semibold {
+	font-weight: 600;
+}
+.bold,
+.required {
+	font-weight: 700;
+}
+.ultrabold {
+	font-weight: 900;
+}
+.italic {
+	font-style: italic;
+}
+.lowercase {
+	text-transform: lowercase;
+}
+.normalcase {
+	text-transform: none;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+.strike {
+	text-decoration: line-through;
+}
+
+	
+/*
+------------------------ =Word Wrap ------------------------ */
+.breakword {
+	word-wrap: break-word;
+}
+.normal-wrap {
+	word-wrap: normal;
+}
+.inherit-wrap {
+	word-wrap: auto;
+}
+
+	
+/*
+------------------------ =Drop Capitals ------------------------ */
+	.drop-cap:first-letter {
+		background: transparent;
+		color: #222;
+		float: left;
+		font: 700 4.209rem Baskerville, "Baskerville Old Face", "Hoefler Text",  Garamond, "Times New Roman", serif;
+		line-height: 1;
+		margin: auto 0.75rem auto auto;
+		padding: inherit;
+		text-indent: 0;
+		text-transform: uppercase;
+	}
+	p + .drop-cap {
+		margin-top: 0;
+		text-indent: 0;
+	}

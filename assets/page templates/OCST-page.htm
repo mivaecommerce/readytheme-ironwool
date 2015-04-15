@@ -1,0 +1,60 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="OCST-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<div class="column whole medium-two-thirds cart-contents">
+			<form method="post" action="&mvt:global:secure_sessionurl;" id="js-ocst-form" class="inline-labeling ocst-form">
+				<mvt:if expr="l.settings:basket:total GT 0">
+					<input type="hidden" name="Action" value="ORDR" />
+					<input type="hidden" name="Screen" value="OUSL" />
+				<mvt:elseif expr="g.Store:req_frship">
+					<input type="hidden" name="Action" value="ORDR" />
+					<input type="hidden" name="Screen" value="OSEL" />
+				<mvt:else>
+					<input type="hidden" name="Action" value="ORDR,SHIP,CTAX,AUTH" />
+					<input type="hidden" name="Screen" value="INVC" />
+				</mvt:if>
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<div class="row customer-fields">
+					<mvt:item name="customer"  file="OCST-custflds-item.htm" />
+				</div>
+				<mvt:if expr="NOT g.Basket:cust_id">
+					<div class="row">
+						<div class="breaker"></div>
+						<div class="column whole medium-half ocst-account-create">
+							<h5 class="nbm">Create An Account</h5>
+							<div class="form-row">
+								<p>Make ordering from &mvte:global:store:name; even easier next time you shop!</p>
+								<label for="l-CustomerCreate" class="italic">Password:</label>
+								<input type="password" name="CustomerCreate" value="&mvte:global:CustomerCreate;" autocomplete="off" id="l-CustomerCreate" />
+							</div>
+						</div>
+					</div>
+				</mvt:if>
+				<div class="row">
+					<div class="column whole align-center medium-align-right">
+						<mvt:item name="buttons" param="Continue"  file="cssui-buttonContinue-item.htm" />
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="column whole medium-one-third cart-summary">
+			<div id="js-toggle-cart-summary-contents" class="basket-header-row align-center">Cart Summary <span>&#9660;</span></div>
+			<div id="js-cart-summary-contents">
+				<mvt:item name="basket"  file="OCST-basket-item.htm" />
+			</div>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="OCST-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</mvt:item>
+</html>

@@ -1,0 +1,176 @@
+<mvt:if expr="l.settings:customercredithistory:total_count EQ 0">
+	<div class="row bg-white bottom-shadow filter-items-container">
+		<h4 class="column whole">No account credit entries.</h4>
+	</div>
+	<mvt:exit />
+</mvt:if>
+<mvt:if expr="l.settings:customercredithistory:total_count GT 1">
+	<div class="row bg-white bottom-shadow filter-items-container">
+		<div class="column whole medium-half large-one-third sorting">
+			<form method="get" action="&mvte:global:sessionurl;" class="inline-labeling nm">
+				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<label for="l-sort-by" class="medium uppercase">Sort By</label>
+				<select name="Sort_By" id="l-sort-by" class="input-medium" onChange="this.form.submit();">
+					<mvt:if expr="ISNULL g.Sort_By">
+						<option value="id" selected="selected">Default</option>
+					<mvt:else>
+						<option value="id">Default</option>
+					</mvt:if>
+					<mvt:if expr="g.Sort_By EQ 'orderid_asc'">
+						<option value="orderid_asc" selected="selected">Order Ascending</option>
+					<mvt:else>
+						<option value="orderid_asc">Order Ascending</option>
+					</mvt:if>
+					<mvt:if expr="g.Sort_By EQ 'orderid_desc'">
+						<option value="orderid_desc" selected="selected">Order Descending</option>
+					<mvt:else>
+						<option value="orderid_desc">Order Descending</option>
+					</mvt:if>
+					<mvt:if expr="g.Sort_By EQ 'amount_asc'">
+						<option value="amount_asc" selected="selected">Amount Ascending</option>
+					<mvt:else>
+						<option value="amount_asc">Amount Ascending</option>
+					</mvt:if>
+					<mvt:if expr="g.Sort_By EQ 'amount_desc'">
+						<option value="amount_desc" selected="selected">Amount Descending</option>
+					<mvt:else>
+						<option value="amount_desc">Amount Descending</option>
+					</mvt:if>
+					<mvt:if expr="g.Sort_By EQ 'dtstamp_asc'">
+						<option value="dtstamp_asc" selected="selected">Date Ascending</option>
+					<mvt:else>
+						<option value="dtstamp_asc">Date Ascending</option>
+					</mvt:if>
+					<mvt:if expr="g.Sort_By EQ 'dtstamp_desc'">
+						<option value="dtstamp_desc" selected="selected">Date Descending</option>
+					<mvt:else>
+						<option value="dtstamp_desc">Date Descending</option>
+					</mvt:if>
+				</select>
+				<noscript><input type="submit" value="go" title="go" /></noscript>
+			</form>
+			<!-- end sorting -->
+		</div>
+		<nav class="column whole medium-half large-three-twelfths medium-align-right large-align-left per-page">
+			<form method="get" action="&mvte:global:sessionurl;" class="inline-labeling nm">
+				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<label for="l-per-page" class="medium uppercase">View</label>
+				<select name="Per_Page" id="l-per-page" class="input-medium" onChange="this.form.submit();">
+					<mvt:if expr="g.Per_Page EQ 10">
+						<option value="10" selected="selected">10</option>
+					<mvt:else>
+						<option value="10">10</option>
+					</mvt:if>
+					<mvt:if expr="g.Per_Page EQ 20">
+						<option value="20" selected="selected">20</option>
+					<mvt:else>
+						<option value="20">20</option>
+					</mvt:if>
+					<mvt:if expr="g.Per_Page EQ 40">
+						<option value="40" selected="selected">40</option>
+					<mvt:else>
+						<option value="40">40</option>
+					</mvt:if>
+					<mvt:if expr="g.Per_Page EQ -1">
+						<option value="-1" selected="selected">All</option>
+					<mvt:else>
+						<option value="-1">All</option>
+					</mvt:if>
+				</select>
+				<noscript><input type="submit" value="go" title="go" /></noscript>
+			</form>
+			<!-- end per-page -->
+		</nav>
+		<div class="column hide large-show large-five-twelfths align-right page-links">
+			<mvt:if expr="l.settings:customercredithistory:page_links:last_page GT 1">
+				<span class="page-links-container">
+					<mvt:if expr="l.settings:customercredithistory:page_links:current_page NE 1">
+						<a href="&mvte:customercredithistory:page_links:prev_link;" class="page-links-previous rt-icon-arrow-left"></a>
+					<mvt:else>
+						<span class="page-links-previous page-links-deactivated rt-icon-arrow-left"></span>
+					</mvt:if>
+					<mvt:if expr="NOT l.settings:customercredithistory:page_links:contains_first">
+						<a href="&mvte:customercredithistory:page_links:first_link;" class="page-links-inactive">1 &hellip;</a>
+					</mvt:if>
+					<mvt:foreach iterator="pages" array="customercredithistory:page_links:pages">
+						<mvt:if expr="l.settings:customercredithistory:page_links:current_page EQ l.settings:pages:page_num">
+							<span class="page-links-active">&mvte:pages:page_num;</span>
+						<mvt:else>
+							<a href="&mvte:pages:link;" class="page-links-inactive">&mvte:pages:page_num;</a>
+						</mvt:if>
+					</mvt:foreach>
+					<mvt:if expr="NOT l.settings:customercredithistory:page_links:contains_last">
+						<a href="&mvte:customercredithistory:page_links:last_link;" class="page-links-inactive">&hellip; &mvte:customercredithistory:page_links:last_page;</a>
+					</mvt:if>
+					<mvt:if expr="l.settings:customercredithistory:page_links:current_page NE l.settings:customercredithistory:page_links:last_page">
+						<a href="&mvte:customercredithistory:page_links:next_link;" class="page-links-next rt-icon-arrow-right"></a>
+					<mvt:else>
+						<span class="page-links-next page-links-deactivated rt-icon-arrow-right"></span>
+					</mvt:if>
+				</span>
+				<!-- end page-links -->
+			</mvt:if>
+		</div>
+	</div>
+</mvt:if>
+<!-- end filter-items-container -->
+<div class="row bg-white bottom-shadow order-history-list">
+	<div class="column whole cart-contents">
+		<div class="row all-hidden medium-all-shown basket-header-row">
+			<div class="column one-eighth">Order #</div>
+			<div class="column one-fourth">Transaction Reference</div>
+			<div class="column one-fourth">Description</div>
+			<div class="column one-fourth">Date</div>
+			<div class="column one-eighth align-right">Amount</div>
+		</div>
+		<mvt:foreach iterator="credit_entry" array="customercredithistory:items">
+			<div class="row basket-product-row">
+				<div class="column half medium-one-eighth">
+					<strong class="show medium-all-hidden">Order #</strong>
+					<mvt:if expr="l.settings:credit_entry:order_id EQ 0">
+						N/A
+					<mvt:else>
+						&mvte:credit_entry:order_id;
+					</mvt:if>
+				</div>
+				<div class="column half medium-all-hidden "><strong class="show">Amount:</strong>&mvt:credit_entry:formatted_amount;</div>
+				<div class="column whole medium-one-fourth"><strong class="show medium-all-hidden">Transaction Reference:</strong>&mvte:credit_entry:txref;</div>
+				<div class="column whole medium-one-fourth"><strong class="show medium-all-hidden">Description:</strong>&mvte:credit_entry:descrip;</div>
+				<div class="column whole medium-one-fourth"><strong class="show medium-all-hidden">Date:</strong>&mvt:credit_entry:formatted_dtstamp;</div>
+				<div class="column all-hidden medium-all-shown one-eighth align-right">&mvt:credit_entry:formatted_amount;</div>
+			</div>
+		</mvt:foreach>
+	</div>
+</div>
+<mvt:if expr="NOT l.settings:customercredithistory:page_disp_count GT 0">
+	<mvt:if expr="(g.Offset OR g.NextOffset) AND (l.settings:customercredithistory:per_page NE 0)">
+		<div class="row bg-white bottom-shadow">
+			<mvt:if expr="g.Offset EQ 0">
+				<div class="column half">&nbsp;</div>
+			<mvt:else>
+				<form method="post" action="&mvt:global:secure_sessionurl;"  class="column half">
+					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+					<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
+					<input type="hidden" name="Offset" value="&mvte:global:PrevOffset;" />
+					<mvt:item name="buttons" param="Previous"  file="cssui-buttonPrevious-item.htm" />
+				</form>
+			</mvt:if>
+			<mvt:if expr="g.NextOffset EQ 0">
+				<div class="column half">&nbsp;</div>
+			<mvt:else>
+				<form method="post" action="&mvt:global:secure_sessionurl;" class="column half align-right">
+					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+					<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
+					<input type="hidden" name="Offset" value="&mvte:global:NextOffset;" />
+					<mvt:item name="buttons" param="Next"  file="cssui-buttonNext-item.htm" />
+				</form>
+			</mvt:if>
+		</div>
+	</mvt:if>
+</mvt:if>

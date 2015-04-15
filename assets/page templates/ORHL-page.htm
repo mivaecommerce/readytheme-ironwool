@@ -1,0 +1,55 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="ORHL-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<div class="column whole medium-one-third medium-offset-one-twelfth">
+			<h4>Registered Customers</h4>
+			<form method="post" action="&mvte:global:secure_sessionurl;Screen=ORDH" autocomplete="off" class="inline-labeling">
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<input type="hidden" name="Action" value="LOGN" />
+				<div class="form-row">
+					<label for="l-Customer_LoginEmail" class="required &mvt:global:invalid_credentials;">Email Address:</label>
+					<input type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" id="l-Customer_LoginEmail" required />
+				</div>
+				<div class="form-row">
+					<label for="l-Customer_Password" class="required &mvt:global:invalid_credentials;">Password:</label>
+					<input type="password" name="Customer_Password" id="l-Customer_Password" />
+				</div>
+				<div class="form-row align-right">
+					<mvt:item name="buttons" param="Login"  file="cssui-buttonLogin-item.htm" />
+				</div>
+			</form>
+			<p><small>Forgot your password? <a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=FPWD" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
+		</div>
+		<hr noshade class="clear medium-all-hidden" />
+		<div class="column whole medium-five-twelfths medium-offset-one-twelfth">
+			<h4>Lookup by Email and Zip Code</h4>
+			<form method="post" action="&mvt:global:secure_sessionurl;Screen=ORDH" class="inline-labeling">
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<div class="form-row">
+					<label for="l-Order_BillEmail" class="required">Billing Email:</label>
+					<input type="email" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" id="l-Order_BillEmail" required />
+				</div>
+				<div class="form-row">
+					<label for="l-Order_BillZip" class="required">Billing Zip Code:</label>
+					<input type="text" name="Order_BillZip" value="&mvte:global:Order_BillEmail;" id="l-Order_BillZip" />
+				</div>
+				<div class="form-row align-right">
+					<input type="submit" value="Look Up" title="Look Up" class="button button-square bg-gray charcoal" />
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="ORHL-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

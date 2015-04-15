@@ -1,0 +1,64 @@
+<div id="js-mini-basket-container" class="column whole small-half large-one-third mini-basket-container">
+	<div class="row mini-basket-content" data-itemcount="&mvt:global_minibasket:basket_count;" data-subtotal="&mvt:basket:formatted_total;">
+		<h3 class="column whole normal np"><span class="inline-block">Shopping Cart</span></h3>
+		<mvt:if expr="l.settings:global_minibasket:empty">
+			<div class="breaker clear"></div>
+			<h5 class="column whole align-center">Your cart is currently empty.</h5>
+		<mvt:else>
+			<div class="column whole mini-basket-table-wrap custom-scrolling">
+				<mvt:foreach iterator="item" array="global_minibasket:items">
+					<div class="row mini-basket-row">
+						<div class="column hide medium-show medium-one-fifth">
+							<mvt:if expr="NOT ISNULL l.settings:item:imagetypes:main">
+								<img src="&mvte:item:imagetypes:main;" alt="&mvt:item:name;" title="&mvt:item:name;" />
+							<mvt:else>
+								&nbsp;
+							</mvt:if>
+						</div>
+						<div class="column three-fourths medium-three-fifths">
+							<a href="&mvt:global:sessionurl;Screen=PROD&amp;Store_Code=&mvta:store:code;&amp;Product_Code=&mvta:item:code;" title="&mvt:item:name;">&mvt:item:name;</a>
+							<mvt:if expr="l.settings:item:upsold">
+								&nbsp;(Special Offer)
+							</mvt:if>
+							<br />
+							<mvt:foreach iterator="option" array="item:options">
+								<mvt:if expr="l.settings:option:option_id">
+									&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
+								<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+									&mvt:option:attr_prompt;: &mvt:option:data;
+								<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+									&mvt:option:attr_prompt;: &mvt:option:data_long;
+								<mvt:else>
+									&mvt:option:attr_prompt;
+								</mvt:if>
+								<br />
+							</mvt:foreach>
+							Qty: &mvte:item:quantity;
+						</div>
+						<div class="column one-fourth medium-one-fifth align-right np">
+							<mvt:if expr="l.settings:item:subtotal_base_price OR l.settings:item:subtotal">
+								<mvt:if expr="l.settings:item:subtotal_base_price NE l.settings:item:subtotal">
+									<s>&mvt:item:formatted_subtotal_base_price;</s><br />
+								</mvt:if>
+								<strong>&mvt:item:formatted_subtotal;</strong>
+							<mvt:else>
+								<strong>&mvt:item:formatted_subtotal_comprehensive;</strong>
+							</mvt:if>
+						</div>
+					</div>
+				</mvt:foreach>
+			</div>
+			<div class="breaker clear"></div>
+			<h5 class="column whole align-right normal np">Estimated Total: <strong>&mvt:global_minibasket:formatted_total;</strong></h5>
+		</mvt:if>
+	</div>
+	<mvt:if expr="NOT l.settings:global_minibasket:empty">
+		<div class="row">
+			<div class="column half np"><a href="&mvt:global:sessionurl;Screen=BASK&amp;Store_Code=&mvta:store:code;" title="View Cart" class="button button-block button-medium button-square bg-gray charcoal uppercase">View Cart</a></div>
+			<div class="column half np"><a href="&mvt:global:secure_sessionurl;Screen=OINF" title="Checkout" class="button button-block button-medium button-square bg-sky uppercase">Checkout</a></div>
+		</div>
+	</mvt:if>
+	<div class="row">
+		<div class="column whole button button-square align-center bg-transparent" data-icon="&#x36;"></div>
+	</div>
+</div>

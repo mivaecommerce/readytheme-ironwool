@@ -1,0 +1,21 @@
+<div class="shipping-estimate-results-row">
+	<div class="column two-thirds"><strong>Shipping Method</strong></div>
+	<div class="column one-third align-right"><strong>Price</strong></div>
+</div>
+<mvt:if expr="NOT l.settings:shipestimate_rates:shippingmethod_count">
+	<div class="shipping-estimate-results-row">
+		<div class="column whole">Unable to estimate shipping rates, please check your address and try again.</div>
+	</div>
+<mvt:else>
+	<mvt:foreach iterator="method" array="shipestimate_rates:shippingmethods">
+		<div class="shipping-estimate-results-row">
+			<mvt:if expr="NOT ISNULL l.settings:method:formatted_price">
+				<div class="column two-thirds">&mvt:method:name;</div>
+				<div class="column one-third align-right">&mvt:method:formatted_price;</div>
+			<mvt:else>
+				<div class="column two-thirds">&mvt:method:name;</div>
+				<div class="column one-third align-right">N/A</div>
+			</mvt:if>
+		</div>
+	</mvt:foreach>
+</mvt:if>

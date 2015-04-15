@@ -1,0 +1,6 @@
+User-agent: *
+# REMOVE THIS LINE AND THE FOLLOWING BEFORE SITE LAUNCH
+Disallow: /
+
+Disallow: /cgi-bin/
+Disallow: /forms/

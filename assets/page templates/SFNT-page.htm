@@ -1,0 +1,17 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+	<title>&mvt:store:name;</title>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+		<div class="row hdft-header">
+			<mvt:item name="hdft" param="header"  file="SFNT-header-item.htm" />
+		</div>
+		<mvt:item name="content"  file="SFNT-content-item.htm" />
+		<div class="row hdft-footer">
+			<mvt:item name="hdft" param="footer"  file="SFNT-footer-item.htm" />
+		</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

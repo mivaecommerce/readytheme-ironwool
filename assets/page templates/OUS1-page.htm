@@ -1,0 +1,64 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: Checkout: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<h2 class="align-center">Save &mvt:upsale:formatted_upsell_savings;<small class="show">Offer valid for this order only</small></h2>
+		<mvt:item name="hdft" param="header"  file="OUS1-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row product-information">
+		<form method="post" action="&mvt:global:secure_sessionurl;Screen=OSEL">
+			<input type="hidden" name="Action" value="AUPR" />
+			<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+			<input type="hidden" name="Product_Code" value="&mvte:upsale:code;" />
+			<mvt:item name="tax" />
+			<div class="column whole medium-half product-information--images">
+				<mvt:if expr="NOT ISNULL l.settings:upsale:thumbnail">
+					<img src="&mvte:upsale:thumbnail;" alt="&mvte:upsale:name;" />
+				<mvt:else>
+					&nbsp;
+				</mvt:if>
+			</div>
+			<!-- end product-information--images -->
+			<div class="column whole medium-half product-information--purchase">
+				<div class="row">
+					<h3 class="column whole">&mvte:upsale:name;</h3>
+				</div>
+				<div class="row">
+					<div class="column whole">
+						<div class="h2 blue">&mvt:upsale:formatted_upsell_price;</div>
+						<p>Regularly &mvt:upsale:formatted_price;<br /><span class="blue uppercase">You Save &mvt:upsale:formatted_upsell_savings;</span>
+					</div>
+				</div>
+				<hr noshade />
+				<div class="row">
+					<div id="js-product-attributes" class="column whole product-attributes">
+						<mvt:item name="product_attributes" param="upsale:id"  file="OUS1-product_attributes-item.htm" />
+					</div>
+				</div>
+				<hr noshade />
+			</div>
+			<!-- end product-information--purchase -->
+			<div class="column whole product-information--description">
+				<div class="h5">Description</div>
+				&mvt:upsale:descrip;
+			</div>
+			<!-- end product-information--description -->
+			<p class="column whole align-right"><mvt:item name="buttons" param="AddToOrder"  file="cssui-buttonAddToOrder-item.htm" /></p>
+		</form>
+		<div class="breaker"></div>
+		<form method="post" action="&mvt:global:secure_sessionurl;Screen=OSEL">
+			<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+			<mvt:item name="tax" />
+			<p class="column whole align-right"><mvt:item name="buttons" param="DoNotAddToOrder"  file="cssui-buttonDoNotAddToOrder-item.htm" /></p>
+		</form>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="OUS1-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

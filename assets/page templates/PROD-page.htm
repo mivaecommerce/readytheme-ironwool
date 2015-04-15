@@ -1,0 +1,59 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<mvt:if expr="g.show EQ 'quickview'">
+	<mvt:item name="product_quick_view"  file="PROD-product_quick_view-item.htm" />
+	<mvt:exit />
+</mvt:if>
+<head>
+<mvt:if expr="NOT ISNULL l.settings:product:metafield:title">
+	<title>&mvt:product:metafield:title;</title>         
+<mvt:else>
+	<title>&mvt:product:name;: &mvt:store:name;</title>
+</mvt:if>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+<mvt:item name="attributemachine" param="head" />
+<mvt:item name="product_display_imagemachine" param="head" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="PROD-header-item.htm" />
+	</div>
+	<div class="row prod-ctgy-hdft-header">
+		<mvt:item name="prod_ctgy_hdft" param="prod_header" />
+	</div>
+	<mvt:item name="product_display"  file="cssui-prodlayout-item.htm" />
+	<mvt:item name="attributemachine" param="body" />
+	<script>
+		if (typeof am&mvt:product:id; !== 'undefined') {
+			var attrMachCall = am&mvt:product:id;;
+		};
+	</script>
+	<div class="row prod-ctgy-hdft-footer">
+		<mvt:item name="prod_ctgy_hdft" param="prod_footer" />
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="PROD-footer-item.htm" />
+	</div>
+	<!-- Google Rich Snippets -->
+	<div itemscope itemtype="http://data-vocabulary.org/Product">
+		<meta itemprop="name" content="&mvte:product:name;" />
+		<meta itemprop="image" content="&mvt:global:socialImage;" />
+		<meta itemprop="category" content="&mvte:category:name;" />
+		<meta itemprop="price" content="&mvte:product:formatted_price;" />
+		<meta itemprop="description" content="&mvte:product:descrip;" />
+		<!-- <meta itemprop="brand" content="" /> For Use With CPF -->
+		<div itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer">
+			<meta itemprop="identifier" content="upc:&mvte:product:code;" />
+			<meta itemprop="price" content="&mvt:product:formatted_price;" />
+			<meta itemprop="currency" content="USD" />
+			<meta itemprop="seller" content="&mvte:global:store:name;" />
+			<meta itemprop="condition" content="new" />
+			<mvt:if expr="l.settings:product:inv_active">
+				<meta itemprop="availability" content="&mvte:product:inv_short;" />
+				<meta itemprop="quantity" content="&mvte:product:inv_available;" />
+			</mvt:if>
+		</div>
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

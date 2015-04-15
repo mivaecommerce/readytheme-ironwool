@@ -1,0 +1,25 @@
+<mvt:foreach array="cattree_categories" iterator="cattree_category">
+	<mvt:if expr="l.settings:cattree_category:parent_id EQ l.settings:category:id">
+		<mvt:assign name="l.null" value="miva_array_insert(l.settings:subcats, l.settings:cattree_category, -1)" />
+	</mvt:if>
+</mvt:foreach>
+<mvt:assign name="l.settings:subcat_count" value="miva_array_elements(l.settings:subcats)" />
+<mvt:if expr="l.settings:subcats GT 0">
+	<div class="row bg-white bottom-shadow main-content-row sub-category-layout">
+		<mvt:foreach iterator="sub_category" array="subcats">
+			<mvt:if expr="l.settings:sub_category:image">
+			<div class="column half medium-one-third sub-category uppercase">
+					<a href="&mvt:sub_category:link;" title="&mvt:sub_category:name;">
+						<img src="&mvt:sub_category:image;" alt="&mvt:sub_category:name;" title="&mvt:sub_category:name;" />
+						&mvt:sub_category:name;
+					</a>
+				</div>
+			<mvt:else>
+			<div class="column half medium-one-third sub-category uppercase">
+					<a href="&mvt:sub_category:link;" title="&mvt:sub_category:name;" class="bold">&mvt:sub_category:name;</a>
+				</div>
+			</mvt:if>
+		</mvt:foreach>
+	</div>
+	<!-- end sub-category listings -->
+</mvt:if>

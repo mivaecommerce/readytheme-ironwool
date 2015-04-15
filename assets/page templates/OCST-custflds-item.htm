@@ -1,0 +1,203 @@
+<mvt:item name="customfields" param="Read_Basket('basket', g.saved_fields)" />
+<mvt:if expr="NOT ISNULL g.saved_fields" >
+	<mvt:assign name="g.ShipFirstName" value="g.saved_fields:ship_fname" />
+	<mvt:assign name="g.ShipLastName" value="g.saved_fields:ship_lname" />
+	<mvt:assign name="g.ShipEmail" value="g.saved_fields:ship_email" />
+	<mvt:assign name="g.ShipCompany" value="g.saved_fields:ship_comp" />
+	<mvt:assign name="g.ShipPhone" value="g.saved_fields:ship_phone" />
+	<mvt:assign name="g.ShipFax" value="g.saved_fields:ship_fax" />
+	<mvt:assign name="g.ShipAddress1" value="g.saved_fields:ship_addr1" />
+	<mvt:assign name="g.ShipAddress2" value="g.saved_fields:ship_addr2" />
+	<mvt:assign name="g.ShipCity" value="g.saved_fields:ship_city" />
+	<mvt:assign name="g.ShipState" value="g.saved_fields:ship_state" />
+	<mvt:assign name="g.ShipZip" value="g.saved_fields:ship_zip" />
+	<mvt:assign name="g.ShipCountry" value="g.saved_fields:ship_cntry" />	
+	<mvt:assign name="g.BillFirstName" value="g.saved_fields:bill_fname" />
+	<mvt:assign name="g.BillLastName" value="g.saved_fields:bill_lname" />
+	<mvt:assign name="g.BillEmail" value="g.saved_fields:bill_email" />
+	<mvt:assign name="g.BillCompany" value="g.saved_fields:bill_comp" />
+	<mvt:assign name="g.BillPhone" value="g.saved_fields:bill_phone" />
+	<mvt:assign name="g.BillFax" value="g.saved_fields:bill_fax" />
+	<mvt:assign name="g.BillAddress1" value="g.saved_fields:bill_addr1" />
+	<mvt:assign name="g.BillAddress2" value="g.saved_fields:bill_addr2" />
+	<mvt:assign name="g.BillCity" value="g.saved_fields:bill_city" />
+	<mvt:assign name="g.BillState" value="g.saved_fields:bill_state" />
+	<mvt:assign name="g.BillZip" value="g.saved_fields:bill_zip" />
+	<mvt:assign name="g.BillCountry" value="g.saved_fields:bill_cntry" />
+</mvt:if>
+<div class="column whole medium-half ship-to">
+	<h4 class="fields-heading">
+		<span class="controls-heading">Ship To:</span>
+		<span id="js-shipping-controls" class="controls">
+			<mvt:if expr="g.Action AND g.shipping_to_show">
+				<input name="shipping_to_show" id="js-shipping-to-show" type="checkbox" value="1" checked />
+			<mvt:else>
+				<input name="shipping_to_show" id="js-shipping-to-show" type="checkbox" value="1" />
+			</mvt:if>
+			<label for="js-shipping-to-show">same as billing</label>
+		</span>
+	</h4>
+	<div id="js-shipping-fields">
+		<div class="&mvte:global:ShipFirstName_Row;">
+			<label class="required" for="l-ShipFirstName">First Name:</label>
+			<input type="text" name="ShipFirstName" id="l-ShipFirstName" value="&mvte:global:ShipFirstName;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipLastName_Row;">
+			<label class="required" for="l-ShipLastName">Last Name:</label>
+			<input type="text" name="ShipLastName" id="l-ShipLastName" value="&mvte:global:ShipLastName;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipEmail_Row;">
+			<label class="required" for="l-ShipEmail">Email Address:</label>
+			<input type="email" name="ShipEmail" id="l-ShipEmail" value="&mvte:global:ShipEmail;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipPhone_Row;">
+			<label class="required" for="l-ShipPhone">Phone Number:</label>
+			<input type="tel" name="ShipPhone" id="l-ShipPhone" value="&mvte:global:ShipPhone;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipFax_Row;">
+			<label class="italic" for="l-ShipFax">Fax Number:</label>
+			<input type="tel" name="ShipFax" id="l-ShipFax" value="&mvte:global:ShipFax;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipCompany_Row;">
+			<label class="italic" for="l-ShipCompany">Company:</label>
+			<input type="text" name="ShipCompany" id="l-ShipCompany" value="&mvte:global:ShipCompany;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipAddress1_Row;">
+			<label class="required" for="l-ShipAddress1">Address:</label>
+			<input type="text" name="ShipAddress1" id="l-ShipAddress1" value="&mvte:global:ShipAddress1;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipAddress2_Row;">
+			<label class="italic" for="l-ShipAddress2">Address 2:</label>
+			<input type="text" name="ShipAddress2" id="l-ShipAddress2" value="&mvte:global:ShipAddress2;" class="input-small-font medium-input-normal-font" placeholder="ex. Suite#, Floor#, Apt.#" />
+		</div>
+		<div class="&mvte:global:ShipCity_Row;">
+			<label class="required" for="l-ShipCity">City:</label>
+			<input type="text" name="ShipCity" id="l-ShipCity" value="&mvte:global:ShipCity;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<mvt:if expr="g.States_Empty">
+			<div class="&mvte:global:ShipState_Row;">
+				<label class="required" for="l-ShipState">State/Province:</label>
+				<input type="text" name="ShipState" id="l-ShipState" value="&mvte:global:ShipState;" class="input-small-font medium-input-normal-font" />
+			</div>
+		<mvt:else>
+			<div class="&mvte:global:ShipState_Row;">
+				<label class="required" for="l-ShipStateSelect">State/Province:</label>
+				<mvt:item name="states" param="ShipStateSelect" />
+			</div>
+			<div class="&mvte:global:ShipState_Row;">
+				<label class="italic" for="l-ShipState">Other State/Province:</label>
+				<input type="text" name="ShipState" id="l-ShipState" value="&mvte:global:ShipState;" class="input-small-font medium-input-normal-font">
+			</div>
+		</mvt:if>
+		<div class="&mvte:global:ShipZip_Row;">
+			<label class="required" for="l-ShipZip">Zip/Postal Code:</label>
+			<input type="text" name="ShipZip" id="l-ShipZip" value="&mvte:global:ShipZip;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:ShipCountry_Row;">
+			<label class="required" for="l-ShipCountry">Country:</label>
+			<mvt:item name="countries" param="ShipCountry" />
+		</div>
+	</div>
+</div>
+<div class="column whole medium-half bill-to">
+	<h4 class="fields-heading">
+		<span class="controls-heading">Bill To:</span>
+		<span id="js-billing-controls" class="controls">
+			<mvt:if expr="g.Action AND g.billing_to_show">
+				<input name="billing_to_show" id="js-billing-to-show" type="checkbox" value="1" class="checkbox" checked />
+			<mvt:else>
+				<input name="billing_to_show" id="js-billing-to-show" type="checkbox" value="1" class="checkbox" />
+			</mvt:if>
+			<label for="js-billing-to-show">same as shipping</label>
+		</span>
+	</h4>
+	<div id="js-billing-fields">
+		<div class="&mvte:global:BillFirstName_Row;">
+			<label class="required" for="l-BillFirstName">First Name:</label>
+			<input type="text" name="BillFirstName" id="l-BillFirstName" value="&mvte:global:BillFirstName;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillLastName_Row;">
+			<label class="required" for="l-BillLastName">Last Name:</label>
+			<input type="text" name="BillLastName" id="l-BillLastName" value="&mvte:global:BillLastName;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillEmail_Row;">
+			<label class="required" for="l-BillEmail">Email Address:</label>
+			<input type="email" name="BillEmail" id="l-BillEmail" value="&mvte:global:BillEmail;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillPhone_Row;">
+			<label class="required" for="l-BillPhone">Phone Number:</label>
+			<input type="tel" name="BillPhone" id="l-BillPhone" value="&mvte:global:BillPhone;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillFax_Row;">
+			<label class="italic" for="l-BillFax">Fax Number:</label>
+			<input type="tel" name="BillFax" id="l-BillFax" value="&mvte:global:BillFax;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillCompany_Row;">
+			<label class="italic" for="l-BillCompany">Company:</label>
+			<input type="text" name="BillCompany" id="l-BillCompany" value="&mvte:global:BillCompany;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillAddress1_Row;">
+			<label class="required" for="l-BillAddress1">Address:</label>
+			<input type="text" name="BillAddress1" id="l-BillAddress1" value="&mvte:global:BillAddress1;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvte:global:BillAddress2_Row;">
+			<label class="italic" for="l-BillAddress2">Address 2:</label>
+			<input type="text" name="BillAddress2" id="l-BillAddress2" value="&mvte:global:BillAddress2;" class="input-small-font medium-input-normal-font" placeholder="ex. Suite#, Floor#, Apt.#" />
+		</div>
+		<div class="&mvte:global:BillCity_Row;">
+			<label class="required" for="l-BillCity">City:</label>
+			<input type="text" name="BillCity" id="l-BillCity" value="&mvte:global:BillCity;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<mvt:if expr="g.States_Empty">
+			<div class="&mvte:global:BillState_Row;">
+				<label class="required" for="l-BillState">State/Province:</label>
+				<input type="text" name="BillState" id="l-BillState" value="&mvte:global:BillState;" class="input-small-font medium-input-normal-font" />
+			</div>
+		<mvt:else>
+			<div class="&mvte:global:BillState_Row;">
+				<label class="required" for="l-BillStateSelect">State/Province:</label>
+				<mvt:item name="states" param="BillStateSelect" />
+			</div>
+			<div class="&mvte:global:BillState_Row;">
+				<label class="italic" for="l-BillState">Other State/Province:</label>
+				<input type="text" name="BillState" id="l-BillState" value="&mvte:global:BillState;" class="input-small-font medium-input-normal-font" />
+			</div>
+		</mvt:if>
+		<div class="&mvte:global:BillZip_Row;">
+			<label class="required" for="l-BillZip">Zip/Postal Code:</label>
+			<input type="text" name="BillZip" id="l-BillZip" value="&mvte:global:BillZip;" class="input-small-font medium-input-normal-font" />
+		</div>
+		<div class="&mvt:global:BillCountry_Row;">
+			<label class="required" for="l-BillCountry">Country:</label>
+			<mvt:item name="countries" param="BillCountry" />
+		</div>
+	</div>
+</div>
+
+<div class="column whole tax-fields">
+	<mvt:foreach array="tax:fields" iterator="field">
+		<mvt:if expr="l.settings:field:invalid">
+			<div class="form-row invalid"><label>&mvt:field:prompt;</label><mvt:item name="tax" param="field:code" /></div>
+		<mvt:else>
+			<div class="form-row"><label>&mvt:field:prompt;</label><mvt:item name="tax" param="field:code" /></div>
+		</mvt:if>
+	</mvt:foreach>
+</div>
+
+<mvt:if expr="g.Basket:cust_id">
+	<div class="column whole medium-half update-record form-row align-right">
+		<mvt:if expr="g.Update_Customer">
+			<label for="l-update-customer"><input type="checkbox" name="Update_Customer" value="Yes" id="l-update-customer" checked /> Update Customer Record With This Information</label>
+		<mvt:else>
+			<label for="l-update-customer"><input type="checkbox" name="Update_Customer" value="Yes" id="l-update-customer" /> Update Customer Record With This Information</label>
+		</mvt:if>
+	</div>
+</mvt:if>
+
+<mvt:if expr="l.settings:customer:match">
+	<mvt:if expr="l.settings:customer:primaddr EQ 'shipping'">
+		<script>document.getElementById('js-billing-to-show').checked = true;</script>
+	<mvt:elseif expr="l.settings:customer:primaddr EQ 'billing'">
+		<script>document.getElementById('js-shipping-to-show').checked = true;</script>
+	</mvt:if>
+</mvt:if>

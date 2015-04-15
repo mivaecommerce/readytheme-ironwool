@@ -1,0 +1,39 @@
+<html>
+<body>
+<div style="font: 12px/1.46 Helvetica, 'Trebuchet MS', Arial, sans-serif; color: #676767; background: #ffffff;">
+	<div style="text-align: left; width: 690px; padding: 20px; page-break-after: always;">
+		<div style="width: 300px; float: left;">
+			<!-- Uncomment to add a logo to this email <img src="images/logo.jpg" height="34px" width="60px" /> -->
+			<h3 style="font-size: 1.1em; font-weight: bold; margin: 0;">&mvte:store:name;</h3>
+
+			&mvte:store:address;<br />
+			&mvte:store:city;, &mvte:store:state &mvte:store:zip;<br />
+			&mvte:store:country;<br />
+		</div>
+
+		<div style="clear: both;"></div>
+
+		<hr style="color: #c7c8d7; background-color: #c7c8d7; height: 1px; border: 0px;" />
+
+		<p style="font-weight: bold;">
+			<mvt:if expr="ISNULL g.Customer:ship_fname">
+				Hi,<br /><br />
+			<mvt:else>
+				Hi &mvte:global:customer:ship_fname;,<br /><br />
+			</mvt:if>
+			
+			Thank you for registering. You may view your account 
+			<mvt:if expr="ISNULL g.Domain:mm_surl">
+				<a href="&mvte:global:Domain:mm_url;Store_Code=&mvta:global:Store:code;&amp;Screen=ACLN">here</a>.
+			<mvt:else>
+				<a href="&mvte:global:Domain:mm_surl;Store_Code=&mvta:global:Store:code;&amp;Screen=ACLN">here</a>.
+			</mvt:if>
+			
+			<br />
+			<br />
+			Feel free to <a href="mailto:&mvte:Store:email;">contact us via email</a> or at &mvte:store:phone; for assistance with your account.
+		</p>
+	</div>
+</div>
+</body>
+</html>

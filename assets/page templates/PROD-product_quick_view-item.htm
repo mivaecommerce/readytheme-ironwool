@@ -1,0 +1,122 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+	<mvt:if expr="NOT ISNULL l.settings:product:metafield:title">
+		<title>&mvt:product:metafield:title;</title>         
+	<mvt:else>
+		<title>&mvt:product:name;: &mvt:store:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:item name="attributemachine" param="head" />
+	<mvt:item name="product_display_imagemachine" param="head" />
+</head>
+<body id="js-PROD" class="prod single-column product-information--body &mvte:product:code;">
+	<nav class="mobile-menu mobile-menu-left">
+		<div id="js-mobile-navigation" class="mobile-navigation"></div>
+	</nav>
+	<!-- end mobile-navigation -->
+	<div id="js-site-overlay" class="site-overlay"></div>
+	<!-- end site-overlay -->
+	<div id="js-site-wrapper" class="site-wrapper">
+		<header id="js-header" class="header clearfix"></header>
+		<div class="row product-information">
+			<div class="column whole medium-half product-information--images">
+				<span data-icon="&#x54;" id="js-main-image-zoom" class="main-image" data-index="0"><img src="graphics/en-US/cssui/blank.gif" alt="&mvte:product:name;" title="&mvte:product:name;" id="js-main-image" data-image="&mvt:product:customfield_values:productimagecustomfields:main;" /></span>
+				<div class="row thumbnail-wrapper">
+					<div id="js-thumbnails" class="column whole large-four-fifths np thumbnails"></div>
+				</div>
+				<mvt:item name="product_display_imagemachine" param="body:product:id" />
+				<div class="row">
+					<p class="column whole align-left small"><a href="&mvte:global:sessionurl;Store_Code=&mvta:store:code;&Screen=PROD&Product_Code=&mvta:product:code;" rel="nofollow" target="_parent">View Product Details &raquo;</a></p>
+				</div>
+			</div>
+			<!-- end product-information--images -->
+			<div class="column whole medium-half product-information--purchase">
+				<div id="js-processing-purchase" class="processing-purchase"><img src="../images/img_ajax_processing.gif" alt="Processing..." title="Processing..." /></div>
+				<div id="js-purchase-message" class="message message-warning purchase-message"></div>
+				<div class="row hide medium-show">
+					<div class="column whole">
+						<h1 class="normal nm">&mvte:product:name;</h1>
+						<small>&mvte:product:code;</small>
+						<div class="breaker"></div>
+						<mvt:if expr="l.settings:product:price GT 0">
+							<div id="js-price-value" class="h3 charcoal nm" data-base-price="&mvt:product:price;">&mvt:product:formatted_price;</div>
+						<mvt:else>
+							<div id="js-price-value" class="all-hidden" data-base-price="&mvt:product:price;"></div>
+						</mvt:if>
+						<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
+							<p>Normally: <s id="js-additional-price">&mvt:product:formatted_base_price;</s>
+						<mvt:else>
+							<br />
+						</mvt:if>
+					</div>
+				</div>
+				<form method="post" action="&mvte:global:sessionurl;Screen=BASK" target="_parent" id="js-purchase-product" class="inline-labeling">
+					<input type="hidden" name="Old_Screen" value="&mvte:global:Screen;" />
+					<input type="hidden" name="Old_Search" value="&mvte:global:Search;" />
+					<input type="hidden" name="Action" value="ADPR" />
+					<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+					<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
+					<input type="hidden" name="Category_Code" value="&mvte:global:category_code;" />
+					<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+					<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+					<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+					<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+					<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+					<div class="row">
+						<mvt:if expr="l.settings:product:inv_active OR l.settings:attributemachine:product:inv_active">
+							<div id="js-inventory-message" class="column whole">
+								&mvt:product:inv_long;
+							</div>
+						</mvt:if>
+						<div id="js-product-attributes" class="column whole product-attributes">
+							<mvt:item name="product_attributes" param="product:id"  file="PROD-product_attributes-item.htm" />
+						</div>
+						<mvt:if expr="g.hasSwatches">
+							<div class="column whole product-swatches">
+								<label class="medium">Color</label>
+								<span id="js-swatch-name" class="bold swatch-name">&nbsp;</span>
+								<hr noshade />
+								<div id="js-swatches"></div>
+							</div>
+						</mvt:if>
+					</div>
+					<div class="row corners add-to-cart-wrap bg-silver">
+						<div class="column whole medium-half">
+							<div class="row quantity-wrap align-center">
+								<div class="column whole np">
+									<span id="js-decrease-quantity" class="bg-gray decrease-quantity" unselectable="on" data-rt-icon="&#x67;"></span>
+									<input type="tel" name="Quantity" value="1" id="l-quantity" class="align-center" />
+									<span id="js-increase-quantity" class="bg-gray increase-quantity" unselectable="on" data-rt-icon="&#x69;"></span>
+								</div>
+							</div>
+						</div>
+						<div class="column whole medium-half">
+							<div class="breaker small-all-hidden"></div>
+							<input type="submit" value="Add to Cart" class="button button-block button-square uppercase add-to-cart bg-yellow bold" />
+						</div>
+					</div>
+				</form>
+			</div>
+			<!-- end product-information--purchase -->
+		</div>
+		<!-- end product-information -->
+		<mvt:item name="attributemachine" param="body" />
+		<script>
+			if (typeof am&mvt:product:id; !== 'undefined') {
+				var attrMachCall = am&mvt:product:id;;
+			};
+		</script>
+		</div>
+	<!--[if lt IE 9]>
+		<script src="../js/vendor.ie.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+		<script src="../js/vendor.min.js"></script>
+	<!--<![endif]-->
+	<script src="../js/plugins.js"></script>
+	<script src="../js/scripts.js"></script>
+	<!--[if lt IE 9]>
+		<script src="../js/rem.min.js"></script>
+	<![endif]-->
+</body>
+</html>

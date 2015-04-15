@@ -1,0 +1,57 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="CEML-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<form action="&mvt:global:secure_sessionurl;Screen=CEML" method="post" autocomplete="off" id="js-ceml-form" class="column whole medium-half medium-centered ceml-form">
+			<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+			<input type="hidden" name="Action" value="CEML" />
+			<h4><small>For security purposes, please enter your current password.</small></h4>
+			<div class="form-row">
+				<mvt:if expr="g.Customer_CurrentPassword_Invalid">
+					<label for="l-Customer_CurrentPassword" class="required error">Current Password:</label>
+					<input type="password" name="Customer_CurrentPassword" value="" id="l-Customer_CurrentPassword" />
+				<mvt:else>
+					<label for="l-Customer_CurrentPassword" class="required">Current Password:</label>
+					<input type="password" name="Customer_CurrentPassword" value="" id="l-Customer_CurrentPassword" />
+				</mvt:if>
+			</div>
+			<hr noshade="noshade" />
+			<p><strong>Please enter your new email address.</strong></p>
+			<div class="form-row">
+				<label class="required">Old Email Address:</label>
+				<span>&mvte:global:Customer:pw_email;</span>
+			</div>
+			<div class="form-row">
+				<mvt:if expr="g.Customer_LoginEmail_Invalid">
+					<label for="l-Customer_LoginEmail" class="required error">New Email Address:</label>
+				<mvt:else>
+					<label for="l-Customer_LoginEmail" class="required">New Email Address:</label>
+				</mvt:if>
+				<input type="email" name="Customer_LoginEmail" value="" id="l-Customer_LoginEmail" required />
+			</div>
+			<div class="form-row">
+				<mvt:if expr="g.Customer_VerifyLoginEmail_Invalid">
+					<label for="l-Customer_VerifyLoginEmail" class="required error">Confirm Email Address:</label>
+				<mvt:else>
+					<label for="l-Customer_VerifyLoginEmail" class="required">Confirm Email Address:</label>
+				</mvt:if>
+				<input type="email" name="Customer_VerifyLoginEmail" value="" id="l-Customer_VerifyLoginEmail" required />
+			</div>
+			<div class="form-row align-right">
+				<input type="submit" value="Submit" title="Submit" class="button button-square" />
+			</div>
+		</form>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="CEML-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</mvt:item>
+</html>

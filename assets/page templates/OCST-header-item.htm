@@ -1,0 +1,28 @@
+<div class="column whole">
+	<mvt:if expr="l.settings:messages:error_message_count">
+		<p class="message message-error">
+			<mvt:foreach iterator="error" array="messages:error_messages">
+				&mvte:error;<br />
+			</mvt:foreach>
+		</p>
+	</mvt:if>
+	<mvt:if expr="l.settings:messages:information_message_count">
+		<p class="message message-info">
+			<mvt:foreach iterator="message" array="messages:information_messages">
+				&mvte:message;<br />
+			</mvt:foreach>
+		</p>
+	</mvt:if>
+</div>
+<div class="breaker clear"></div>
+<mvt:if expr="g.Basket:cust_id EQ 0">
+	<h5 class="align-center">If you already have an account, please <a href="#js-ocst-login" title="Log In" id="js-open-ocst-login" class="blue">click here to log in</a>.</h5>
+<mvt:else>
+	<h5 class="align-center">Welcome back &mvte:global:customer:bill_fname; &mvte:global:customer:bill_lname;!</h5>
+</mvt:if>
+<p class="column whole small">
+	<strong>Bold</strong> = Required&nbsp;&nbsp;|&nbsp;&nbsp;<em>Italic</em> = Optional
+	<mvt:if expr="g.Error_Message_Count">
+		&nbsp;&nbsp;|&nbsp;&nbsp;<span class="red">Red</span> = Invalid
+	</mvt:if>
+</p>

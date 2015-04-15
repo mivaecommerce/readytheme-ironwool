@@ -1,0 +1,31 @@
+<div class="column whole medium-half">
+	<div class="row related-products">
+		<div class="column whole h3 np"><span class="inline-block">You May Also Like</span></div>
+		<div id="js-related-products-carousel" class="column whole float-none related-products-carousel">
+			<mvt:foreach iterator="product" array="related_products:products">
+				<mvt:if expr="l.settings:product:customfield_values:customfields:product_flag NE 'none'">
+					<mvt:assign name="l.settings:product:flag" value="'flag--' $ tolower(l.settings:product:customfield_values:customfields:product_flag)" />
+				</mvt:if>
+				<div class="category-product">
+					<a href="&mvte:product:link;" title="&mvt:product:name;">
+						<span class="flag &mvt:product:flag;">
+							<mvt:if expr="NOT ISNULL l.settings:product:imagetypes:main">
+								<img src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" title="&mvte:product:name;" />
+							<mvt:else>
+								<img src="../images/img_no_thumb.jpg" alt="&mvte:product:name;" title="&mvte:product:name;" />
+							</mvt:if>
+						</span>
+						<span class="breaker"></span>
+						<p>&mvt:product:name;</p>
+						<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
+							<p><strong class="strike">&mvt:product:formatted_base_price;</strong><strong class="red">&mvt:product:formatted_price;</strong></p>
+						<mvt:else>
+							<p><strong>&mvt:product:formatted_price;</strong></p>
+						</mvt:if>
+					</a>
+				</div>
+			</mvt:foreach>
+		</div>
+	</div>
+</div>
+<!-- end related-products -->

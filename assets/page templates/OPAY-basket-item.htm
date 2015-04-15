@@ -1,0 +1,74 @@
+<div class="cart-summary-heading">
+	<div class="column five-eighths nlp">Product</div>
+	<div class="column one-eighth align-center">Qty</div>
+	<div class="column one-fourth align-right nrp">Price</div>
+</div>
+<mvt:foreach iterator="group" array="basket:groups">
+	<div class="basket-product-row clear">
+		<div class="column five-eighths nlp">
+			<span class="semibold">&mvt:group:name;</span>
+			<mvt:if expr="l.settings:group:upsold">
+				&nbsp;(Special Offer)
+			</mvt:if>
+			<br /><small>&mvt:group:code;</small>
+			<mvt:foreach iterator="option" array="group:options">
+				<br />
+				<mvt:if expr="l.settings:option:option_id">
+					&mvt:option:attr_prompt;: <span class="semibold">&mvt:option:opt_prompt;</span>
+				<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+					&mvt:option:attr_prompt;: <span class="semibold">&mvt:option:data;</span>
+				<mvt:elseif expr="NOT ISNULL l.settings:option:data_logn">
+					&mvt:option:attr_prompt;: <span class="semibold">&mvt:option:data_logn;</span>
+				<mvt:else>
+					&mvt:option:attr_prompt;
+				</mvt:if>
+			</mvt:foreach>
+			<mvt:foreach iterator="discount" array="group:discounts">
+				<mvt:if expr="l.settings:discount:display">
+					<br />
+					<em>&mvt:discount:descrip;: &mvt:discount:formatted_discount;</em>
+				</mvt:if>
+			</mvt:foreach>
+			<mvt:foreach iterator="discount" array="option:discounts">
+				<mvt:if expr="l.settings:discount:display">
+					<br />
+					<em>&mvt:discount:descrip;: &mvt:discount:formatted_discount;</em>
+				</mvt:if>
+			</mvt:foreach>
+		</div>
+		<div class="column one-eighth align-center">&mvt:group:quantity;</div>
+		<div class="column one-fourth align-right nrp nlp">
+			<mvt:if expr="l.settings:group:subtotal_base_price NE l.settings:group:subtotal">
+				<s>&mvt:group:formatted_subtotal_base_price;</s><br />
+			</mvt:if>
+			&mvt:group:formatted_subtotal;
+		</div>
+	</div>
+</mvt:foreach>
+<mvt:foreach iterator="coupon" array="basket:coupons">
+	<div class="basket-product-row clear">
+		<div class="column whole nlp">
+			<mvt:if expr="NOT ISNULL l.settings:coupon:descrip">
+				Coupon - &mvt:coupon:code;: &mvt:coupon:descrip;
+			<mvt:else>
+				Coupon - &mvt:coupon:code;
+			</mvt:if>
+		</div>
+	</div>
+</mvt:foreach>
+<div class="basket-product-row">
+	<mvt:foreach iterator="charge" array="basket:charges">
+		<p class="column three-fourths align-right"><em>&mvt:charge:descrip;:</em></p>
+		<p class="column one-fourth align-right nrp">&mvt:charge:formatted_disp_amt;</p>
+	</mvt:foreach>
+	<div class="column three-fourths align-right basket-total">Total:</div>
+	<div class="column one-fourth align-right basket-total nrp nlp">&mvt:basket:formatted_total;</div>
+	<mvt:foreach iterator="split" array="splitpayment:splits">
+		<p class="column three-fourths align-right"><em>Pending Payment: &mvt:split:desc;:</em></p>
+		<p class="column one-fourth align-right nrp">&mvt:split:formatted_amount_negative;</p>
+	</mvt:foreach>
+	<mvt:if expr="( NOT ISNULL l.settings:splitpayment:remaining ) AND ( l.settings:splitpayment:remaining NE l.settings:basket:total )">
+		<div class="column three-fourths align-right basket-total">Total Remaining:</div>
+		<div class="column one-fourth align-right basket-total nrp nlp">&mvt:splitpayment:formatted_remaining;</div>
+	</mvt:if>
+</div>

@@ -1,0 +1,171 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+<mvt:if expr="l.settings:payment:capabilities:split">
+	<script type="text/javascript">
+		function AmountType_Changed( amounttype ){
+		var balance_amount, amount, additional;
+		
+			balance_amount	= document.getElementById( 'payment-balance-amount' );
+			amount			= document.getElementById( 'payment-amount' );
+			additional		= document.getElementById( 'payment-additional' );
+			
+			if ( amounttype === 'total' )
+			{
+				amount.disabled				= true;
+				additional.style.display	= 'none';
+
+				if ( balance_amount )
+				{
+					balance_amount.disabled	= true;
+				}
+			}
+			else if ( amounttype === 'balance' )
+			{
+				amount.disabled				= true;
+				additional.style.display	= '';
+
+				if ( balance_amount )
+				{
+					balance_amount.disabled	= false;
+				}
+			}
+			else if ( amounttype === 'partial' )
+			{
+				amount.disabled				= false;
+				additional.style.display	= '';
+
+				if ( balance_amount )
+				{
+					balance_amount.disabled	= true;
+				}
+			}
+		}
+	</script>
+</mvt:if>
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="OPAY-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<div class="column whole medium-two-thirds cart-contents">
+			<form method="post" action="&mvt:payment:url;" id="js-opay-form" class="clearfix">
+				<input type="hidden" name="Action" value="AUTH" />
+				<input type="hidden" name="Screen" value="INVC" />
+				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+				<mvt:item name="payment" />
+				<input type="hidden" name="PaymentMethod" value="&mvte:global:PaymentMethod;" />
+				<input type="hidden" name="SplitPaymentData" value="&mvte:global:SplitPaymentData;" />
+				<input type="hidden" name="PaymentDescription" value="&mvte:payment:desc;" />
+				<div class="row">
+					<p class="column whole h4 fields-heading uppercase">Payment Method: &mvt:payment:desc;</p>
+				</div>
+				<div class="row">
+					<div class="column whole medium-three-fifths">
+						<mvt:if expr="NOT ISNULL l.settings:payment:desc">
+							<span class="bold"></span>
+						</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:payment:message">
+							<p class="column whole">&mvt:payment:message;</p>
+						</mvt:if>
+						<mvt:foreach array="payment:fields" iterator="field">
+							<div id="js-&mvt:field:code;" class="form-row">
+								<mvt:if expr="l.settings:field:invalid">
+									<label class="required error">&mvt:field:prompt;</label>
+								<mvt:else>
+									<label class="required">&mvt:field:prompt;</label>
+								</mvt:if>
+								<div class="&mvt:field:code;"><mvt:item name="payment" param="field:code" /></div>
+							</div>
+						</mvt:foreach>
+						<mvt:if expr="l.settings:payment:capabilities:split">
+							<div class="form-row">
+								<mvt:if expr="g.Amount_Invalid">
+									<label class="required error">Payment Amount:</label>
+								<mvt:else>
+									<label class="required">Payment Amount:</label>
+								</mvt:if>
+								<div id="payment-amount-fields">
+									<mvt:if expr="( NOT l.settings:payment:capabilities:balance ) OR ( l.settings:payment:balance GE l.settings:splitpayment:remaining )">
+										<mvt:if expr="NOT g.UI_Exception">
+											<mvt:assign name="g.AmountType" value="'total'" />
+											<mvt:assign name="g.Amount" value="l.settings:splitpayment:remaining ROUND 2" />
+										</mvt:if>
+										<mvt:if expr="g.AmountType EQ 'total'">
+											<input type="radio" name="AmountType" value="total" onclick="AmountType_Changed( this.value );" checked />
+										<mvt:else>
+											<input type="radio" name="AmountType" value="total" onclick="AmountType_Changed( this.value );" />
+										</mvt:if>
+										<mvt:if expr="NOT ISNULL l.settings:payment:split_data">
+											Remaining Order Total (&mvt:payment:formatted_remaining;)<br />
+										<mvt:else>
+											Entire Order Total (&mvt:basket:formatted_total;)<br />
+										</mvt:if>
+									<mvt:else>
+										<mvt:if expr="NOT g.UI_Exception">
+											<mvt:assign name="g.AmountType" value="'balance'" />
+											<mvt:assign name="g.Amount" value="l.settings:payment:balance ROUND 2" />
+										</mvt:if>
+										<mvt:if expr="g.AmountType EQ 'balance'">
+											<input type="radio" name="AmountType" value="balance" onclick="AmountType_Changed( this.value );" checked />
+											<input type="hidden" id="payment-balance-amount" name="Amount" value="&mvte:payment:balance;" />
+										<mvt:else>
+											<input type="radio" name="AmountType" value="balance" onclick="AmountType_Changed( this.value );" />
+											<input type="hidden" id="payment-balance-amount" name="Amount" value="&mvte:payment:balance;" disabled />
+										</mvt:if>
+										Available Balance (&mvt:payment:formatted_balance;)<br />
+									</mvt:if>
+									<mvt:if expr="g.AmountType EQ 'partial'">
+										<input type="radio" name="AmountType" value="partial" onclick="AmountType_Changed( this.value );" checked />
+										Partial: <input type="text" id="payment-amount" name="Amount" value="&mvte:global:Amount;" />
+									<mvt:else>
+										<input type="radio" name="AmountType" value="partial" onclick="AmountType_Changed( this.value );" />
+										Partial: <input type="text" id="payment-amount" name="Amount" value="&mvte:global:Amount;" disabled />
+									</mvt:if>
+								</div>
+							</div>
+							<mvt:if expr="g.AmountType EQ 'total'">
+								<mvt:assign name="g.totalPayment" value="'hide'" />
+							</mvt:if>
+							<div id="payment-additional" class="&mvt:global:totalPayment;">
+								<div class="form_row">
+									<label class="required">Pay Additional Balance With:</label>
+									<select name="AdditionalPaymentMethod">
+										<mvt:foreach array="paymentmethods" iterator="method">
+											<mvt:if expr="(l.settings:method:module NE 'customercredit') OR ((g.PaymentMethod NE 'customercredit:credit') AND  (NOT miva_array_search(l.settings:splitpayment:splits, 1, l.split, 'l.split:module:code EQ l.settings:method:module')))">
+												<option value="&mvte:method:module;:&mvte:method:code;">&mvt:method:name;</option>
+											</mvt:if>
+										</mvt:foreach>
+									</select>
+								</div>
+							</div>
+						</mvt:if>
+					</div>
+				</div>
+				<div class="breaker"></div>
+				<div class="row">
+					<div class="column whole align-center medium-align-right np">
+						<input type="submit" value="Complete Order" title="Complete Order" class="button button-large-font uppercase button-square bg-sky" />
+					</div>
+				</div>
+				<div class="breaker"></div>
+			</form>
+		</div>
+		<div class="column whole medium-one-third cart-summary">
+			<div id="js-toggle-cart-summary-contents" class="basket-header-row align-center">Cart Summary <span>&#9660;</span></div>
+			<div id="js-cart-summary-contents">
+				<mvt:item name="basket"  file="OPAY-basket-item.htm" />
+				<mvt:item name="customer"  file="OPAY-custflds-item.htm" />
+			</div>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="OPAY-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

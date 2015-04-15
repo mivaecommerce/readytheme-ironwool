@@ -1,0 +1,12 @@
+<Module code="customfields" feature="fields_prod">
+	<ProductField_Add>
+		<Code>product-flag</Code>
+		<Name>Product Flag</Name>
+		<FieldType>dropdown</FieldType>
+	</ProductField_Add>
+	<ProductFieldTypeOption_Add code="product-flag" value="HOT" />
+	<ProductFieldTypeOption_Add code="product-flag" value="NEW" />
+	<ProductFieldTypeOption_Add code="product-flag" value="none" />
+	<ProductFieldTypeOption_Add code="product-flag" value="SALE" />
+</Module>
+

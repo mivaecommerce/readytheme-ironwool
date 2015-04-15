@@ -1,0 +1,105 @@
+/*
+------------------------ =TABLES ------------------------ */
+table {
+	/*border-spacing: 0;
+	border-collapse: collapse;*/
+	empty-cells: show;
+	max-width: 100%;
+	width: 100%;
+}
+	table caption {
+		font-weight: 700;
+		font-style: italic;
+		padding-bottom: 0.317rem;
+	}
+	table th,
+	table tfoot td {
+		color: #222;
+		font-weight: 700;
+		text-align: left;
+	}
+	table thead th,
+	table tfoot td {
+		background-color: #efefef;
+	}
+	table th,
+	table td {
+		overflow: visible;
+		padding: 0.633rem;
+		vertical-align: top;
+	}
+
+	/* ------------------------ add border ------------------------ */
+	.table-border {
+		border: 1px solid #d0d0d0;
+	}
+
+	/* ------------------------ add borders for rows & columns ------------------------ */
+	.table-border-all th,
+	.table-border-all td {
+		border-top: 1px solid #d0d0d0;
+		border-left: 1px solid #d0d0d0;
+	}
+
+	/* ------------------------ add borders for rows only ------------------------ */
+	.table-border-rows th,
+	.table-border-rows td {
+		border-top: 1px solid #d0d0d0;
+	}
+
+	/* ------------------------ remove top border to avoid double border on .border tables ------------------------ */
+	.table-border.border-all thead:first-child tr:first-child th,
+	.table-border.border-all thead:first-child tr:first-child td,
+	.table-border.border-rows thead:first-child tr:first-child th,
+	.table-border.border-rows thead:first-child tr:first-child td {
+		border-top: 0;
+	}
+	.table-.border-all tr th:first-child,
+	.table-border-all tr td:first-child {
+		border-left: 0;
+	}
+	.table-border-all tr:first-child th,
+	.table-border-all thead:first-child tr:first-child th {
+		border-top: 0;
+	}
+
+	/* ------------------------ add bottom border to last row in the table ------------------------ */
+	.table-border-rows tr:last-child td,
+	.table-border-rows tr.last-child td {
+		border-bottom: 1px solid #d0d0d0;
+	}
+
+	/* ------------------------ add stripes ------------------------ */
+	.table-stripe tbody > tr:nth-child(odd) > td {
+		background: #f8f8f8;
+	}
+
+	/* ------------------------ mobile table [convert to list-like view] ------------------------ */
+	@media (max-width: 480px) {
+		.mobile-table {
+			font-size: 0.875rem;
+			min-width: 100%;
+		}
+			.mobile-table thead,
+			.mobile-table th {
+				display: none;
+			}
+			.mobile-table tr td:last-child {
+				border-bottom: 10px solid #ddd;
+			}
+				.mobile-table td {
+					display: block;
+				}
+					.mobile-table td:first-child {
+						padding-top: 0.50rem;
+					}
+					.mobile-table td:last-child {
+						padding-bottom: 0.50rem;
+					}
+				.mobile-table td:before {
+					content: attr(data-th) ": ";
+					display: inline-block;
+					font-weight: 700;
+					width: 8rem;
+				}
+	}

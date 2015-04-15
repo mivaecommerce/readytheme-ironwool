@@ -1,0 +1,23 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+<meta http-equiv="refresh" content="5;url=http://&mvt:global:domain:name;/" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="LOGOUT-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row content-item">
+		<div class="column whole">
+			<p>You have successfully logged out of your account. To access your account information you will need to log in again.</p>
+			<p>If you are not redirected to our home page shortly, please <em><mvt:item name="cssui_links" param="storefront">click here</mvt:item></em>.</p>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="LOGOUT-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

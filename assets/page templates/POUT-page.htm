@@ -1,0 +1,48 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="POUT-header-item.htm" />
+	</div>
+	<div class="row">
+		<div class="column whole">
+			<mvt:if expr="l.settings:messages:error_message_count">
+				<p class="message message-error">
+					<mvt:foreach iterator="error" array="messages:error_messages">
+						&mvte:error;<br />
+					</mvt:foreach>
+				</p>
+			</mvt:if>
+			<mvt:if expr="l.settings:messages:information_message_count">
+				<p class="message message-info">
+					<mvt:foreach iterator="message" array="messages:information_messages">
+						&mvte:message;<br />
+					</mvt:foreach>
+				</p>
+			</mvt:if>
+			<form method="post" action="&mvt:global:sessionurl;">
+				<input type="hidden" name="Screen" value="&mvte:global:Old_Screen;" />
+				<input type="hidden" name="Search" value="&mvte:global:Old_Search;" />
+				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+				<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+				<input type="hidden" name="Current_Product_Code" value="&mvte:global:Current_Product_Code;" />
+				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+				<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+				<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+				<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+				<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+				<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+				<mvt:item name="buttons" param="Back"  file="cssui-buttonBack-item.htm" />
+			</form>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="POUT-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

@@ -1,0 +1,24 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="ABAL-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<div class="column whole">
+			<p>Current Balance: <strong>&mvt:customer:formatted_credit;</strong></p>
+			<p><a href="&mvt:global:secure_sessionurl;Screen=RGFT&amp;Store_Code=&mvta:store:code;" class="button">Redeem Gift Certificate</a></p>
+		</div>
+	</div>
+	<hr noshade />
+	<mvt:item name="customercredithistory"  file="ABAL-customercredithistory-item.htm" />
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="ABAL-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

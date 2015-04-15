@@ -1,0 +1,9 @@
+<mvt:if expr="l.settings:page:code EQ 'CTGY'">
+	<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> &mvte:category:code;">
+<mvt:elseif expr="l.settings:page:code EQ 'PROD' OR l.settings:page:code EQ 'PATR'">
+	<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column &mvte:product:code;">
+<mvt:elseif expr="l.settings:page:code CIN g.screenCheck">
+	<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
+<mvt:else>
+	<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" />">
+</mvt:if>

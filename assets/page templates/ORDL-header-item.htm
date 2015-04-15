@@ -1,0 +1,12 @@
+<div class="column whole">
+	<mvt:if expr="g.Customer_Login_Invalid OR g.Customer_Password_Invalid">
+		<p class="message message-error">Invalid Email Address or Password.<br />We were unable to locate your account. Please confirm your information and try again.<br />If you have forgotten your password, click "Forgot Password" below.</p>
+		<mvt:assign name="g.invalid_credentials" value="'error'" />
+	</mvt:if>
+	<mvt:if expr="g.Error_Messages EQ 'Customer not found'">
+		<p class="message message-error">Invalid Email Address.<br />We were unable to locate an account with that email address.</p>
+	</mvt:if>
+	<mvt:foreach iterator="message" array="messages:information_messages">
+		<p class="message message-info">&mvte:message;</p>
+	</mvt:foreach>
+</div>

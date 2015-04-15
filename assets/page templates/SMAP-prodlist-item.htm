@@ -1,0 +1,17 @@
+<mvt:if expr="l.settings:category_count GT 0">
+	<strong class="column whole">Categories:</strong>
+	<mvt:foreach iterator="category" array="categories">
+		<div class="column whole small-half medium-one-fourth site-map uppercase">
+			<a href="&mvt:category:link;" title="&mvt:category:name;">&mvt:category:name;</a>
+		</div>
+	</mvt:foreach>
+	<div class="breaker"></div>
+</mvt:if>
+<mvt:if expr="l.settings:product_count GT 0">
+	<strong class="column whole">Products:</strong>
+	<mvt:foreach iterator="product" array="products">
+		<div class="column whole small-half medium-one-fourth site-map uppercase">
+			<a href="&mvt:product:link;" title="&mvt:product:name;">&mvt:product:name;</a>
+		</div>
+	</mvt:foreach>
+</mvt:if>

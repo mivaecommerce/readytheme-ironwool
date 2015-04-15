@@ -1,0 +1,49 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="NTFD-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<div class="column whole">
+			<mvt:if expr="l.settings:messages:error_message_count EQ 0">
+				<p class="message message-warning">The item you requested is not available at this time.</p>
+			<mvt:else>
+				<mvt:foreach iterator="message" array="messages:error_messages">
+					<mvt:if expr="'page' CIN l.settings:message">
+						<p class="message message-warning">We're sorry but it appears that the "&mvte:global:Screen;" page is not available at this time.</p>
+						<p>Please <mvt:item name="cssui_links" param="screen:SFNT">click here</mvt:item> to return to our home page.</p>
+					<mvt:elseif expr="'category' CIN l.settings:message">
+						<p class="message message-warning">We're sorry but it appears that the "&mvte:global:Category_Code;" category is not available at this time.</p>
+						<p>Please <mvt:item name="cssui_links" param="screen:SFNT">click here</mvt:item> to return to our home page.</p>
+					<mvt:elseif expr="'product' CIN l.settings:message">
+						<p class="message message-warning">We're sorry but it appears that product "&mvte:global:Product_Code;" is not available at this time.</p>
+						<p>Please perform a Search to find a similar product.</p>
+						<form method="post" action="&mvt:global:sessionurl;Screen=SRCH" class="whole medium-one-third">
+							<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+							<div class="form-row">
+								<label for="l-ntfd-search">Search For:</label>
+								<input type="search" name="Search" value="&mvte:global:Product_Code;" id="l-ntfd-search" />
+							</div>
+							<div class="form-row align-right">
+								<mvt:item name="buttons" param="Search"  file="cssui-buttonSearch-item.htm" />
+							</div>
+						</form>
+						<br class="clear" />
+					<mvt:else>
+						<p class="message message-warning">&mvte:message;</p>
+					</mvt:if>
+				</mvt:foreach>
+			</mvt:if>
+		</div>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="NTFD-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

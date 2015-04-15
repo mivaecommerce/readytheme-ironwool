@@ -1,0 +1,116 @@
+<div class="column whole medium-all-hidden cart-summary">
+	<span class="column whole align-right"><strong>Total: &mvt:order:formatted_total;</strong></span>
+	<br class="clear" />
+	<hr noshade />
+	<div class="basket-header-row align-center">Cart Summary</div>
+</div>
+<div class="column whole medium-two-thirds cart-contents">
+	<div class="row hide medium-show basket-header-row">
+		<div class="column five-eighths">Product</div>
+		<div class="column one-eighth align-center">Quantity</div>
+		<div class="column one-eighth align-right">Price</div>
+		<div class="column one-eighth align-right">Subtotal</div>
+	</div>
+	<mvt:foreach iterator="item" array="order:groups">
+		<div class="row basket-product-row">
+			<div class="column one-fourth align-center">
+				<mvt:if expr="l.settings:item:imagetypes:main">
+					<img src="&mvte:item:imagetypes:main;" alt="&mvt:item:name;" title="&mvt:item:name;" />
+				<mvt:else>
+					&nbsp;
+				</mvt:if>
+			</div>
+			<div class="column three-fourths medium-three-eighths">
+				<p>
+					<strong>&mvt:item:name;</strong>
+					<mvt:if expr="l.settings:item:upsold">
+						&nbsp;(Special Offer)
+					</mvt:if>
+					<br /><small>&mvt:item:code;</small>
+				</p>
+				<mvt:foreach iterator="option" array="item:options">
+					<p>
+						<mvt:if expr="l.settings:option:option_id">
+							<small>&mvt:option:attr_prompt; <strong>&mvt:option:opt_prompt;</strong></small>
+						<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+							<small>&mvt:option:attr_prompt; <strong>&mvt:option:data;</strong></small>
+						<mvt:elseif expr="NOT ISNULL l.settings:option:data_logn">
+							<small>&mvt:option:attr_prompt; <strong>&mvt:option:data_logn;</strong></small>
+						<mvt:else>
+							<small>&mvt:option:attr_prompt;</small>
+						</mvt:if>
+					</p>
+				</mvt:foreach>
+				<mvt:foreach iterator="discount" array="item:discounts">
+					<mvt:if expr="l.settings:discount:display">
+						<p><em>&mvt:discount:descrip;: &mvt:discount:formatted_discount;</em></p>
+					</mvt:if>
+				</mvt:foreach>
+				<mvt:foreach iterator="discount" array="option:discounts">
+					<mvt:if expr="l.settings:discount:display">
+						<p><em>&mvt:discount:descrip;: &mvt:discount:formatted_discount;</em></p>
+					</mvt:if>
+				</mvt:foreach>
+			</div>
+			<div class="breaker clear medium-all-hidden"></div>
+			<div class="column offset-one-fourth one-fourth medium-offset-none medium-one-eighth"><p>&mvte:item:quantity;</p></div>
+			<div class="column hide medium-show medium-one-eighth align-right">
+				<mvt:if expr="l.settings:item:price EQ '0' OR l.settings:item:price EQ '0.00' OR l.settings:item:price EQ 0.00 OR l.settings:item:price EQ 0">
+					<p>&nbsp;</p>
+				<mvt:else>
+					<p>&mvt:item:formatted_base_price;</p>
+				</mvt:if>
+				<br />
+				<mvt:foreach iterator="option" array="item:options">
+					<mvt:if expr="l.settings:option:base_price">
+						<p><small>&mvt:option:formatted_base_price;</small></p>
+					</mvt:if>
+				</mvt:foreach>
+			</div>
+			<div class="column half medium-one-eighth medium-align-right">
+				<p class="medium-all-hidden"><strong>Item Subtotal</strong></p>
+				<mvt:if expr="l.settings:item:subtotal_base_price NE l.settings:item:subtotal">
+					<s>&mvt:item:formatted_subtotal_base_price;</s><br />
+				</mvt:if>
+				<p>&mvt:item:formatted_subtotal;</p>
+				<mvt:if expr="l.settings:option:subtotal_base_price OR l.settings:option:subtotal">
+					<mvt:if expr="l.settings:option:subtotal_base_price NE l.settings:option:subtotal">
+						<s><small>&mvt:option:formatted_subtotal_base_price;</small></s><br />
+					</mvt:if>
+					<p><small>&mvt:option:formatted_subtotal;</small></p>
+				</mvt:if>
+			</div>
+		</div>
+	</mvt:foreach>
+	<mvt:foreach iterator="coupon" array="order:coupons">
+		<div class="basket-product-row clear">
+			<div class="column whole">
+				<mvt:if expr="NOT ISNULL l.settings:coupon:descrip">
+					Coupon - &mvt:coupon:code;: &mvt:coupon:descrip;
+				<mvt:else>
+					Coupon - &mvt:coupon:code;
+				</mvt:if>
+			</div>
+		</div>
+	</mvt:foreach>
+	<div class="breaker clear"></div>
+</div>
+<div class="column whole medium-one-third cart-summary">
+	<div class="all-hidden medium-all-shown basket-header-row align-center">Cart Summary</div>
+	<mvt:foreach iterator="charge" array="order:charges">
+		<span class="column whole align-right"><em>&mvt:charge:descrip;:</em> &mvt:charge:formatted_disp_amt;</span>
+	</mvt:foreach>
+	<span class="column whole align-right"><strong>Total: &mvt:order:formatted_total;</strong></span>
+	<br class="clear" />
+	<hr noshade />
+	<mvt:foreach iterator="payment" array="order:payments">
+		<p class="column whole">
+			<mvt:if expr="l.settings:payment:type EQ 6">
+				<em>Refund: &mvt:payment:desc;: &mvt:payment:formatted_amount;</em>
+			<mvt:else>
+				<em>Payment: &mvt:payment:desc;: &mvt:payment:formatted_amount_negative;</em>
+			</mvt:if>
+		</p>
+	</mvt:foreach>
+	<div class="breaker"></div>
+</div>

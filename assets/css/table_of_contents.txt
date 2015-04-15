@@ -1,0 +1,18 @@
+This is a list of the CSS files used within the site:
+=====================================================
+
+normalize.css:	This is a basic reset file. Editing is not recommended.
+base.css:	This contains some additional resets and baselines not facilitated by normalize.css. Editing is not recommended.
+scaffolding.css:	This contains the classes to set the grid layout of your site. It also contains various breakpoints to facilitate your responsive layout. Editing is not recommended.
+typography.css:	 This contains a collection of typographical elements your site may consist of such as headings, links, and various font settings. Updates here have a global impact on your site.
+buttons.css:	This sets the basic styles to be applied to buttons and elements you would like to look like buttons. Updates here have a global impact on your site.
+fonts.css:	This contains any "@font-face" calls you are using on your site. Editing is only necessary if you wish to add additional fonts.
+forms.css:	This sets the basic styles to be applied to forms within your site. Updates here have a global impact on your site.
+tables.css:	This sets the basic styles to be applied to tables within yout site. Updates here have a global impact on your site.
+colors.css:	This is a list of basic border colors, background colors, and font colors you can assign to elements in your site. Updates here have a global impact on your site.
+helpers.css:	This is a catch-all of classes which you can assign to elements to help with padding, margining, visibility, etc. Editing should not be necessary but making additions is advised if needed.
+structure.css:	This defines the layout of your site in terms of the over all layout. Updates here have a global impact on your site.
+pages.css:	This is where you will define classes to be used for global page elements as well as page specific elements. Updates here may have a global impact on your site.
+print.css:	This is a basic set of style adjustments to make prining of pages easier. Editing is not recommended.
+
+theme.css	This contains all the style overwrites for the current theme.

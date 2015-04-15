@@ -1,0 +1,392 @@
+/*
+------------------------------- =GLOBAL FORM ELEMENTS ------------------------------- */
+.form-row {
+	clear: both;
+	display: block;
+	margin-bottom: 0.50rem;
+	overflow: hidden;
+}
+button,
+html input[type="button"],
+input[type="checkbox"],
+input[type="file"],
+input[type="image"],
+input[type="radio"],
+input[type="reset"],
+input[type="submit"],
+label,
+select {
+	cursor: pointer;
+}
+fieldset {
+	border: 0;
+	min-width: 0;
+	padding: 0;
+}
+	fieldset > *:last-child,
+	fieldset > *.last-child {
+		margin-bottom: 0;
+	}
+	@media only screen and (min-width: 768px) {
+		fieldset {
+			font-size: 1.125rem;
+		}
+	}
+	.fieldset-border {
+		border: 1px solid #dfe1e1;
+		padding: 1rem;
+	}
+input[type="checkbox"],
+input[type="image"],
+input[type="radio"] {
+	display: inline-block;
+	width: auto;
+}
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+select,
+textarea {
+	border: 1px solid #dfe1e1;
+	border-radius: 0;
+	display: block;
+	font-family: inherit;
+	font-size: 100%;
+	height: 2em;
+	line-height: 2;
+	outline: 0 none;
+	padding: 0 0.50rem;
+	vertical-align: middle;
+	width: 100%;
+}
+
+	
+	/* ------------------------ input sizing ------------------------ */
+	input.input-medium,
+	select.input-medium {
+		height: 3em;
+		line-height: 3;
+	}
+	input.input-large,
+	select.input-large,
+	input.input-block {
+		height: 4em;
+		line-height: 4;
+	}
+	
+	/* ------------------------ input font sizing ------------------------ */
+	input.input-small-font,
+	select.input-small-font {
+		font-size: 0.75rem;
+	}
+	input.input-normal-font,
+	select.input-normal-font {
+		font-size: 1rem;
+	}
+	input.input-large-font,
+	select.input-large-font {
+		font-size: 2rem;
+	}
+	
+		@media screen and (min-width: 480px) {
+			input.x-small-input-medium,
+			select.x-small-input-medium {
+				height: 3em;
+				line-height: 3;
+			}
+			input.x-small-input-large,
+			select.x-small-input-large,
+			input.x-small-input-block {
+				height: 4em;
+				line-height: 4;
+			}
+			input.x-small-input-small-font,
+			select.x-small-input-small-font {
+				font-size: 0.75rem;
+			}
+			input.x-small-input-normal-font,
+			select.x-small-input-normal-font {
+				font-size: 1rem;
+			}
+			input.x-small-input-large-font,
+			select.x-small-input-large-font {
+				font-size: 2rem;
+			}
+		}
+		@media screen and (min-width: 640px) {
+			input.small-input-medium,
+			select.small-input-medium {
+				height: 3em;
+				line-height: 3;
+			}
+			input.small-input-large,
+			select.small-input-large,
+			input.small-input-block {
+				height: 4em;
+				line-height: 4;
+			}
+			input.small-input-small-font,
+			select.small-input-small-font {
+				font-size: 0.75rem;
+			}
+			input.small-input-normal-font,
+			select.small-input-normal-font {
+				font-size: 1rem;
+			}
+			input.small-input-large-font,
+			select.small-input-large-font {
+				font-size: 2rem;
+			}
+		}
+		@media screen and (min-width: 768px) {
+			input.medium-input-medium,
+			select.medium-input-medium {
+				height: 3em;
+				line-height: 3;
+			}
+			input.medium-input-large,
+			select.medium-input-large,
+			input.medium-input-block {
+				height: 4em;
+				line-height: 4;
+			}
+			input.medium-input-small-font,
+			select.medium-input-small-font {
+				font-size: 0.75rem;
+			}
+			input.medium-input-normal-font,
+			select.medium-input-normal-font {
+				font-size: 1rem;
+			}
+			input.medium-input-large-font,
+			select.medium-input-large-font {
+				font-size: 2rem;
+			}
+		}
+		@media screen and (min-width: 980px) {
+			input.large-input-medium,
+			select.large-input-medium {
+				height: 3em;
+				line-height: 3;
+			}
+			input.large-input-large,
+			select.large-input-large,
+			input.large-input-block {
+				height: 4em;
+				line-height: 4;
+			}
+			input.large-input-small-font,
+			select.large-input-small-font {
+				font-size: 0.75rem;
+			}
+			input.large-input-normal-font,
+			select.large-input-normal-font {
+				font-size: 1rem;
+			}
+			input.large-input-large-font,
+			select.large-input-large-font {
+				font-size: 2rem;
+			}
+		}
+		@media screen and (min-width: 1170px) {
+			input.x-large-input-medium,
+			select.x-large-input-medium {
+				height: 3em;
+				line-height: 3;
+			}
+			input.x-large-input-large,
+			select.x-large-input-large,
+			input.x-large-input-block {
+				height: 4em;
+				line-height: 4;
+			}
+			input.x-large-input-small-font,
+			select.x-large-input-small-font {
+				font-size: 0.75rem;
+			}
+			input.x-large-input-normal-font,
+			select.x-large-input-normal-font {
+				font-size: 1rem;
+			}
+			input.x-large-input-large-font,
+			select.x-large-input-large-font {
+				font-size: 2rem;
+			}
+		}
+	.input-block {
+		display: block;
+	}
+	input.all-hidden {
+		display: none;
+	}
+	input.required:required:valid,
+	textarea.required:required:valid {
+		border-color: #2ecc40;
+	}
+	
+	input.required:focus:invalid,
+	textarea.required:focus:invalid {
+		border-color: #ff4136;
+	}
+	input[type="date"]:focus,
+	input[type="datetime"]:focus,
+	input[type="datetime-local"]:focus,
+	input[type="email"]:focus,
+	input[type="month"]:focus,
+	input[type="number"]:focus,
+	input[type="password"]:focus,
+	input[type="search"]:focus,
+	input[type="tel"]:focus,
+	input[type="text"]:focus,
+	input[type="time"]:focus,
+	input[type="url"]:focus,
+	input[type="week"]:focus,
+	select:focus,
+	textarea:focus {
+		box-shadow: inset 0.1rem 0.1rem 0.238rem hsla(0, 0%, 0%, 0.15);
+		outline: 0 none;
+	}
+input[type="file"] {
+	cursor: pointer;
+	max-width: 100%;
+}
+input[type="search"] {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+input[type="text"][disabled],
+input[type="password"][disabled],
+input[type="email"][disabled],
+input[type="url"][disabled],
+input[type="date"][disabled],
+input[type="month"][disabled],
+input[type="time"][disabled],
+input[type="datetime"][disabled],
+input[type="datetime-local"][disabled],
+input[type="week"][disabled],
+input[type="number"][disabled],
+input[type="search"][disabled],
+input[type="tel"][disabled],
+input[type="color"][disabled],
+select[disabled],
+textarea[disabled] {
+	background-color: #eaeded;
+	color: #cad2d3;
+	cursor: not-allowed;
+}
+input:not([type])[disabled] {
+	background-color: #eaeded;
+	color: #cad2d3;
+	cursor: not-allowed;
+}
+input[readonly],
+select[readonly],
+textarea[readonly] {
+	background: #eee;
+	border-color: #ccc;
+	color: #777;
+}
+	input:-moz-placeholder,
+	textarea:-moz-placeholder {
+		color: #8a7b7b;
+		font-size: inherit;
+	}
+	input::-moz-placeholder,
+	textarea::-moz-placeholder {
+		color: #8a7b7b;
+		font-size: inherit;
+	}
+	input:-ms-input-placeholder,
+	textarea:-ms-input-placeholder {
+		color: #8a7b7b;
+		font-size: inherit;
+		line-height: inherit;
+	}
+	input::-webkit-input-placeholder,
+	textarea::-webkit-input-placeholder {
+		color: #8a7b7b;
+		font-size: inherit;
+		line-height: inherit;
+	}
+legend {
+	border: 0;
+	color: #222;
+	font-weight: 700;
+	padding: 0;
+}
+	.fieldset-border legend {
+		background: #fff;
+		margin: 0;
+		padding: 0 0.356rem;
+	}
+select {
+	background: #f8f8f8;
+	color: #838383;
+}
+	select:focus {
+		outline: 1px dotted #222;
+	}
+	@-moz-document url-prefix() {
+		select {
+			max-height: 4rem;
+		}
+	}
+textarea {
+	height: 5em;
+	resize: vertical;
+}
+
+	/* ------------------------ inline labeling ------------------------ */
+	.inline-labeling label {
+		width: auto;
+	}
+		@media (min-width: 960px) {
+			.inline-labeling {
+				font-size: 0.875rem;
+			}
+				.inline-labeling label {
+					display: inline-block;
+					margin-right: 0.50em;
+					text-align: right;
+					vertical-align: middle;
+					width: 32%;
+				}
+				.inline-labeling input[type="date"],
+				.inline-labeling input[type="datetime"],
+				.inline-labeling input[type="datetime-local"],
+				.inline-labeling input[type="email"],
+				.inline-labeling input[type="month"],
+				.inline-labeling input[type="number"],
+				.inline-labeling input[type="password"],
+				.inline-labeling input[type="search"],
+				.inline-labeling input[type="tel"],
+				.inline-labeling input[type="text"],
+				.inline-labeling input[type="time"],
+				.inline-labeling input[type="url"],
+				.inline-labeling input[type="week"],
+				.inline-labeling select,
+				.inline-labeling textarea {
+					display: inline-block;
+					vertical-align: middle;
+					width: 63%;
+				}
+				.inline-labeling textarea {
+					vertical-align: top;
+				}
+				.inline-labeling input:not([type]) {
+					display: inline-block;
+					vertical-align: middle;
+					width: 65%;
+				}
+		}

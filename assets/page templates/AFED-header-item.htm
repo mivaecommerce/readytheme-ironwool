@@ -1,0 +1,25 @@
+<div class="column whole">
+	<mvt:if expr="l.settings:messages:error_message_count">
+		<p class="message message-error">
+			<mvt:foreach iterator="error" array="messages:error_messages">
+				&mvte:error;<br />
+			</mvt:foreach>
+		</p>
+	</mvt:if>
+	<mvt:if expr="l.settings:messages:information_message_count">
+		<p class="message message-info">
+			<mvt:foreach iterator="message" array="messages:information_messages">
+				&mvte:message;<br />
+			</mvt:foreach>
+		</p>
+	</mvt:if>
+	<mvt:if expr="g.NewAccount">
+		<p class="message message-success">Hello &mvte:global:Customer_ShipFirstName;. Your new account has been created. Please click here to <mvt:item name="cssui_links" param="storefront">Start Shopping</mvt:item>.</p>
+	</mvt:if>
+	<mvt:if expr="g.NewAffiliate">
+		<p class="message message-success">Congratulations &mvte:global:Affiliate_ContactName;. Your new account has been created.</p>
+	</mvt:if>
+	<mvt:if expr="g.updated EQ 'true' AND NOT l.settings:messages:information_message_count AND NOT l.settings:messages:error_message_count">
+		<p class="message message-success">Your Account Setting Have Been Updated</p>
+	</mvt:if>
+</div>

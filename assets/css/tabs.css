@@ -1,0 +1,124 @@
+/*
+------------------------ =RESPONSIVE SMART TABS ------------------------ */
+.smart-tabs {
+	margin-bottom: 0;
+	min-height: 14.75rem;
+	position: relative;
+}
+	.smart-tabs:before,
+	.smart-tabs:after {
+		content: " ";
+		display: table;
+	}
+	.smart-tabs:after {
+		clear: both;
+	}
+	
+	/* ------------------------ navigation ------------------------ */
+	.smart-tabs dt {
+		background: #eee;
+		border: solid #dfe1e1;
+		border-width: 1px 1px 0 1px;
+		color: #333;
+		float: left;
+		font-size: 0.875rem;
+		font-weight: 400;
+		height: 3em;
+		line-height: 3;
+		text-align: center;
+	}
+		.smart-tabs dt a {
+			color: #999;
+			display: block;
+			padding: 0 1rem;
+		}
+		.smart-tabs dt.current {
+			background: #fff;
+			border-bottom: 1px solid #fff;
+			position: relative;
+			z-index: 2;
+		}
+			.smart-tabs dt.current a {
+				color: #111;
+			}
+			
+	/* ------------------------ panels ------------------------ */
+	.smart-tabs dd {
+		background: #fff;
+		border: 1px solid #dfe1e1;
+		font-size: 0.875rem;
+		margin-top: -1px;
+		padding: 0.75rem 1rem;
+		position: absolute;
+		top: 3em;
+		width: 100%;
+		min-height: 13rem;
+	}
+
+	/* ------------------------ accordion changes ------------------------ 
+	.smart-tabs.accordion {
+		border-bottom: 1px solid #dfe1e1;
+		min-height: 100%;
+	}
+		.smart-tabs.accordion dt {
+			float: none;
+			text-align: left;
+			width: 100%;
+			z-index: 1;
+		}
+			.smart-tabs.accordion dt a:before {
+				content: '\2b\a0';
+			}
+			
+			.smart-tabs.accordion dt.current a:before {
+				content: '\2013\a0';
+			}
+		.smart-tabs.accordion dd {
+			border-bottom: 0 none;
+			position: relative;
+			top: 0;
+		}*/
+	@media only screen and (max-width: 864px) {
+		.smart-tabs {
+			border-bottom: 1px solid #dfe1e1;
+			min-height: 100%;
+		}
+			.smart-tabs dt {
+				float: none;
+				text-align: left;
+				width: 100%;
+				z-index: 1;
+			}
+				.smart-tabs dt.current {
+					z-index: 0;
+				}
+				/*.smart-tabs dt a:before {
+					content: '\2b\a0';
+				}
+				.smart-tabs dt.current a:before {
+					content: '\2013\a0';
+				}*/
+				.smart-tabs dt a:after {
+					content: '\2b';
+					position: absolute;
+					right: 1rem;
+				}
+				.smart-tabs dt.current a:after {
+					content: '\2013';
+				}
+			.smart-tabs dd {
+				border-bottom: 0 none;
+				height: 100%;
+				min-height: 0;
+				position: relative;
+				top: 0;
+			}
+				.smart-tabs dd:before,
+				.smart-tabs dd:after {
+					content: " ";
+					display: table;
+				}
+				.smart-tabs dd:after {
+					clear: both;
+				}
+	}

@@ -1,0 +1,937 @@
+/*
+	+-+-+-+-+-+-+ PAGE SPECIFIC STYLES +-+-+-+-+-+-+
+		=SFNT PAGE
+		=CTGY PAGE
+		=PROD AND PATR PAGES
+		=POUT PAGE
+		=SRCH PAGE
+		=BASK PAGE
+		=OCST, OSEL, OPAY AND INVC PAGES
+		=ORDP PAGE
+		=ACLN PAGE
+		=CTUS PAGE
+		=NTFD PAGE
+		=SMAP PAGE
+*/
+
+/*
+------------------------ =SFNT PAGE ------------------------ */
+.sfnt.single-column .row .column-right {
+	padding: 0;
+}
+
+	@media screen and (max-width: 479px) {
+		.event-message {
+			font-size: 1rem;
+		}
+	}
+
+	/* ------------------------ ad blocks ------------------------ */
+	.sfnt-ad {
+		display: block;
+		margin-bottom: 1.125rem;
+	}
+		@media screen and (min-width: 960px) {
+			.sfnt-ad {
+				margin-bottom: 1.875rem;
+			}
+		}
+
+	/* ------------------------ product carousel ------------------------ */
+	.row.product-carousel {
+		background: #fff;
+		margin: 0;
+		padding: 1rem 0;
+	}
+		.product-carousel .h3 {
+			border: solid #f4f4f4;
+			border-width: 1px 0;
+			line-height: 2;
+			margin-bottom: 2rem;
+			padding: 0;
+		}
+			.product-carousel .h3 .uppercase {
+				background: #818181;
+				color: #fff;
+				display: inline-block;
+				margin-left: -0.50rem;
+				padding: 0 1rem 0 1.50rem;
+			}
+				.product-carousel .h3 .uppercase:before {
+					border-color: transparent;
+					border-right-color: #4d4d4d;
+					border-style: solid;
+					border-width: 0 0.50rem 0.50rem 0;
+					content: '';
+					position: absolute;
+					bottom: -0.50rem;
+					left: -0.50rem;
+				}
+			.product-carousel .h3 a {
+				font-size: 1rem;
+				font-weight: 400;
+				line-height: 3;
+				padding-right: 2rem;
+			}
+				.product-carousel .h3 a span {
+					color: #bbb;
+					font-size: 1.25rem;
+					line-height: 1;
+					padding-left: 0.50rem;
+					vertical-align: middle;
+				}
+		.product-carousel .slick-next,
+		.product-carousel .slick-prev {
+			background: #fff;
+			box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+			margin-top: 0;
+			top: 32%;
+			width: 3rem;
+			height: 3rem;
+		}
+			.product-carousel .slick-next:before,
+			.product-carousel .slick-prev:before {
+				font-family: 'Suivant';
+			}
+			.product-carousel .slick-next:before {
+				content: "\64";
+			}
+			.product-carousel .slick-prev:before {
+				content: "\63";
+			}
+		.product-carousel .category-product {
+			margin: 0;
+		}
+
+	/* ------------------------ product flags ------------------------ */
+	.flag {
+		display: block;
+		overflow: hidden;
+		position: relative;
+		-moz-transition: all 0.2s ease-in-out;
+		-webkit-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
+		.flag:before {
+			border: solid transparent;
+			border-width: 0 0 72px 72px;
+			content: " ";
+			pointer-events: none;
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 0;
+			height: 0;
+			z-index: 10;
+		}
+		.flag:after {
+			color: #fff;
+			font-weight: 700;
+			position: absolute;
+			right: 0.50rem;
+			bottom: 0.75rem;
+			-ms-transform: rotate(-45deg);
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			z-index: 11;
+		}
+			.flag--new:before,
+			.flag--sale:before {
+				border-bottom-color: #1ac7e2;
+			}
+			.flag--new:after {
+				content: "NEW";
+			}
+			.flag--sale:after {
+				content: "SALE";
+			}
+			.flag--hot:before {
+				border-bottom-color: #dd293a;
+			}
+			.flag--hot:after {
+				content: "HOT";
+			}
+
+	/* ------------------------ accessory navigation ------------------------ */
+	.sfnt-accessory-navigation {
+		padding: 2.25rem 0;
+	}
+		.sfnt-accessory-navigation .wrap > .column:first-child {
+			border-right: 1px solid #e5e5e5;
+		}
+		.sfnt-accessory-navigation ul {
+			display: inline-block;
+			list-style: none;
+			min-width: 33%;
+			padding: 0;
+			vertical-align: top;
+		}
+			.sfnt-accessory-navigation li:before {
+				content: "\2022";
+				color: #e9e9e9;
+				padding-right: 0.25rem;
+			}
+		.sfnt-accessory-navigation .button span {
+			font-size: 1.25em;
+			line-height: 1;
+			padding-left: 1.50rem;
+			vertical-align: middle;
+		}
+
+
+/*
+------------------------ =CTGY PAGE ------------------------ */
+	/* ------------------------ category-subcategory ------------------------ */
+	.sub-category-layout,
+	.category-product-layout {
+		margin-bottom: 1.25rem;
+		padding-top: 1.50rem;
+	}
+		.sub-category {
+			margin-bottom: 1rem;
+			text-align: center;
+		}
+			.sub-category a {
+				display: block;
+			}
+				.sub-category img {
+					display: block;
+					margin: 0 auto 0.50rem;
+				}
+
+	/* ------------------------ category-product ------------------------ */
+		.category-product {
+			margin-bottom: 1rem;
+			text-align: center;
+		}
+			.category-product a {
+				overflow: hidden;
+				position: relative;
+			}
+				.category-product img {
+					display: block;
+					margin: 0 auto;
+				}
+				.category-product .breaker {
+					height: 0.50rem;
+				}
+				.category-product p {
+					margin-bottom: 0.25rem;
+					padding: 0 1rem;
+				}
+				.category-product strong {
+					padding: 0 0.50rem;
+				}
+					.category-product .strike {
+						color: #acacac;
+					}
+
+		/* ------------------------ quick-view ------------------------ */
+		.quick-view {
+			font-size: 1.125rem;
+			font-weight: 700;
+			height: 4em;
+			line-height: 4;
+			position: absolute;
+			bottom: -5rem;
+			right: 0;
+			left: 0;
+			z-index: 15;
+		}
+		.quick-view:hover {
+			box-shadow: none;
+		}
+		.no-touch .category-product a:hover .quick-view {
+			bottom: 0;
+		}
+		.ctgy .mfp-iframe,
+		.srch .mfp-iframe,
+		.product-information--body {
+			background: #fff;
+			min-height: 40rem;
+		}
+		
+	/* ------------------------ product filtering options ------------------------ */
+	.filter-items-container {
+		font-size: 0.875rem;
+		margin-bottom: 1.25rem;
+	}
+	
+		/* ------------------------ sorting ------------------------ */
+		.sorting,
+		.per-page,
+		.page-links {
+			line-height: 1.7;
+			padding: 1rem;
+		}
+			.sorting label {
+				width: auto;
+			}
+	
+		/* ------------------------ products per page ------------------------ */
+		.per-page {
+			line-height: 3;
+		}
+			.per-page li {
+				display: inline-block;
+			}
+				.per-page a {
+					padding: 0 0.375rem;
+				}
+					.per-page a[data-selected="selected"] {
+						color: #1ac8e2;
+						font-weight: 700;
+					}
+	
+		/* ------------------------ pagination ------------------------ */
+		.page-links-title,
+		.page-links-container,
+		.page-links-results {
+			vertical-align: middle;
+		}
+			.page-links a,
+			.page-links-deactivated,
+			.page-links-active {
+				outline: 1px solid #dedede;
+				display: inline-block;
+				font-size: 1rem;
+				line-height: 2;
+				margin-right: 0.25rem;
+				text-align: center;
+				text-decoration: none;
+				width: 2rem;
+				height: 2rem;
+			}
+				@media screen and (min-width: 1180px) {
+					.page-links a,
+					.page-links-deactivated,
+					.page-links-active {
+						line-height: 2.50;
+						margin-right: 0.25rem;
+						width: 2.50rem;
+						height: 2.50rem;
+					}
+				}
+			.page-links a:hover {
+				outline-color: #1ac8e2;
+			}
+			.page-links-deactivated:hover {
+				cursor: not-allowed;
+			}
+				a.page-links-next {
+					margin: 0;
+				}
+			.page-links-active {
+				color: #1ac8e2;
+				outline-color: #1ac8e2;
+			}
+
+
+/*
+------------------------ =PROD AND PATR PAGES ------------------------ */
+	/* ------------------------ product-information ------------------------ */
+	.product-information {
+		margin-bottom: 1.25rem;
+		padding: 2rem 1.25rem;
+	}
+	
+		/* ------------------------ product images ------------------------ */
+		.product-information--images {
+			margin-bottom: 0.75rem;
+			text-align: center;
+		}
+			.main-image {
+				cursor: pointer;
+				display: block;
+				margin-bottom: 1rem;
+				position: relative;
+			}
+				.main-image[data-icon]:before {
+					background: #ababab;
+					color: #fff;
+					display: block;
+					font-size: 1.50rem;
+					line-height: 1.75;
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					text-align: center;
+					width: 2.625rem;
+					height: 2.625rem;
+				}
+			.prod .mfp-figure:after {
+				background: #fff;
+			}
+
+			/* ------------------------ additional product images ------------------------ */
+			.thumbnails {
+				float: none;
+				margin: 0 auto;
+				overflow: visible;
+			}
+				.thumbnails .slick-next,
+				.thumbnails .slick-prev {
+					background: #fff;
+					box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+					width: 2rem;
+					height: 2rem;
+				}
+				.thumbnails .slick-next {
+					right: -1rem;
+				}
+				.thumbnails .slick-prev {
+					left: -1rem;
+				}
+					.thumbnails .slick-next:before,
+					.thumbnails .slick-prev:before {
+						font-family: 'Suivant';
+						font-size: 1rem;
+					}
+					.thumbnails .slick-next:before {
+						content: "\64";
+					}
+					.thumbnails .slick-prev:before {
+						content: "\63";
+					}
+				.thumbnails img {
+					padding: 0 0.50rem;
+				}
+	
+		/* ------------------------ product purchase ------------------------ */
+		.product-information--purchase {
+			margin-bottom: 1.50rem;
+			position: relative;
+		}
+	
+			/* ------------------------ product attributes ------------------------ */
+			.product-attributes .form-row {
+				margin-bottom: 1rem;
+			}
+				.product-attributes label,
+				.product-swatches label,
+				.swatch-name {
+					font-size: 1.25rem;
+					vertical-align: middle;
+					width: auto;
+				}
+				.product-attributes select {
+					width: auto;
+				}
+		
+			/* ------------------------ product swatches ------------------------ */
+			.product-swatches {
+			}
+				.product-swatches ul {
+					list-style: none;
+					margin: 0;
+					padding: 0;
+				}
+					.product-swatches li {
+						border: 1px solid transparent;
+						border-radius: 3rem;
+						cursor: pointer;
+						display: inline-block;
+						margin: 0 0.375rem 0.375rem 0;
+					}
+					.product-swatches .selected-swatch {
+						border-color: #ededed;
+					}
+						.product-swatches li span {
+							border: 0.25rem solid #fff;
+							border-radius: 3rem;
+							display: block;
+							overflow: hidden;
+						}
+
+			/* ------------------------ add-to-cart ------------------------ */
+			.row.add-to-cart-wrap {
+				font-size: 1.125rem;
+				margin: 2.50rem 0 0;
+				padding: 0.75rem 0;
+			}
+				.add-to-cart-wrap input[name="Quantity"],
+				.decrease-quantity,
+				.increase-quantity {
+					display: inline-block;
+					font-size: 1rem;
+					line-height: 2.75;
+					vertical-align: middle;
+					width: 2.75rem;
+					height: 2.75rem;
+				}
+				.decrease-quantity,
+				.increase-quantity {
+					cursor: pointer;
+					-moz-user-select: none;
+					-ms-user-select: none;
+					-webkit-user-select: none;
+					user-select: none;
+				}
+				.add-to-cart {
+					font-size: 1.25rem;
+					height: 2.75em;
+					line-height: 2.75;
+				}
+				@media screen and (min-width: 608px) {
+					.row.add-to-cart-wrap {
+						line-height: 2.75;
+						padding: 2.25em 1.50em;
+					}
+						.add-to-cart {
+							margin-left: 0.75rem;
+						}
+				}
+			
+			.purchase-message {
+				display: none;
+				margin: 0;
+				position: absolute;
+				top: 45%;
+				width: 96%;
+				z-index: 50;
+			}
+			.processing-purchase {
+				background: rgba(255, 255, 255, 0.6);
+				display: none;
+				position: absolute;
+				text-align: center;
+				width: 98%;
+				width: calc(100% - 0.75rem);
+				height: 100%;
+				z-index: 50;
+			}
+				.processing-purchase img {
+					margin: -4rem 0 0 -4rem;
+					position: absolute;
+					top: 50%;
+					left: 50%;
+				}
+
+			/* ------------------------ product description ------------------------ */
+			.product-information--description dt {
+				background: #fff;
+				border: 1px solid #dedede;
+				font-size: 1.125rem;
+				height: 2.75em;
+				line-height: 2.75;
+				margin-right: 1rem;
+			}
+			.product-information--description dt.current {
+				border-color: #1ac8e2;
+			}
+				.product-information--description dt a {
+					color: #818181;
+					padding: 0 1em;
+				}
+				.product-information--description dt.current a {
+					color: #1ac8e2;
+				}
+			.product-information--description dd {
+				border: 0 none;
+				font-size: 1rem;
+				padding: 0;
+				top: 1.25em;
+			}
+			@media screen and (min-width: 641px) {
+				.product-information--description dt {
+					margin-right: 1rem;
+				}
+				.product-information--description dd {
+					border-top: 1px solid #dedede;
+					padding-top: 1.25em;
+					top: 4.75em;
+				}
+			}
+					
+	/* ------------------------ related products ------------------------ */
+	.related-products {
+		padding-top: 1.50rem;
+	}
+		.related-products .h3 {
+			border-bottom: 1px solid #d5d5d5;
+			font-size: 1.75rem;
+			font-weight: 400;
+			line-height: 2;
+		}
+			.related-products .h3 span {
+				border-bottom: 1px solid #1ac8e2;
+			}
+		.related-products .slick-next,
+		.related-products .slick-prev {
+			background: #fff;
+			border: 1px solid #d5d5d5;
+			box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
+			margin-top: 0;
+			top: 32%;
+			width: 3rem;
+			height: 3rem;
+		}
+		.related-products .slick-next {
+			right: 0;
+		}
+		.related-products .slick-prev {
+			left: 0;
+		}
+			.related-products .slick-next:before,
+			.related-products .slick-prev:before {
+				font-family: 'Suivant';
+				font-size: 1.50rem;
+			}
+			.related-products .slick-next:before {
+				content: "\64";
+			}
+			.related-products .slick-prev:before {
+				content: "\63";
+			}
+			@media screen and (min-width: 608px) {
+				.related-products .slick-next,
+				.related-products .slick-prev {
+					box-shadow: none;
+					top: 0;
+				}
+				.related-products .slick-prev {
+					right: 4rem;
+					left: auto;
+				}
+			}
+
+/*
+------------------------ =SRCH PAGE ------------------------ */
+
+
+/*
+------------------------ =BASK PAGE ------------------------ */
+.basket-contents,
+.order-contents {
+	padding: 0.75rem 0 0.75rem 0.75rem;
+}
+
+	/* ------------------------ basket ------------------------ */
+	.basket-header-row {
+		background: #fafafa;
+		border: solid #dfe1e1;
+		border-width: 1px 0;
+		font-weight: 700;
+		line-height: 2.5;
+	}
+	.basket-footer-row {
+		padding-top: 0.50rem;
+	}
+	.basket-product-row {
+		border-bottom: 1px solid #e0e0e0;
+		padding: 0.50rem 0;
+	}
+		.basket-product-row a {
+			text-decoration: none;
+		}
+		.basket-product-row p {
+			line-height: normal;
+			margin: 0;
+		}
+		.remove-item {
+			color: #666;
+			margin-top: 0.75rem;
+			text-align: center;
+		}
+	.basket-footer-row {
+		border-bottom: 1px solid #dfe1e1;
+		padding-bottom: 0.50rem;
+	}
+	.basket-button-row {
+		padding-top: 1rem;
+	}
+
+	/* ------------------------ cart summary ------------------------ */
+	.bask .cart-summary .basket-header-row {
+		margin-bottom: 0.50rem;
+	}
+
+	/* ------------------------ shipping calculator ------------------------ */
+	.shipping-estimator {
+		text-align: center;
+	}
+		@media screen and (max-width: 767px) {
+			.shipping-estimator {
+				margin-bottom: 1rem;
+			}
+		}
+		.shipping-estimate-dialog {
+			display: none;
+			overflow: hidden;
+			padding-top: 0.50rem;
+			text-align: left;
+		}
+			.shipping-estimate-dialog label {
+				font-size: 0.75rem;
+			}
+		.shipping-estimate-results {
+			border: solid #e0e0e0;
+			border-width: 1px 0;
+			font-size: 0.875rem;
+			margin-top: 0.25rem;
+			margin-bottom: 0.50rem;
+			text-align: left;
+		}
+			.shipping-estimate-results-row {
+				clear: both;
+				overflow: hidden;
+				padding: 0.25rem 0;
+			}
+			.shipping-estimate-results-row:nth-child(odd) {
+				background: #f4f4f4;
+			}
+
+
+/*
+------------------------ =OCST, OSEL, OPAY AND INVC PAGES ------------------------ */
+@media screen and (min-width: 768px) {
+	.invc .horizontal-mega-menu,
+	.ordl .horizontal-mega-menu,
+	.ocst .horizontal-mega-menu,
+	.ous1 .horizontal-mega-menu,
+	.ousm .horizontal-mega-menu,
+	.uatm .horizontal-mega-menu,
+	.uatr .horizontal-mega-menu,
+	.osel .horizontal-mega-menu,
+	.opay .horizontal-mega-menu {
+		height: 0;
+		visibility: hidden;
+	}
+}
+.invc .mobile-navigation-bar,
+.ordl .mobile-navigation-bar,
+.ocst .mobile-navigation-bar,
+.ous1 .mobile-navigation-bar,
+.ousm .mobile-navigation-bar,
+.uatm .mobile-navigation-bar,
+.uatr .mobile-navigation-bar,
+.osel .mobile-navigation-bar,
+.opay .mobile-navigation-bar {
+	display: none;
+}
+.invc .pre-header nav ul:last-child li,
+.ordl .pre-header nav ul:last-child li,
+.ocst .pre-header nav ul:last-child li,
+.ous1 .pre-header nav ul:last-child li,
+.ousm .pre-header nav ul:last-child li,
+.uatm .pre-header nav ul:last-child li,
+.uatr .pre-header nav ul:last-child li,
+.osel .pre-header nav ul:last-child li,
+.opay .pre-header nav ul:last-child li {
+	display: none;
+	visibility: hidden;
+}
+
+	/* ------------------------ checkout headers ------------------------ */
+	.checkout-headers {
+		font-size: 0.75rem;
+		max-width: 1170px;
+		overflow: hidden;
+		text-align: center;
+	}
+		.checkout-headers .column {
+			border: solid #fff;
+			border-width: 0 2px;
+			padding: 0 0 0.50rem;
+		}
+			.checkout-headers span {
+				display: block;
+				font-size: 2rem;
+			}
+		.checkout-headers .current-step {
+			background: #4d4d4d;
+			color: #fff;
+		}
+
+	/* ------------------------ customer fields ------------------------ */
+	.customer-fields {
+	}
+		.customer-fields .bill-to,
+		.customer-fields .ship-to {
+			margin-bottom: 0.75rem;
+		}
+		.fields-key {
+			font-size: 0.75rem;
+		}
+		.fields-heading {
+			background: #fafafa;
+			border: solid #dfe1e1;
+			border-width: 1px 0;
+			font-size: 1rem;
+			line-height: 2.5;
+			padding-left: 0.75rem;
+		}
+			.controls-heading {
+				padding-right: 1rem;
+			}
+			.fields-heading .controls {
+				font-size: 0.75rem;
+				font-weight: 400;
+				visibility: hidden;
+			}
+				.fields-heading .controls label {
+					margin-right: 0;
+					text-align: left;
+					width: auto;
+				}
+		.invalid input,
+		.invalid select,
+		.invalid textarea {
+			border-color: #ff4136;
+		}
+		invalid label {
+			color: #ff4136;
+		}
+		.customer-fields .form_row {
+			margin: 0 0 0.50rem;
+		}
+		.customer-fields select {
+			font-size: 0.875rem;
+			height: 2rem;
+		}
+			.update-record label {
+				font-size: 0.75rem;
+				width: auto;
+			}
+
+	/* ------------------------ cart summary layout ------------------------ */
+	.cart-summary {
+		margin-bottom: 1rem;
+	}
+	
+		/* ------------------------ cart summary basket ------------------------ */
+		.ocst .cart-summary .basket-header-row,
+		.osel .cart-summary .basket-header-row,
+		.opay .cart-summary .basket-header-row,
+		.invc .cart-summary .basket-header-row {
+			cursor: pointer;
+		}
+		.ocst .cart-summary .basket-product-row,
+		.osel .cart-summary .basket-product-row,
+		.opay .cart-summary .basket-product-row,
+		.invc .cart-summary .basket-product-row {
+			font-size: 0.75rem;
+			overflow: hidden;
+		}
+		.cart-summary .basket-total {
+			font-size: 1rem;
+		}
+	
+		/* ------------------------ cart summary customer information ------------------------ */
+		.cart-summary .h6 {
+			margin-bottom: 0.50rem;
+		}
+		.cart-summary address {
+			margin-bottom: 0;
+		}
+
+	/* ------------------------ ocst log in and forgot password forms ------------------------ */
+	.ocst-login,
+	.forgot-password {
+		background: #fff;
+		max-width: 30rem;
+		padding: 1rem;
+	}
+
+	/* ------------------------ coupon-redemption ------------------------ */
+	.coupon-redemption input {
+		width: 80%;
+	}
+
+	/* ------------------------ payment-method-selectors ------------------------ */
+	.payment-method-selectors label {
+		display: block;
+		margin-bottom: 0.75rem;
+		text-align: center;
+		width: 100%;
+	}
+		.payment-method-selectors input {
+			display: block;
+			opacity: 0;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 5;
+		}
+			.ie8 .payment-method-selectors input {
+				display: inline-block;
+				position: relative;
+				width: auto;
+				height: auto;
+				z-index: inherit;
+			}
+			.payment-method-selectors input:checked + img {
+				box-shadow: 0 0 4px 4px rgba(0, 85, 150, .75);
+				outline: 2px solid #fff;
+			}
+
+	/* ------------------------ opay form layout ------------------------ */
+	.cc_exp select {
+		display: inline-block;
+		width: 31%;
+	}
+	.cvv input {
+		display: inline-block;
+		width: 25%;
+	}
+	.cvv a {
+		margin-left: 1rem;
+		text-decoration: none;
+	}
+		.cvv a span {
+			font-size: 1.50rem;
+			margin-left: 0.25rem;
+			vertical-align: middle;
+		}
+	.cvv-information {
+		background: #fff;
+		max-width: 30rem;
+		padding: 1rem;
+	}
+
+
+/*
+------------------------ =ORDP PAGE ------------------------ */
+
+
+/*
+------------------------ =ACLN PAGE ------------------------ */
+.acln .account-links {
+	margin: 2rem 0 1rem;
+}
+	.acln .account-links .column {
+		margin-bottom: 1rem;
+		min-height: 9rem;
+	}
+		.acln .account-links a {
+			text-decoration: none;
+		}
+			.acln .account-links a span {
+				font-size: 3rem;
+			}
+
+
+/*
+------------------------ =CTUS PAGE ------------------------ */
+
+
+/*
+------------------------ =NTFD PAGE ------------------------ */
+
+
+/*
+------------------------ =SMAP PAGE ------------------------ */
+.site-map {
+	margin: 0.50rem 0;
+	text-align: center;
+}
+	.site-map a {
+		border: 1px solid transparent;
+		display: block;
+		font-size: 0.875rem;
+		padding: 0.50rem;
+		position: relative;
+	}
+	.site-map a:hover {
+		border-color: #ddd;
+	}

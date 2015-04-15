@@ -1,0 +1,23 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+<title>&mvt:store:name;: &mvt:page:name;</title>
+<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<mvt:item name="body" file="body-item.htm">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="ORDH-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row order-history-list">
+		<mvt:if expr="NOT l.settings:orders_found GT 0">
+			<h4 class="column whole">No matching orders found.</h4>
+		<mvt:else>
+			<mvt:item name="orderhistory_list" />
+		</mvt:if>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="ORDH-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
+</mvt:item>
+</html>

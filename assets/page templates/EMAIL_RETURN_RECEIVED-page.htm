@@ -1,0 +1,76 @@
+<html>
+<body>
+<div style="font: 12px/1.46 Helvetica, 'Trebuchet MS', Arial, sans-serif; color: #676767; background: #ffffff;">
+	<div style="text-align: left; width: 690px; padding: 20px; page-break-after: always;">
+		<div style="width: 300px; float: left;">
+			<!-- Uncomment to add a logo to this email <img src="images/logo.jpg" height="34px" width="60px" /> -->
+			<h3 style="font-size: 1.1em; font-weight: bold; margin: 0;">&mvte:store:name;</h3>
+
+			&mvte:store:address;<br />
+			&mvte:store:city;, &mvte:store:state &mvte:store:zip;<br />
+			&mvte:store:country;<br />
+		</div>
+
+		<div style="width: 300px; float: right; text-align: right;">
+			<h2 style="font-size: 16px; color: #5b639c; margin: 0;">Return Received</h2>
+
+			Order #&mvt:order:id;<br />
+			Placed: &mvt:order:date; &mvt:order:time;<br />
+			Status: &mvt:order:formatted_status;<br />
+		</div>
+
+		<div style="clear: both;"></div>
+
+		<hr style="color: #c7c8d7; background-color: #c7c8d7; height: 1px; border: 0px;" />
+
+		<p style="font-weight: bold;">
+			The items listed below have been received and accepted.  We will process your refund/exchange promptly.
+			Feel free to <a href="mailto:&mvte:Store:email;">contact us via email</a> or at &mvte:store:phone; with any
+			questions or concerns.
+		</p>
+
+		<div style="background-color: #f7f7f7; width: 650px; margin: 20px 0 20px 0; padding: 20px;">
+			<h2 style="font-size: 16px; color: #5b639c; margin: 0;">RMA #&mvt:return:code;</h2>
+			<hr style="color: #c7c8d7; background-color: #c7c8d7; height: 1px; border: 0px;" />
+			
+			<table style="border-collapse: collapse; border-spacing: 0; font-size: 100%; color: #676767;"><tr><th style="padding-right: 5px; vertical-align: top;">Issued:</th>			<td>&mvt:return:formatted_date_issued;</td></tr></table>
+			<table style="border-collapse: collapse; border-spacing: 0; font-size: 100%; color: #676767;"><tr><th style="padding-right: 5px; vertical-align: top;">Received:</th>		<td>&mvt:return:formatted_date_received;</td></tr></table>
+		</div>
+
+		<table style="border-collapse: collapse; border-spacing: 0; font-size: 100%; color: #676767; border: 1px solid #c7c8d7; width: 690px;">
+			<tr>
+				<th style="font-size: 16px; color: #5b639c; padding: 5px 20px 5px 20px; vertical-align: top; width: 60px; text-align: left;">Code</th>
+				<th style="font-size: 16px; color: #5b639c; padding: 5px 20px 5px 20px; vertical-align: top; text-align: left;">Product</th>
+				<th style="font-size: 16px; color: #5b639c; padding: 5px 20px 5px 20px; vertical-align: top; width: 60px; text-align: right;">Quantity</th>
+			</tr>
+
+			<mvt:foreach iterator="group" array="return:groups">
+				<tr style="background-color: #f7f7f7; font-weight: bold;">
+					<td style="padding: 5px 20px 5px 20px; vertical-align: top; width: 60px; text-align: left;">&mvt:group:code;</td>
+					<td style="padding: 5px 20px 5px 20px; vertical-align: top; text-align: left;">&mvt:group:name;</td>
+					<td style="padding: 5px 20px 5px 20px; vertical-align: top; width: 60px; text-align: right;">&mvt:group:quantity;</td>
+				</tr>
+
+				<mvt:foreach iterator="option" array="group:options">
+					<tr>
+						<td></td>
+						<td style="padding: 5px 20px 5px 20px; vertical-align: top; text-align: left;">
+							<mvt:if expr="l.settings:option:option_id">
+								&mvt:option:attr_code;: &mvt:option:opt_code;
+							<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+								&mvt:option:attr_code;: &mvt:option:data;
+							<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+								&mvt:option:attr_code;: &mvt:option:data_long;
+							<mvt:else>
+								&mvt:option:attr_code;
+							</mvt:if>
+						</td>
+						<td></td>
+					</tr>
+				</mvt:foreach>
+			</mvt:foreach>
+		</table>
+	</div>
+</div>
+</body>
+</html>
