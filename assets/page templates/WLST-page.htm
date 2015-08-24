@@ -1,0 +1,77 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="WLST-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified">
+			<div class="column whole">
+				<a href="&mvte:urls:WLAD:auto;" title="Create Wish List" class="button button-square bg-charcoal"><span data-rt-icon="&#x69;"></span> Create Wish List</a>
+				<mvt:if expr="NOT ISNULL g.WishListSearch">
+					<span>&nbsp;|&nbsp;</span>
+					<a href="&mvte:urls:WLST:auto;" title="My Wish Lists" class="button button-square bg-teal">My Wish Lists <span data-icon="&#xe089;"></span></a>
+				</mvt:if>
+			</div>
+			<div class="breaker clear"></div>
+			<form method="post" action="&mvte:urls:WLST:rr;" class="column whole medium-one-third">
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<label for="l-WishListSearch" class="column whole uppercase np">Find A Wish List:</label>
+				<div class="column three-fourths np">
+					<input type="text" name="WishListSearch" value="&mvte:global:WishListSearch;" id="l-WishListSearch" />
+				</div>
+				<div class="column one-fourth">
+					<mvt:item name="buttons" param="Search"  file="cssui-buttonSearch-item.htm" />
+				</div>
+			</form>
+		<mvt:else>
+			<p class="column whole bold">You must have a customer account to create or access your wish list.</p>
+			<div class="column whole medium-one-third medium-offset-one-twelfth">
+				<form method="post" action="&mvte:urls:WLST:secure;" autocomplete="off">
+					<input type="hidden" name="Action" value="LOGN" />
+					<div class="form-row">
+						<label for="l-Customer_LoginEmail" class="required &mvt:global:invalid_credentials;">Email Address:</label>
+						<input type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" id="l-Customer_LoginEmail" required />
+					</div>
+					<div class="form-row">
+						<label for="l-Customer_Password" class="required &mvt:global:invalid_credentials;">Password:</label>
+						<input type="password" name="Customer_Password" id="l-Customer_Password" />
+					</div>
+					<div class="form-row align-right">
+						<mvt:item name="buttons" param="Login"  file="cssui-buttonLogin-item.htm" />
+					</div>
+				</form>
+				<p><small>Forgot your password? <a href="&mvte:urls:FPWD:auto;" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
+			</div>
+			<hr noshade class="clear medium-all-hidden" />
+			<form method="post" action="&mvte:urls:WLST:rr;" class="column whole medium-five-twelfths medium-offset-one-twelfth">
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<label for="l-WishListSearch" class="column whole uppercase np">Find A Wish List:</label>
+				<div class="column three-fourths np">
+					<input type="text" name="WishListSearch" value="&mvte:global:WishListSearch;" id="l-WishListSearch" />
+				</div>
+				<div class="column one-fourth">
+					<mvt:item name="buttons" param="Search"  file="cssui-buttonSearch-item.htm" />
+				</div>
+			</form>
+		</mvt:if>
+	</div>
+	<mvt:if expr="(NOT ISNULL g.WishListSearch) OR (g.Basket:cust_id AND g.Customer_Session_Verified)">
+		<mvt:item name="wishlists"  file="WLST-wishlists-item.htm" />
+	</mvt:if>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="WLST-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</body>
+</html>

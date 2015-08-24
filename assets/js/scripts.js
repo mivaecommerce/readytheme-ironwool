@@ -72,22 +72,12 @@ var cornerstoneUX = {
 		
 			// ---- Mobile Footer Links Control ---- //
 			function footerNavControl () {
-				if ($(window).innerWidth() < 704) {
-					if ($('#js-mobile-footer-links ul').length == 0) {
-						$('#js-mobile-footer-links').append($('#js-footer-links').find('ul'));
-					};
-				}
-				else {
-					if ($('#js-footer-links ul').length == 0) {
-						$('#js-footer-links').append($('#js-mobile-footer-links').find('ul'));
-					};
-				};
 				/* Corrects positioning of virtual keyboard */
 				$(document).on('focus', 'input, select, textarea', function () {
-					$('#mobile-footer').css('position', 'static');
+					$('#mobile-footer').hide();
 				});
 				$(document).on('blur', 'input, select, textarea', function () {
-					$('#mobile-footer').css('position', 'fixed');
+					$('#mobile-footer').show();
 				});
 			};
 			$(window).on('debouncedresize load', footerNavControl ());
@@ -323,13 +313,14 @@ var cornerstoneUX = {
 
 		// ---- Update Button For "Out Of Stock" ---- //
 		function outOfStock () {
-			var button = $('#js-add-to-cart');
+			var button = $('#js-add-to-cart'),
+				buttonText = button.val();
 				
 			if (button.is(':disabled') == true) {
 				button.addClass('bg-gray').val('Sold Out');
 			}
 			else {
-				button.removeClass('bg-gray').val('Add to Cart');
+				button.removeClass('bg-gray').val(buttonText);
 			};
 		};
 		outOfStock ();
@@ -510,7 +501,6 @@ var cornerstoneUX = {
 		MivaEvents.SubscribeToEvent('variant_changed', function () {
 			gallery.length = 0;
 			mainImageZoom.attr('data-index', 0);
-			//$('#js-main-image').attr('data-image', window['image_data' + productID][0]['image_data'][2]);
 			thumbnailIndex = 0;
 			outOfStock ();
 			selectedSwatch ();
@@ -549,12 +539,20 @@ var cornerstoneUX = {
 					var form = purchaseForm,
 						formData = form.serialize(),
 						randomNo = Math.ceil(Math.random() * 1000000), // IE Hack: Creating random number to refresh ajax call
-						formUrl = form.attr('action') + '&v=' + randomNo,
+						formUrl = form.attr('action'),
 						formMethod = form.attr('method'),
 						responseMessage = $('#js-purchase-message'),
 						miniBasket = $('#js-mini-basket-container'),
 						processingImage = $('#js-processing-purchase'),
-						purchaseButton = $(this);
+						purchaseButton = $(this),
+						purchaseButtonText = purchaseButton.val();
+					
+					if (/\?/.test(formUrl)) {
+						formUrl = formUrl + '&v=' + randomNo;
+					}
+					else {
+						formUrl = formUrl + '?v=' + randomNo;
+					};
 					
 					// Add status data to form
 					form.data('formstatus', 'submitting');
@@ -610,7 +608,7 @@ var cornerstoneUX = {
 							
 							// Hide processing message and reset formstatus
 							processingImage.hide();
-							purchaseButton.toggleDisabled().val('Add to Cart');
+							purchaseButton.toggleDisabled().val(purchaseButtonText);
 							form.data('formstatus', 'idle');
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
@@ -917,6 +915,11 @@ var cornerstoneUX = {
 	},
 	
 	jsGFTL: function () {
+		// ---- Open Forgot Password ---- //
+		cornerstoneUX.sharedFunctions.openForgotPassword();
+	},
+	
+	jsWLGN: function () {
 		// ---- Open Forgot Password ---- //
 		cornerstoneUX.sharedFunctions.openForgotPassword();
 	}

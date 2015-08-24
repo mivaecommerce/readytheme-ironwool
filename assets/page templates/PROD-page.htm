@@ -4,16 +4,29 @@
 	<mvt:exit />
 </mvt:if>
 <head>
-<mvt:if expr="NOT ISNULL l.settings:product:metafield:title">
-	<title>&mvt:product:metafield:title;</title>         
-<mvt:else>
-	<title>&mvt:product:name;: &mvt:store:name;</title>
-</mvt:if>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
-<mvt:item name="attributemachine" param="head" />
-<mvt:item name="product_display_imagemachine" param="head" />
+	<mvt:if expr="NOT ISNULL l.settings:product:page_title">
+		<title>&mvt:product:page_title;</title>
+	<mvt:elseif expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:product:name;: &mvt:store:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:item name="attributemachine" param="head" />
+	<mvt:item name="product_display_imagemachine" param="head" />
+	<mvt:assign name="g.socialURL" value="l.settings:product:link" />
+	<mvt:assign name="g.socialText" value="'Check out the deal on ' $ l.settings:product:name $ ' at ' $ g.store:name" />
+	<mvt:do name="l.success" file="g.Module_Library_DB" value="ProductImage_Load_Type(l.settings:product:id, 1, l.settings:imagetype)" />
+	<mvt:do name="l.success" file="g.Module_Library_DB" value="Image_Load_ID(l.settings:imagetype:image_id, l.settings:imagedata)" />
+	<mvt:assign name="g.socialImage" value="g.baseurl $ l.settings:imagedata:image" />
+	<meta property="og:title" content="&mvte:product:name;" />
+	<meta property="og:type" content="product" />
+	<meta property="og:image" content="&mvt:global:socialImage;" />
+	<meta property="og:url" content="&mvt:global:socialURL;" />
+	<meta property="og:site_name" content="&mvte:global:store:name;" />
+	<meta property="og:description" content="&mvte:global:socialText;" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column &mvte:product:code;">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="PROD-header-item.htm" />
@@ -55,5 +68,5 @@
 		</div>
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
+</body>
 </html>

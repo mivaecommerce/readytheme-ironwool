@@ -7,7 +7,7 @@
 		<mvt:if expr="g.Basket:ship_comp">
 			&mvte:global:Basket:ship_comp;<br />
 		</mvt:if>
-		<mvt:if expr="g.Basket:ship_addr1 OR g.Basket:ship_addr2 OR g.Basket:ship_city OR g.Basket:ship_state OR g.Basket:ship_zip OR g.Basket:ship_cntry">
+		<mvt:if expr="g.Basket:ship_addr1 OR g.Basket:ship_addr2 OR g.Basket:ship_city OR g.Basket:ship_state OR g.Basket:ship_zip OR g.Basket:ship_cntry OR g.Basket:ship_res">
 			&mvte:global:Basket:ship_addr1;&nbsp;
 			<mvt:if expr="g.Basket:ship_addr2">
 				&mvte:global:Basket:ship_addr2;<br />
@@ -18,6 +18,9 @@
 				&mvte:global:Basket:ship_city;
 			</mvt:if>
 			&mvte:global:Basket:ship_state; &mvte:global:Basket:ship_zip; &mvte:global:Basket:ship_cntry;<br />
+			<mvt:if expr="g.Basket:ship_res">
+				<small>Residential Address</small><br />
+			</mvt:if>
 		</mvt:if>
 		<mvt:if expr="g.Basket:ship_email">
 			Email: &mvte:global:Basket:ship_email;<br />

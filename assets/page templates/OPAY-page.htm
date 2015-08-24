@@ -1,51 +1,55 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
-<mvt:if expr="l.settings:payment:capabilities:split">
-	<script type="text/javascript">
-		function AmountType_Changed( amounttype ){
-		var balance_amount, amount, additional;
-		
-			balance_amount	= document.getElementById( 'payment-balance-amount' );
-			amount			= document.getElementById( 'payment-amount' );
-			additional		= document.getElementById( 'payment-additional' );
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="l.settings:payment:capabilities:split">
+		<script type="text/javascript">
+			function AmountType_Changed( amounttype ){
+			var balance_amount, amount, additional;
 			
-			if ( amounttype === 'total' )
-			{
-				amount.disabled				= true;
-				additional.style.display	= 'none';
-
-				if ( balance_amount )
+				balance_amount	= document.getElementById( 'payment-balance-amount' );
+				amount			= document.getElementById( 'payment-amount' );
+				additional		= document.getElementById( 'payment-additional' );
+				
+				if ( amounttype === 'total' )
 				{
-					balance_amount.disabled	= true;
+					amount.disabled				= true;
+					additional.style.display	= 'none';
+	
+					if ( balance_amount )
+					{
+						balance_amount.disabled	= true;
+					}
+				}
+				else if ( amounttype === 'balance' )
+				{
+					amount.disabled				= true;
+					additional.style.display	= '';
+	
+					if ( balance_amount )
+					{
+						balance_amount.disabled	= false;
+					}
+				}
+				else if ( amounttype === 'partial' )
+				{
+					amount.disabled				= false;
+					additional.style.display	= '';
+	
+					if ( balance_amount )
+					{
+						balance_amount.disabled	= true;
+					}
 				}
 			}
-			else if ( amounttype === 'balance' )
-			{
-				amount.disabled				= true;
-				additional.style.display	= '';
-
-				if ( balance_amount )
-				{
-					balance_amount.disabled	= false;
-				}
-			}
-			else if ( amounttype === 'partial' )
-			{
-				amount.disabled				= false;
-				additional.style.display	= '';
-
-				if ( balance_amount )
-				{
-					balance_amount.disabled	= true;
-				}
-			}
-		}
-	</script>
-</mvt:if>
+		</script>
+	</mvt:if>
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <div class="row hdft-header">
@@ -129,9 +133,9 @@
 								</div>
 							</div>
 							<mvt:if expr="g.AmountType EQ 'total'">
-								<mvt:assign name="g.totalPayment" value="'hide'" />
+								<mvt:assign name="g.totalPayment" value="'display: none;'" />
 							</mvt:if>
-							<div id="payment-additional" class="&mvt:global:totalPayment;">
+							<div id="payment-additional" style="&mvt:global:totalPayment;">
 								<div class="form_row">
 									<label class="required">Pay Additional Balance With:</label>
 									<select name="AdditionalPaymentMethod">
@@ -167,5 +171,5 @@
 		<mvt:item name="hdft" param="footer"  file="OPAY-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
-</html>
+</body>
+</html>

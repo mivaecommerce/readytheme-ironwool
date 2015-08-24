@@ -89,6 +89,7 @@
 		</div>
 	<mvt:elseif expr="l.settings:attribute:type EQ 'swatch-select'">
 		<mvt:assign name="g.hasSwatches" value="'1'" />
+		<mvt:assign name="g.swatch_prompt" value="l.settings:attribute:prompt" />
 		<div class="form-row all-hidden">
 			<mvt:if expr="l.settings:attribute:required">
 				<label for="js-swatch-select" title="&mvt:attribute:prompt;" class="medium">&mvt:attribute:prompt;</label>

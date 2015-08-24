@@ -1,0 +1,117 @@
+<mvt:if expr="l.settings:wishlists:total_count EQ 0">
+	<div class="row bg-white bottom-shadow main-content-row">
+		<p class="column whole bold">No wish lists found.</p>
+	</div>
+	<mvt:exit />
+</mvt:if>
+<mvt:if expr="l.settings:wishlists:total_count GT 1">
+	<div class="row bg-white bottom-shadow filter-items-container">
+		<div class="column whole small-half medium-one-third sorting">
+			<mvt:if expr="l.settings:wishlists:total_count GT 1">
+				<form method="get" action="&mvte:urls:_self:auto;" class="inline-labeling nm">
+					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+					<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+					<input type="hidden" name="WishListSearch" value="&mvte:global:WishListSearch;" />
+					<label for="l-sort-by" class="medium uppercase">Sort By</label>
+					<select name="Sort_By" id="l-sort-by" class="input-medium" onChange="this.form.submit();">
+						<mvt:if expr="ISNULL g.Sort_By">
+							<option value="id" selected="selected">Default</option>
+						<mvt:else>
+							<option value="id">Default</option>
+						</mvt:if>
+						<mvt:if expr="g.Sort_By EQ 'title_asc'">
+							<option value="title_asc" selected="selected">Title Ascending</option>
+						<mvt:else>
+							<option value="title_asc">Title Ascending</option>
+						</mvt:if>
+						<mvt:if expr="g.Sort_By EQ 'title_desc'">
+							<option value="title_desc" selected="selected">Title Descending</option>
+						<mvt:else>
+							<option value="title_desc">Title Descending</option>
+						</mvt:if>
+					</select>
+					<noscript><input type="submit" value="go"></noscript>
+				</form>
+				<!-- end sorting -->
+			</mvt:if>
+		</div>
+		<div class="column whole small-half medium-one-third per-page">
+			<mvt:if expr="l.settings:wishlists:total_count GT 1">
+				<form method="get" action="&mvte:urls:_self:auto;" class="inline-labeling nm">
+					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+					<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+					<input type="hidden" name="WishListSearch" value="&mvte:global:WishListSearch;" />
+					<label for="l-Per_Page" class="medium uppercase">View:</label>
+					<select name="Per_Page" id="l-Per_Page" class="input-medium" onChange="this.form.submit();">
+						<mvt:if expr="g.Per_Page EQ 12">
+							<option value="12" selected="selected">12</option>
+						<mvt:else>
+							<option value="12">12</option>
+						</mvt:if>
+						<mvt:if expr="g.Per_Page EQ 24">
+							<option value="24" selected="selected">24</option>
+						<mvt:else>
+							<option value="24">24</option>
+						</mvt:if>
+						<mvt:if expr="g.Per_Page EQ 48">
+							<option value="48" selected="selected">48</option>
+						<mvt:else>
+							<option value="48">48</option>
+						</mvt:if>
+						<mvt:if expr="g.Per_Page EQ -1">
+							<option value="-1" selected="selected">All</option>
+						<mvt:else>
+							<option value="-1">All</option>
+						</mvt:if>
+					</select>
+					<noscript><input type="submit" value="go"></noscript>
+				</form>
+			</mvt:if>
+		</div>
+		<div class="page-links">
+			<mvt:if expr="l.settings:wishlists:page_links:last_page GT 1">
+				<form method="get" action="&mvte:urls:_self:auto;" class="inline-labeling nm">
+					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
+					<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+					<input type="hidden" name="WishListSearch" value="&mvte:global:WishListSearch;" />
+					<label for="l-pages" class="medium uppercase">Go To:</label>
+					<select id="l-pages" class="input-medium" onChange="window.location.replace(this.options[this.selectedIndex].value)">
+						<mvt:foreach iterator="pages" array="wishlists:page_links:pages">
+							<mvt:if expr="l.settings:wishlists:page_links:current_page EQ l.settings:pages:page_num">
+								<option value="&mvte:urls:_self:auto_sep;&mvte:pages:link_params;" selected="selected">Page &mvte:pages:page_num;</option>
+							<mvt:else>
+								<option value="&mvte:urls:_self:auto_sep;&mvte:pages:link_params;">Page &mvte:pages:page_num;</option>
+							</mvt:if>
+						</mvt:foreach>
+					</select>
+					<noscript><input type="submit" value="go"></noscript>
+				</form>
+			</mvt:if>
+		</div>
+	</div>
+</mvt:if>
+<div class="cart-contents">
+	<div class="row all-hidden medium-all-shown basket-header-row bg-white bottom-shadow">
+		<div class="column one-fourth">Title</div>
+		<div class="column one-fourth">
+			<mvt:if expr="NOT ISNULL g.WishListSearch">
+				Name
+			</mvt:if>
+		</div>
+		<div class="column half">Notes</div>
+	</div>
+	<mvt:foreach iterator="wishlist" array="wishlists:items">
+		<div class="row basket-product-row bg-white bottom-shadow">
+			<div class="column half medium-one-fourth"><strong class="medium-all-hidden">Title </strong><a href="&mvte:urls:WISH:rr_sep;WishList_ID=&mvta:wishlist:id;">&mvte:wishlist:title;</a></div>
+			<div class="column half medium-one-fourth">
+				<mvt:if expr="NOT ISNULL g.WishListSearch">
+					<strong class="medium-all-hidden">Name: </strong>&mvte:wishlist:bill_fname; &mvte:wishlist:bill_lname;
+				</mvt:if>
+			</div>
+			<div class="column whole medium-half"><strong class="medium-all-hidden">Notes: </strong>&mvte:wishlist:notes;</div>
+		</div>
+	</mvt:foreach>
+</div>

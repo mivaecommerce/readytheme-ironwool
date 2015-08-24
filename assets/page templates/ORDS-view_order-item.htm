@@ -17,7 +17,7 @@
 			<div class="column three-fourths medium-three-eighths">
 				<p>
 					<mvt:if expr="l.settings:item:reorder EQ 1">
-						<a href="&mvt:global:sessionurl;&amp;Store_Code=&mvta:store:code;&amp;Screen=PROD&amp;Product_Code=&mvta:item:code;" title="&mvt:item:name;"><strong>&mvt:item:name;</strong></a>
+						<a href="&mvte:urls:PROD:auto_sep;Product_Code=&mvta:item:code;" title="&mvt:item:name;"><strong>&mvt:item:name;</strong></a>
 					<mvt:else>
 						<strong>&mvt:item:name;</strong>
 					</mvt:if>
@@ -27,13 +27,18 @@
 					<br /><small>&mvt:item:code;</small>
 				</p>
 				<mvt:foreach iterator="option" array="item:options">
+					<mvt:if expr="l.settings:option:attr_code EQ 'giftcert'">
+						<mvt:assign name="l.settings:option:attr_prompt" value="'Certificate Code:'" />
+					<mvt:else>
+						<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+					</mvt:if>
 					<p>
 						<mvt:if expr="l.settings:option:option_id">
 							<small>&mvt:option:attr_prompt; <strong>&mvt:option:opt_prompt;</strong></small>
 						<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 							<small>&mvt:option:attr_prompt; <strong>&mvt:option:data;</strong></small>
-						<mvt:elseif expr="NOT ISNULL l.settings:option:data_logn">
-							<small>&mvt:option:attr_prompt; <strong>&mvt:option:data_logn;</strong></small>
+						<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+							<small>&mvt:option:attr_prompt; <strong>&mvt:option:data_long;</strong></small>
 						<mvt:else>
 							<small>&mvt:option:attr_prompt;</small>
 						</mvt:if>
@@ -106,7 +111,7 @@
 	<br class="clear" />
 	<hr noshade />
 	<mvt:foreach iterator="payment" array="order:payments">
-		<p class="column whole">
+		<p class="column whole align-right">
 			<mvt:if expr="l.settings:payment:type EQ 6">
 				<em>Refund: &mvt:payment:desc;: &mvt:payment:formatted_amount;</em>
 			<mvt:else>
@@ -115,4 +120,4 @@
 		</p>
 	</mvt:foreach>
 	<div class="breaker"></div>
-</div>
+</div>

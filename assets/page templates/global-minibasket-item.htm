@@ -16,7 +16,7 @@
 							</mvt:if>
 						</div>
 						<div class="column three-fourths medium-three-fifths">
-							<a href="&mvt:global:sessionurl;Screen=PROD&amp;Store_Code=&mvta:store:code;&amp;Product_Code=&mvta:item:code;" title="&mvt:item:name;">&mvt:item:name;</a>
+							<a href="&mvte:urls:PROD:auto_sep;Product_Code=&mvta:item:code;" title="&mvt:item:name;">&mvt:item:name;</a>
 							<mvt:if expr="l.settings:item:upsold">
 								&nbsp;(Special Offer)
 							</mvt:if>
@@ -54,8 +54,8 @@
 	</div>
 	<mvt:if expr="NOT l.settings:global_minibasket:empty">
 		<div class="row">
-			<div class="column half np"><a href="&mvt:global:sessionurl;Screen=BASK&amp;Store_Code=&mvta:store:code;" title="View Cart" class="button button-block button-medium button-square bg-gray charcoal uppercase">View Cart</a></div>
-			<div class="column half np"><a href="&mvt:global:secure_sessionurl;Screen=OINF" title="Checkout" class="button button-block button-medium button-square bg-sky uppercase">Checkout</a></div>
+			<div class="column half np"><a href="&mvte:urls:BASK:auto;" title="View Cart" class="button button-block button-medium button-square bg-gray charcoal uppercase">View Cart</a></div>
+			<div class="column half np"><a href="&mvte:urls:OINF:secure;" title="Checkout" class="button button-block button-medium button-square bg-sky uppercase">Checkout</a></div>
 		</div>
 	</mvt:if>
 	<div class="row">

@@ -1,0 +1,23 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="WLED-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<mvt:item name="wishlist"  file="WLED-wishlist-item.htm" />
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="WLED-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</body>
+</html>

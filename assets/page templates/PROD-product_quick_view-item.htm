@@ -1,7 +1,9 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-	<mvt:if expr="NOT ISNULL l.settings:product:metafield:title">
-		<title>&mvt:product:metafield:title;</title>         
+	<mvt:if expr="NOT ISNULL l.settings:product:page_title">
+		<title>&mvt:product:page_title;</title>
+	<mvt:elseif expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
 	<mvt:else>
 		<title>&mvt:product:name;: &mvt:store:name;</title>
 	</mvt:if>
@@ -20,13 +22,22 @@
 		<header id="js-header" class="header clearfix"></header>
 		<div class="row product-information">
 			<div class="column whole medium-half product-information--images">
-				<span data-icon="&#x54;" id="js-main-image-zoom" class="main-image" data-index="0"><img src="graphics/en-US/cssui/blank.gif" alt="&mvte:product:name;" title="&mvte:product:name;" id="js-main-image" data-image="&mvt:product:customfield_values:productimagecustomfields:main;" /></span>
+				<mvt:if expr="l.settings:product:customfield_values:customfields:product_flag NE 'none'">
+					<mvt:assign name="l.settings:product:flag" value="'flag--' $ tolower(l.settings:product:customfield_values:customfields:product_flag)" />
+				</mvt:if>
+				<span class="flag &mvt:product:flag;">
+					<mvt:if expr="NOT ISNULL l.settings:product:customfield_values:productimagecustomfields:main">
+						<span data-icon="&#x54;" id="js-main-image-zoom" class="main-image" data-index="0"><img src="graphics/en-US/cssui/blank.gif" alt="&mvte:product:name;" title="&mvte:product:name;" id="js-main-image" data-image="&mvt:product:customfield_values:productimagecustomfields:main;" /></span>
+					<mvt:else>
+						<span class="main-image" data-index="0"><img src="graphics/en-US/cssui/blank.gif" alt="&mvte:product:name;" title="&mvte:product:name;" id="js-main-image" data-image="&mvt:product:customfield_values:productimagecustomfields:main;" /></span>
+					</mvt:if>
+				</span>
 				<div class="row thumbnail-wrapper">
 					<div id="js-thumbnails" class="column whole large-four-fifths np thumbnails"></div>
 				</div>
 				<mvt:item name="product_display_imagemachine" param="body:product:id" />
 				<div class="row">
-					<p class="column whole align-left small"><a href="&mvte:global:sessionurl;Store_Code=&mvta:store:code;&Screen=PROD&Product_Code=&mvta:product:code;" rel="nofollow" target="_parent">View Product Details &raquo;</a></p>
+					<p class="column whole align-left small"><a href="&mvte:product:link;" rel="nofollow" target="_parent">View Product Details &raquo;</a></p>
 				</div>
 			</div>
 			<!-- end product-information--images -->
@@ -50,11 +61,10 @@
 						</mvt:if>
 					</div>
 				</div>
-				<form method="post" action="&mvte:global:sessionurl;Screen=BASK" target="_parent" id="js-purchase-product" class="inline-labeling">
+				<form method="post" action="&mvte:urls:BASK:auto;" target="_parent" id="js-purchase-product" class="inline-labeling">
 					<input type="hidden" name="Old_Screen" value="&mvte:global:Screen;" />
 					<input type="hidden" name="Old_Search" value="&mvte:global:Search;" />
 					<input type="hidden" name="Action" value="ADPR" />
-					<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
 					<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
 					<input type="hidden" name="Category_Code" value="&mvte:global:category_code;" />
 					<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
@@ -73,7 +83,7 @@
 						</div>
 						<mvt:if expr="g.hasSwatches">
 							<div class="column whole product-swatches">
-								<label class="medium">Color</label>
+								<label class="medium">&mvte:global:swatch_prompt;</label>
 								<span id="js-swatch-name" class="bold swatch-name">&nbsp;</span>
 								<hr noshade />
 								<div id="js-swatches"></div>

@@ -1,9 +1,13 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="GFTL-header-item.htm" />
@@ -12,9 +16,7 @@
 		<h3 class="column whole">You must have a customer account to redeem a gift certificate.</h3>
 		<div class="column whole medium-half">
 			<h4>Welcome Back</h4>
-			<form method="post" action="&mvte:global:secure_sessionurl;" id="js-gftl-form" class="inline-labeling" autocomplete="off">
-				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
-				<input type="hidden" name="Screen" value="RGFT" />
+			<form method="post" action="&mvte:urls:RGFT:secure;" id="js-gftl-form" class="inline-labeling" autocomplete="off">
 				<input type="hidden" name="Action" value="LOGN" />
 				<div class="form-row">
 					<label for="l-Customer_LoginEmail" class="required &mvt:global:invalid_credentials;">Email Address:</label>
@@ -28,17 +30,17 @@
 					<mvt:item name="buttons" param="Login"  file="cssui-buttonLogin-item.htm" />
 				</div>
 			</form>
-			<p><small>Forgot your password? <a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=FPWD" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
+			<p><small>Forgot your password? <a href="&mvte:urls:FPWD:secure;" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
 		</div>
 		<hr noshade class="clear medium-all-hidden" />
 		<div class="column whole medium-half">
 			<h4>Register Now</h4>
-			<p class="align-right"><a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=ACAD&Redeem=1" title="Register" class="button button-square bg-gray charcoal">Register</a></p>
+			<p class="align-right"><a href="&mvte:urls:ACAD:auto_sep;Redeem=1" title="Register" class="button button-square bg-gray charcoal">Register</a></p>
 		</div>
 	</div>
 	<div class="row hdft-footer">
 		<mvt:item name="hdft" param="footer"  file="GFTL-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
-</html>
+</body>
+</html>

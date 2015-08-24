@@ -1,27 +1,32 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="ACLN-header-item.htm" />
 	</div>
 	<div class="row content-item">
-		<p class="column whole align-right"><a href="&mvt:global:secure_sessionurl;Action=LOGO&Screen=LOGOUT&Store_Code=&mvta:global:Store_Code;" title="Log Out" class="button button-square button-small-font bg-red">Log Out</a></p>
+		<p class="column whole align-right"><a href="&mvte:urls:LOGOUT:secure_sep;Action=LOGO" title="Log Out" class="button button-square button-small-font bg-red">Log Out</a></p>
 		<div class="column whole account-links">
-			<div class="column half medium-one-third align-center"><a href="&mvt:global:secure_sessionurl;Screen=ACED&Store_Code=&mvta:store:code;" title="Update Account Information"><span data-icon="&#xe08a;"></span><br />Update Account Information</a></div>
-			<div class="column half medium-one-third align-center"><a href="&mvt:global:secure_sessionurl;Screen=RGFT&Store_Code=&mvta:store:code;" title="Redeem Gift Certificate"><span data-icon="&#xe073;"></span><br />Redeem Gift Certificate</a></div>
-			<div class="column half medium-one-third align-center"><a href="&mvt:global:secure_sessionurl;Screen=ABAL&Store_Code=&mvta:store:code;" title="Customer Account Balance"><span data-icon="&#xe0f3;"></span><br />Customer Account Balance</a></div>
-			<div class="column half medium-one-third align-center"><a href="&mvt:global:secure_sessionurl;Screen=ORDH&Store_Code=&mvta:store:code;" title="Customer Order History"><span data-icon="&#xe07a;"></span><br />Order History</a></div>
-			<div class="column half medium-one-third align-center"><a href="&mvt:global:secure_sessionurl;Screen=CEML&Store_Code=&mvta:store:code;" title="Change Email Address"><span data-icon="&#xe076;"></span><br />Change Email Address</a></div>
-			<div class="column half medium-one-third align-center"><a href="&mvt:global:secure_sessionurl;Screen=CPWD&Store_Code=&mvta:store:code;" title="Change Password"><span data-icon="&#xe06c;"></span><br />Change Password</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:ACED:auto;" title="Update Account Information"><span data-icon="&#xe08a;"></span><br />Update Account Information</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:CEML:auto;" title="Change Email Address"><span data-icon="&#xe076;"></span><br />Change Email Address</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:CPWD:auto;" title="Change Password"><span data-icon="&#xe06c;"></span><br />Change Password</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:ORDH:auto;" title="Customer Order History"><span data-icon="&#xe0e1;"></span><br />Order History</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:RGFT:auto;" title="Redeem Gift Certificate"><span data-icon="&#xe073;"></span><br />Redeem Gift Certificate</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:ABAL:auto;" title="Customer Account Balance"><span data-icon="&#xe0f3;"></span><br />Customer Account Balance</a></div>
+			<div class="column half medium-one-fourth align-center"><a href="&mvte:urls:WLST:auto;" title="Wish Lists"><span data-icon="&#xe089;"></span><br />Wish Lists</a></div>
 		</div>
 	</div>
 	<div class="row hdft-footer">
 		<mvt:item name="hdft" param="footer"  file="ACLN-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
-</html>
+</body>
+</html>

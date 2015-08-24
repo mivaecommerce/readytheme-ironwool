@@ -7,7 +7,7 @@
 <mvt:if expr="l.settings:customercredithistory:total_count GT 1">
 	<div class="row bg-white bottom-shadow filter-items-container">
 		<div class="column whole medium-half large-one-third sorting">
-			<form method="get" action="&mvte:global:sessionurl;" class="inline-labeling nm">
+			<form method="get" action="&mvte:urls:_self:auto;" class="inline-labeling nm">
 				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
 				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
@@ -54,7 +54,7 @@
 			<!-- end sorting -->
 		</div>
 		<nav class="column whole medium-half large-three-twelfths medium-align-right large-align-left per-page">
-			<form method="get" action="&mvte:global:sessionurl;" class="inline-labeling nm">
+			<form method="get" action="&mvte:urls:_self:auto;" class="inline-labeling nm">
 				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
 				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
@@ -89,25 +89,25 @@
 			<mvt:if expr="l.settings:customercredithistory:page_links:last_page GT 1">
 				<span class="page-links-container">
 					<mvt:if expr="l.settings:customercredithistory:page_links:current_page NE 1">
-						<a href="&mvte:customercredithistory:page_links:prev_link;" class="page-links-previous rt-icon-arrow-left"></a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:customercredithistory:page_links:prev_link_params;" class="page-links-previous rt-icon-arrow-left"></a>
 					<mvt:else>
 						<span class="page-links-previous page-links-deactivated rt-icon-arrow-left"></span>
 					</mvt:if>
 					<mvt:if expr="NOT l.settings:customercredithistory:page_links:contains_first">
-						<a href="&mvte:customercredithistory:page_links:first_link;" class="page-links-inactive">1 &hellip;</a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:customercredithistory:page_links:first_link_params;" class="page-links-inactive">1 &hellip;</a>
 					</mvt:if>
 					<mvt:foreach iterator="pages" array="customercredithistory:page_links:pages">
 						<mvt:if expr="l.settings:customercredithistory:page_links:current_page EQ l.settings:pages:page_num">
 							<span class="page-links-active">&mvte:pages:page_num;</span>
 						<mvt:else>
-							<a href="&mvte:pages:link;" class="page-links-inactive">&mvte:pages:page_num;</a>
+							<a href="&mvte:urls:_self:auto_sep;&mvte:pages:link_params;" class="page-links-inactive">&mvte:pages:page_num;</a>
 						</mvt:if>
 					</mvt:foreach>
 					<mvt:if expr="NOT l.settings:customercredithistory:page_links:contains_last">
-						<a href="&mvte:customercredithistory:page_links:last_link;" class="page-links-inactive">&hellip; &mvte:customercredithistory:page_links:last_page;</a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:customercredithistory:page_links:last_link_params;" class="page-links-inactive">&hellip; &mvte:customercredithistory:page_links:last_page;</a>
 					</mvt:if>
 					<mvt:if expr="l.settings:customercredithistory:page_links:current_page NE l.settings:customercredithistory:page_links:last_page">
-						<a href="&mvte:customercredithistory:page_links:next_link;" class="page-links-next rt-icon-arrow-right"></a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:customercredithistory:page_links:next_link_params;" class="page-links-next rt-icon-arrow-right"></a>
 					<mvt:else>
 						<span class="page-links-next page-links-deactivated rt-icon-arrow-right"></span>
 					</mvt:if>
@@ -152,7 +152,7 @@
 			<mvt:if expr="g.Offset EQ 0">
 				<div class="column half">&nbsp;</div>
 			<mvt:else>
-				<form method="post" action="&mvt:global:secure_sessionurl;"  class="column half">
+				<form method="post" action="&mvte:urls:_self:auto;"  class="column half">
 					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
 					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 					<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
@@ -163,7 +163,7 @@
 			<mvt:if expr="g.NextOffset EQ 0">
 				<div class="column half">&nbsp;</div>
 			<mvt:else>
-				<form method="post" action="&mvt:global:secure_sessionurl;" class="column half align-right">
+				<form method="post" action="&mvte:urls:_self:auto;" class="column half align-right">
 					<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
 					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 					<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
@@ -173,4 +173,4 @@
 			</mvt:if>
 		</div>
 	</mvt:if>
-</mvt:if>
+</mvt:if>

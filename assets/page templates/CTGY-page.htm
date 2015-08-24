@@ -1,21 +1,23 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<mvt:if expr="NOT ISNULL l.settings:category:metafield:title">
-	<title>&mvt:category:metafield:title;</title>         
+<mvt:if expr="NOT ISNULL l.settings:category:page_title">
+	<title>&mvt:category:page_title;</title>
+<mvt:elseif expr="NOT ISNULL l.settings:page:title">
+	<title>&mvt:page:title;</title>
 <mvt:else>
 	<title>&mvt:category:name;: &mvt:store:name;</title>
 </mvt:if>
 <mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
-<mvt:if expr="g.CatListingOffset OR g.CatListingNextOffset">
-	<mvt:if expr="g.CatListingOffset GT 0">
-		<link rel="prev" href="http://&mvt:global:domain:name;/&mvt:seo_settings:cat_lit;&mvt:seo_settings:url_delim;&mvta:category:code;.&mvt:seo_settings:suffix;?CatListingOffset=&mvta:global:CatListingPrevOffset;" />
+	<mvt:if expr="g.CatListingOffset OR g.CatListingNextOffset">
+		<mvt:if expr="g.CatListingOffset GT 0">
+			<link rel="prev" href="&mvte:category:link;?CatListingOffset=&mvta:global:CatListingPrevOffset;" />
+		</mvt:if>
+		<mvt:if expr="g.CatListingNextOffset GT 0">
+			<link rel="next" href="&mvte:category:link;?CatListingOffset=&mvta:global:CatListingNextOffset;" />
+		</mvt:if>
 	</mvt:if>
-	<mvt:if expr="g.CatListingNextOffset GT 0">
-		<link rel="next" href="http://&mvt:global:domain:name;/&mvt:seo_settings:cat_lit;&mvt:seo_settings:url_delim;&mvta:category:code;.&mvt:seo_settings:suffix;?CatListingOffset=&mvta:global:CatListingNextOffset;" />
-	</mvt:if>
-</mvt:if>
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> &mvte:category:code;">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="CTGY-header-item.htm" />
@@ -34,5 +36,5 @@
 		<mvt:item name="hdft" param="footer"  file="CTGY-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
+</body>
 </html>

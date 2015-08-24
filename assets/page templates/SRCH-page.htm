@@ -1,9 +1,13 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" />">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="SRCH-header-item.htm" />
@@ -13,8 +17,7 @@
 			<div class="row">
 				<div class="column whole">
 					<p class="italic">No products matched your search criteria</p>
-					<form method="post" action="&mvt:global:sessionurl;Screen=SRCH" class="whole medium-one-third">	
-						<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+					<form method="post" action="&mvte:urls:SRCH:rr;" class="whole medium-one-third">	
 						<div class="form-row">
 							<label for="l-Search" class="bold">Search For:</label>
 							<input type="search" name="Search" value="&mvte:global:Search;" id="l-Search" />
@@ -31,8 +34,7 @@
 		</mvt:if>
 	<mvt:else>
 		<div class="row">
-			<form method="post" action="&mvt:global:sessionurl;Screen=SRCH" class="whole medium-one-third">	
-				<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
+			<form method="post" action="&mvte:urls:SRCH:rr;" class="whole medium-one-third">	
 				<div class="form-row">
 					<label for="l-Search" class="bold">Search For:</label>
 					<input type="search" name="Search" value="&mvte:global:Search;" id="l-Search" />
@@ -48,5 +50,5 @@
 		<mvt:item name="hdft" param="footer"  file="SRCH-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
+</body>
 </html>

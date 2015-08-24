@@ -7,7 +7,7 @@
 		<mvt:if expr="l.settings:order:ship_comp">
 			&mvte:order:ship_comp;<br />
 		</mvt:if>
-		<mvt:if expr="l.settings:order:ship_addr1 OR l.settings:order:ship_addr2 OR l.settings:order:ship_city OR l.settings:order:ship_state OR l.settings:order:ship_zip OR l.settings:order:ship_cntry">
+		<mvt:if expr="l.settings:order:ship_addr1 OR l.settings:order:ship_addr2 OR l.settings:order:ship_city OR l.settings:order:ship_state OR l.settings:order:ship_zip OR l.settings:order:ship_cntry OR l.settings:order:ship_res">
 			&mvte:order:ship_addr1;<br />
 			<mvt:if expr="l.settings:order:ship_addr2">
 				&mvte:order:ship_addr2;<br />
@@ -18,6 +18,9 @@
 				&mvte:order:ship_city;
 			</mvt:if>
 			&mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;<br />
+			<mvt:if expr="l.settings:order:ship_res">
+				<small>Residential Address</small><br />
+			</mvt:if>
 		</mvt:if>
 		<mvt:if expr="l.settings:order:ship_email">
 			&mvte:order:ship_email;<br />

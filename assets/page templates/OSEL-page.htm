@@ -1,9 +1,13 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="OSEL-header-item.htm" />
@@ -15,9 +19,8 @@
 				<div class="column whole">
 					<p class="h4 fields-heading uppercase">Redeem Your Coupons and Gift Certificates</p>
 				</div>
-				<form method="post" action="&mvte:global:secure_sessionurl;Screen=&mvta:global:Screen;" class="column whole medium-half">
+				<form method="post" action="&mvte:urls:_self:secure;" class="column whole medium-half">
 					<input type="hidden" name="Action" value="ACPN" />
-					<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 					<div class="column one-fourth">
 						<label for="l-coupon-code">Coupon:</label>
 					</div>
@@ -29,11 +32,10 @@
 					</div>
 				</form>
 				<mvt:if expr="g.Basket:cust_id EQ 0">
-					<p class="column whole medium-half"><a href="&mvte:global:secure_sessionurl;Screen=GFTL&amp;Store_Code=&mvta:global:Store_Code;" class="button">Redeem Gift Certificate</a></p>
+					<p class="column whole medium-half"><a href="&mvte:urls:GFTL:secure;" class="button">Redeem Gift Certificate</a></p>
 				<mvt:else>
-					<form method="post" action="&mvte:global:secure_sessionurl;Screen=&mvta:global:Screen;" class="column whole medium-half">
+					<form method="post" action="&mvte:urls:_self:secure;" class="column whole medium-half">
 						<input type="hidden" name="Action" value="RDGC" />
-						<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 						<div class="column three-eighths">
 							<label for="l-gift-certificate-code">Gift Certificate:</label>
 						</div>
@@ -46,10 +48,8 @@
 					</form>
 				</mvt:if>
 			</div>
-			<form method="post" action="&mvt:global:secure_sessionurl;" id="js-osel-form">
-				<input type="hidden" name="Screen" value="OPAY" />
+			<form method="post" action="&mvte:urls:OPAY:secure;" id="js-osel-form">
 				<input type="hidden" name="Action" value="SHIP,PSHP,CTAX" />
-				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 				<div class="row">
 					<div class="column whole medium-half">
 						<p class="h4 fields-heading uppercase">Shipping Options</p>
@@ -141,5 +141,5 @@
 		<mvt:item name="hdft" param="footer"  file="OSEL-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
-</html>
+</body>
+</html>

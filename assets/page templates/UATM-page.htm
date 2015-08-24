@@ -1,9 +1,13 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<h2 class="align-center">Special Offers</h2>
@@ -19,9 +23,8 @@
 		</div>
 	</div>
 	<div class="row bg-white bottom-shadow main-content-row">
-		<form method="post" action="&mvt:global:secure_sessionurl;Screen=&mvte:global:Screen;" class="column whole medium-one-third centered">
+		<form method="post" action="&mvte:urls:_self:secure;" class="column whole medium-one-third centered">
 			<input type="hidden" name="Action" value="&mvte:global:Action;" />
-			<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
 			<input type="hidden" name="Upsell_Product_Count" value="&mvte:global:Upsell_Product_Count;" />
 			<mvt:item name="tax" />
 			<div id="js-product-attributes">
@@ -34,5 +37,5 @@
 		<mvt:item name="hdft" param="footer"  file="UATM-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
+</body>
 </html>

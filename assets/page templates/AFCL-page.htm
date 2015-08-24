@@ -1,9 +1,13 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="AFCL-header-item.htm" />
@@ -12,10 +16,8 @@
 		<div class="column whole medium-one-third medium-offset-one-twelfth">
 			<h4>Welcome Back</h4>
 			<p>To access your account, please enter your affiliate login and password.</p>
-			<form method="post" action="&mvte:global:secure_sessionurl;" id="js-logn-form" class="inline-labeling" autocomplete="off">
-				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+			<form method="post" action="&mvte:urls:AFED:secure;" id="js-logn-form" class="inline-labeling" autocomplete="off">
 				<input type="hidden" name="Action" value="ALGI" />
-				<input type="hidden" name="Screen" value="AFED" />
 				<div class="form-row">
 					<label for="l-Affiliate_Code" class="required &mvt:global:invalid_credentials;">Login:</label>
 					<input type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" id="l-Affiliate_Code" />
@@ -28,18 +30,18 @@
 					<mvt:item name="buttons" param="Login"  file="cssui-buttonLogin-item.htm" />
 				</div>
 			</form>
-			<p><small>Forgot your password? <a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=FPWD" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
+			<p><small>Forgot your password? <a href="&mvte:urls:FPWD:secure;" title="Click Here" id="js-open-forgot-password">Click Here</a></small></p>
 		</div>
 		<hr noshade class="clear medium-all-hidden" />
 		<div class="column whole medium-five-twelfths medium-offset-one-twelfth">
 			<h4>Register Now</h4>
 			<p>Creating an affiliate account with &mvt:global:store:name; is quick and easy.</p>
-			<p class="align-right"><a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=AFAD" title="Register" class="button button-square bg-gray">Register</a></p>
+			<p class="align-right"><a href="&mvte:urls:AFAD:auto;" title="Register" class="button button-square bg-gray">Register</a></p>
 		</div>
 	</div>
 	<div class="row hdft-footer">
 		<mvt:item name="hdft" param="footer"  file="AFCL-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
+</body>
 </html>

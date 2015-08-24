@@ -1,0 +1,52 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="WISH-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<h4 class="column whole">&mvte:wishlist:title;</h4>
+		<mvt:if expr="NOT ISNULL l.settings:wishlist:notes">
+			<p class="column whole italic">Notes: &mvte:wishlist:notes;</p>
+		</mvt:if>
+		<mvt:if expr="l.settings:wishlist:cust_id EQ g.Basket:cust_id AND g.Customer_Session_Verified">
+			<p class="column whole">
+				<a href="&mvte:urls:WLED:auto_sep;WishList_ID=&mvta:wishlist:id;">Edit</a>
+				<span>&nbsp;|&nbsp;</span>
+				<a href="&mvte:urls:WLST:secure_sep;Action=DWSH&WishList_ID=&mvta:wishlist:id;" onClick="if ( !confirm( 'Are you sure you want to delete your wish list? This action cannot be undone
+
+Continue?' ) ) return false;">Delete</a>
+				<span>&nbsp;|&nbsp;</span>
+				<mvt:if expr="l.settings:wishlist:shared">
+					<strong>Public</strong>
+				<mvt:else>
+					<strong class="red">Private</strong>
+				</mvt:if>
+			</p>
+		</mvt:if>
+	</div>
+	<mvt:item name="wishlistitems"  file="WISH-wishlistitems-item.htm" />
+	<mvt:if expr="l.settings:wishlistitems:item_count">
+		<div class="row bg-white bottom-shadow main-content-row">
+			<form method="post" action="&mvte:urls:BASK:secure;" class="column whole align-right">
+				<input type="hidden" name="Action" value="AFWA" />
+				<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
+				<mvt:item name="buttons" param="AddAllToBasket"  file="cssui-buttonAddAllToBasket-item.htm" />
+			</form>
+		</div>
+		<div class="breaker"></div>
+	</mvt:if>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="WISH-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</body>
+</html>

@@ -1,0 +1,74 @@
+<mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
+<head>
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+</head>
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
+	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />
+	<div class="row hdft-header">
+		<mvt:item name="hdft" param="header"  file="WPCK-header-item.htm" />
+	</div>
+	<div class="row bg-white bottom-shadow main-content-row">
+		<form method="post" action="&mvte:urls:_self:rr;" class="column whole medium-half medium-centered">
+			<input type="hidden" name="Quantity" value="&mvte:global:Quantity;" />
+			<input type="hidden" name="Line_ID" value="&mvte:global:Line_ID;" />
+			<input type="hidden" name="Group_ID" value="&mvte:global:Group_ID;" />
+			<input type="hidden" name="Wish_ID" value="&mvte:global:Wish_ID;" />
+			<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+			<mvt:assign name="l.settings:parsed_actions" value="''" />
+			<mvt:assign name="l.settings:actions" value="' ' $ glosub( g.Action, ',', ' ' ) $ ' '" />
+			<mvt:if expr="' ATWL ' IN l.settings:actions">
+				<mvt:assign name="l.settings:parsed_action_count" value="miva_array_insert( l.settings:parsed_actions, 'ATWL', -1 )" />
+			</mvt:if>
+			<mvt:if expr="' MPWL ' IN l.settings:actions">
+				<mvt:assign name="l.settings:parsed_action_count" value="miva_array_insert( l.settings:parsed_actions, 'MPWL', -1 )" />
+			</mvt:if>
+			<mvt:if expr="' MAWL ' IN l.settings:actions">
+				<mvt:assign name="l.settings:parsed_action_count" value="miva_array_insert( l.settings:parsed_actions, 'MAWL', -1 )" />
+			</mvt:if>
+			<input type="hidden" name="Action" value="&mvte:parsed_actions;" />
+			<mvt:assign name="l.settings:attribute_index" value="0" />
+			<mvt:foreach iterator="attribute" array="global:Product_Attributes">
+				<mvt:assign name="l.settings:attribute_index" value="l.settings:attribute_index + 1" />
+				<input type="hidden" name="Product_Attributes[ &mvt:attribute_index; ]:code" value="&mvte:attribute:code;" />
+				<input type="hidden" name="Product_Attributes[ &mvt:attribute_index; ]:value" value="&mvte:attribute:value;" />
+				<mvt:if expr="l.settings:attribute:template_code NE 0">
+					<input type="hidden" name="Product_Attributes[ &mvt:attribute_index; ]:template_code" value="&mvte:attribute:template_code;" />
+				</mvt:if>
+			</mvt:foreach>
+			<div class="form-row">
+				<mvt:if expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'ATWL\'' )">
+					<label for="l-WishList_ID">Add Product "&mvte:global:Product_Code;" to wish list:</label>
+				<mvt:elseif expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'MAWL\'' )">
+					<label for="l-WishList_ID">Move all items in basket to wish list:</label>
+				<mvt:elseif expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'MPWL\'' )">
+					<mvt:if expr="g.Group_ID">
+						<label for="l-WishList_ID">Move basket item to wish list:</label>
+					<mvt:elseif expr="g.Line_ID">
+						<label for="l-WishList_ID">Move basket item to wish list:</label>
+					<mvt:elseif expr="g.Wish_ID">
+						<label for="l-WishList_ID">Move wish list item to wish list:</label>
+					</mvt:if>
+				</mvt:if>
+				<select name="WishList_ID" id="l-WishList_ID">
+					<option value="">&lt;Select One&gt;</option>
+					<mvt:foreach iterator="wishlist" array="customerwishlists:wishlists">
+						<option value="&mvte:wishlist:id;">&mvte:wishlist:title;</option>
+					</mvt:foreach>
+				</select>
+			</div>
+			<div class="form-row align-right">
+				<mvt:item name="buttons" param="Continue"  file="cssui-buttonContinue-item.htm" />
+			</div>
+		</form>
+	</div>
+	<div class="row hdft-footer">
+		<mvt:item name="hdft" param="footer"  file="WPCK-footer-item.htm" />
+	</div>
+	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />
+</body>
+</html>

@@ -1,26 +1,30 @@
 <mvt:item name="html_profile"  file="cssui-html-profile-item.htm" />
 <head>
-<title>&mvt:store:name;: &mvt:page:name;</title>
-<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="head_tag"  file="cssui-global-head-item.htm" />
 </head>
-<mvt:item name="body" file="body-item.htm">
+<body id="js-&mvte:page:code;" class="boxed <mvt:eval expr="tolower(l.settings:page:code)" /> single-column">
 	<mvt:item name="hdft" param="global_header"  file="global-header-item.htm" />	
 	<div class="row hdft-header">
 		<mvt:item name="hdft" param="header"  file="ACAD-header-item.htm" />
 	</div>
 	<div class="row bg-white bottom-shadow main-content-row">
-		<form method="post" action="&mvt:global:secure_sessionurl;" id="js-acad-form" class="column whole acad-form inline-labeling" autocomplete="off">
-			<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+		<mvt:if expr="g.Order">
+			<mvt:assign name="l.settings:url" value="l.settings:urls:OINF:secure" />
+		<mvt:elseif expr="g.Redeem">
+			<mvt:assign name="l.settings:url" value="l.settings:urls:RGFT:secure" />
+		<mvt:elseif expr="g.WishList">
+			<mvt:assign name="l.settings:url" value="l.settings:urls:WISH:secure" />
+		<mvt:else>
+			<mvt:assign name="l.settings:url" value="l.settings:urls:ACED:secure_sep $ 'NewAccount=1'" />
+		</mvt:if>
+		<form method="post" action="&mvte:url;" id="js-acad-form" class="column whole acad-form inline-labeling" autocomplete="off">
 			<input type="hidden" name="Action" value="ICST" />
 			<input type="hidden" name="Order" value="&mvte:global:Order;" />
-			<mvt:if expr="g.Order">
-				<input type="hidden" name="Screen" value="OINF" />
-			<mvt:elseif expr="g.Redeem">
-				<input type="hidden" name="Screen" value="RGFT" />
-			<mvt:else>
-				<input type="hidden" name="Screen" value="ACED" />
-				<input type="hidden" name="NewAccount" value="1" />
-			</mvt:if>
 			<div class="row customer-fields">
 				<mvt:item name="customer"  file="ACAD-custflds-item.htm" />
 			</div>
@@ -35,5 +39,5 @@
 		<mvt:item name="hdft" param="footer"  file="ACAD-footer-item.htm" />
 	</div>
 	<mvt:item name="hdft" param="global_footer"  file="global-footer-item.htm" />	
-</mvt:item>
-</html>
+</body>
+</html>

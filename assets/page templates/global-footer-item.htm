@@ -39,9 +39,8 @@
 			<ul class="hide medium-show no-list footer-contact">
 				<li data-rt-icon="&#x62;">&mvt:global:store:address; &mvt:global:store:city;, &mvt:global:store:state; &mvt:global:store:zip;</li>
 				<li data-icon="&#xe090;">&mvt:global:store:phone;</li>
-				<li data-rt-icon="&#x66;"><a href="emailto:&mvte:global:storeEmailB64;" rel="nofollow">Email Us</a></li>
+				<li data-rt-icon="&#x66;"><a href="&mvte:urls:CTUS:auto;" rel="nofollow">Email Us</a></li>
 			</ul>
-
 			<mvt:if expr="l.settings:readytheme:social_active">
 				<h5>Connect With Us</h5>
 				<div class="footer-social">
@@ -85,13 +84,13 @@
 <footer class="mobile-footer row medium-all-hidden bg-white">
 	<div class="column one-fourth align-center"><a href="http://&mvt:global:domain:name;/"><span data-icon="&#xe074;"></span><small>HOME</small></a></div>
 	<div class="column one-fourth align-center toggle-slide-left"><span data-icon="&#x61;"></span><small>SHOP</small></div>
-
-	<div class="column one-fourth align-center"><a href="&mvt:global:sessionurl;Screen=BASK&amp;Store_Code=&mvta:store:code;" id="js-mobile-footer-basket"><span data-icon="&#xe07a;"></span><small>CART</small></a></div>
+	<div class="column one-fourth align-center"><a href="&mvte:urls:BASK:auto;" id="js-mobile-footer-basket"><span data-icon="&#xe07a;"></span><small>CART</small></a></div>
 	<div class="column one-fourth align-center toggle-slide-bottom"><span data-icon="&#xe060;"></span><small>LINKS</small></div>
 </footer>
 <!-- end mobile-footer -->
 <nav id="js-mobile-footer-links" class="mobile-menu mobile-menu-bottom mobile-footer-links medium-hide">
 	<div class="mobile-menu-header">LINKS<a href="" class="silver close-mobile-menu">&times;</a></div>
+	<mvt:item name="readytheme" param="navigationset( 'helpful_links' )" />
 </nav>
 <!-- end mobile-footer-links -->
 <div id="js-chaser" class="back-to-top bg-charcoal"><span data-icon="&#x42;" title="Back to Top"></span></div>
@@ -106,4 +105,5 @@
 <script src="../js/scripts.js"></script>
 <!--[if lt IE 9]>
 	<script src="../js/rem.min.js"></script>
-<![endif]-->
+<![endif]-->
+<mvt:item name="ga_tracking" />

@@ -1,0 +1,146 @@
+<mvt:if expr="l.settings:wishlistitems:total_count EQ 0">
+	<div class="row bg-white bottom-shadow main-content-row">
+		<p class="column whole bold">This wish list is empty</p>
+	</div>
+	<mvt:exit />
+</mvt:if>
+<mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( NOT ISNULL g.Edit_Wish )">
+	<form name="edit_wish" method="post" action="&mvte:urls:_self:secure;">
+		<input type="hidden" name="Action" value="UPWL" />
+		<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+		<input type="hidden" name="Offset" value="&mvte:global:PrevOffset;" />
+		<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+		<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
+		<input type="hidden" name="Wish_ID" value="&mvte:global:Edit_Wish;" />
+</mvt:if>
+<div class="row hide medium-show basket-header-row bg-white bottom-shadow main-content-row">
+	<div class="column half large-five-eighths">Product</div>
+	<div class="column one-sixth large-one-eighth align-center">Quantity</div>
+	<div class="column one-sixth large-one-eighth align-right">Price</div>
+	<div class="column one-sixth large-one-eighth align-right">&nbsp;</div>
+</div>
+<mvt:foreach iterator="wishlistitem" array="wishlistitems:items">
+	<div class="row basket-product-row bg-white bottom-shadow main-content-row">
+		<div class="column one-fourth medium-one-eighth align-center">
+			<mvt:if expr="l.settings:wishlistitem:product:imagetypes:main">
+				<img src="&mvte:wishlistitem:product:imagetypes:main;" alt="&mvte:wishlistitem:product:name;" title="&mvte:wishlistitem:product:name;" />
+			<mvt:else>
+				&nbsp;
+			</mvt:if>
+		</div>
+		<div class="column three-fourths medium-three-eighths large-half">
+			<p><a href="&mvte:wishlistitem:product:link" title="&mvt:wishlistitem:product:name;" rel="nofollow"><small>&mvt:wishlistitem:product:code;</small><br /><strong>&mvt:wishlistitem:product:name;</strong></a></p>
+			<mvt:foreach iterator="option" array="group:options">
+				<mvt:foreach iterator="option" array="wishlistitem:product:options">
+					<p>
+						<mvt:if expr="l.settings:option:option_id">
+							&mvt:option:attr_code;: &mvt:option:opt_code;
+						<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+							&mvt:option:attr_code;: &mvt:option:data;
+						<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+							&mvt:option:attr_code;: &mvt:option:data_long;
+						<mvt:else>
+							&mvt:option:attr_code;
+						</mvt:if>
+					</p>
+				</mvt:foreach>
+			</mvt:foreach>
+			<p>Added: &mvt:wishlistitem:formatted_dtadded_date;</p>
+			<mvt:if expr="NOT ISNULL l.settings:wishlistitem:notes">
+				<p>Notes: &mvte:wishlistitem:notes;</p>
+			</mvt:if>
+		</div>
+		<div class="breaker clear medium-all-hidden"></div>
+		<div class="column one-sixth large-one-eighth np">
+			<p class="medium-all-hidden align-center"><strong>Qty</strong></p>
+			<p class="align-center">&mvt:wishlistitem:quantity;</p>
+		</div>
+		<div class="column one-third medium-one-sixth large-one-eighth align-right">
+			<p class="medium-all-hidden"><strong>Price</strong></p>
+			<mvt:if expr="l.settings:wishlistitem:product:base_price GT l.settings:wishlistitem:product:price">
+				<s>&mvt:wishlistitem:product:formatted_base_price;</s>
+			</mvt:if>
+			<p>&mvt:wishlistitem:product:formatted_price;</p>
+		</div>
+		<div class="column half medium-one-sixth large-one-eighth align-right">
+			<mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( g.Edit_Wish EQ l.settings:wishlistitem:id )">
+				<mvt:item name="buttons" param="Update"  file="cssui-buttonUpdate-item.htm" />
+			<mvt:elseif expr="( ISNULL g.Edit_Wish ) OR ( l.settings:wishlistitems:wishlist:cust_id NE g.Basket:cust_id )">
+				<mvt:if expr="l.settings:wishlistitem:product:inv_level NE 'out'">
+					<form method="post" action="&mvte:urls:BASK:secure;">
+						<input type="hidden" name="Action" value="AFWL" />
+						<input type="hidden" name="Wish_ID" value="&mvte:wishlistitem:id;" />
+						<input type="hidden" name="Quantity" value="&mvte:wishlistitem:quantity;" />
+						<mvt:item name="buttons" param="AddToBasketL"  file="cssui-buttonAddToBasketL-item.htm" />
+					</form>
+				</mvt:if>
+			</mvt:if>
+		</div>
+		<mvt:if expr="l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id">
+			<div class="breaker clear"></div>
+			<div class="column whole medium-half large-five-eighths">
+				<mvt:if expr="g.Edit_Wish NE l.settings:wishlistitem:id">
+					<a href="&mvte:urls:_self:auto_sep;WishList_ID=&mvta:global:WishList_ID;&amp;Edit_Wish=&mvta:wishlistitem:id;&amp;Offset=&mvta:global:Offset;&amp;Sort_By=&mvte:global:Sort_By;&amp;Per_Page=&mvte:global:Per_Page">Edit notes, quantity, and wish list</a>
+				<mvt:elseif expr="g.Edit_Wish EQ l.settings:wishlistitem:id">
+					<label for="l-wishlist-notes">Notes:</label>
+					<textarea name="Notes" id="l-wishlist-notes">&mvte:wishlistitem:notes;</textarea>
+				</mvt:if>
+			</div>
+			<div class="column half medium-one-sixth large-one-eighth">
+				<mvt:if expr="g.Edit_Wish EQ l.settings:wishlistitem:id">
+					<label for="l-update-quantity">&nbsp;</label>
+					<input type="tel" name="Quantity" id="l-update-quantity" class="align-center" value="&mvte:wishlistitem:quantity;" />
+				</mvt:if>
+			</div>
+			<div class="column half medium-one-sixth large-one-eighth">
+				<mvt:if expr="(g.Edit_Wish EQ l.settings:wishlistitem:id) AND (l.settings:customerwishlists:wishlist_count GT 1)">
+					<label for="l-wishlist-move">Move To&hellip;</label>
+					<select id="l-wishlist-move" onChange="document.forms.edit_wish.elements.Action.value='MPWL'; document.forms.edit_wish.elements.WishList_ID.value=this.value; document.forms.edit_wish.submit();">
+						<option value="">Select List</option>
+						<mvt:foreach iterator="wishlist" array="customerwishlists:wishlists">
+							<option value="&mvte:wishlist:id;">&mvte:wishlist:title;</option>
+						</mvt:foreach>
+					</select>
+				</mvt:if>
+			</div>
+			<div class="column half medium-one-sixth large-one-eighth medium-align-center">
+				<mvt:if expr="g.Edit_Wish EQ l.settings:wishlistitem:id">
+					<label class="show">&nbsp;</label>
+					<a href="&mvte:urls:_self:auto_sep;WishList_ID=&mvta:global:WishList_ID;&amp;Offset=&mvta:global:Offset;&amp;Sort_By=&mvte:global:Sort_By;&amp;Per_Page=&mvte:global:Per_Page;" class="red">Cancel</a>
+				<mvt:else>
+					<a href="&mvte:urls:_self:auto_sep;Action=RMWL&amp;WishList_ID=&mvta:global:WishList_ID;&amp;Wish_ID=&mvta:wishlistitem:id;&amp;Offset=&mvta:global:Offset;" class="red">Remove</a>
+				</mvt:if>
+			</div>
+		</mvt:if>
+	</div>
+</mvt:foreach>
+<mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( NOT ISNULL g.Edit_Wish )">
+	</form>
+</mvt:if>
+<mvt:if expr="NOT l.settings:wishlistitems:page_disp_count GT 0">
+	<mvt:if expr="(g.Offset OR g.NextOffset) AND (l.settings:wishlistitems:per_page NE 0)">
+		<div class="breaker clear"></div>
+		<mvt:if expr="g.Offset EQ 0">
+			<div class="column half">&nbsp;</div>
+		<mvt:else>
+			<form method="post" action="&mvte:urls:_self:auto;"  class="column half">
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
+				<mvt:item name="buttons" param="Previous"  file="cssui-buttonPrevious-item.htm" />
+			</form>
+		</mvt:if>
+		<mvt:if expr="g.NextOffset EQ 0">
+			<div class="column half">&nbsp;</div>
+		<mvt:else>
+			<form method="post" action="&mvte:urls:_self:auto;" class="column half align-right">
+				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+				<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+				<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
+				<mvt:item name="buttons" param="Next"  file="cssui-buttonNext-item.htm" />
+			</form>
+		</mvt:if>
+	</mvt:if>
+</mvt:if>

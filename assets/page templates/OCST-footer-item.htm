@@ -1,9 +1,8 @@
 <div id="js-ocst-login" class="row mfp-hide ocst-login">
 	<h4>Welcome Back</h4>
-	<form method="post" action="&mvte:global:secure_sessionurl;Screen=&mvte:global:screen;" autocomplete="off" class="column whole">
+	<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off" class="column whole">
 		<p>To access your account, please enter your email address and password.</p>
 		<input type="hidden" name="Action" value="LOGN" />
-		<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
 		<div class="form-row">
 			<label for="l-Customer_LoginEmail" class="required">Email Address:</label>
 			<input type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" id="l-Customer_LoginEmail" />
@@ -15,15 +14,13 @@
 		<div class="form-row align-right">
 			<mvt:item name="buttons" param="Login"  file="cssui-buttonLogin-item.htm" />
 		</div>
-		<p><small>Forgot your password? <a href="&mvt:global:secure_sessionurl;Store_Code=&mvta:store:code;&Screen=FPWD" rel="nofollow" id="js-open-forgot-password">Click Here</a></small></p>
+		<p><small>Forgot your password? <a href="&mvte:urls:FPWD:secure;" rel="nofollow" id="js-open-forgot-password">Click Here</a></small></p>
 	</form>
 </div>
 <div id="js-forgot-password" class="row mfp-hide forgot-password">
 	<h4>Password Lookup:</h4>
-	<form method="post" action="&mvt:global:secure_sessionurl;" autocomplete="off" class="column whole">
+	<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off" class="column whole">
 		<p>Enter the email address associated with your account. If you no longer use the email address associated with your account, please contact customer support.</p>
-		<input type="hidden" name="Screen" value="&mvte:global:screen;" />
-		<input type="hidden" name="Store_Code" value="&mvte:store:code;" />
 		<input type="hidden" name="Action" value="EMPW" />
 		<div class="form-row">
 			<label class="required" for="Customer_LoginEmail">Email Address:</label>

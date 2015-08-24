@@ -1,0 +1,35 @@
+<form action="&mvte:urls:WISH:secure;" method="post" autocomplete="off" id="jsWledForm" class="column whole medium-half medium-centered">
+	<input type="hidden" name="Action" value="UWSH" />
+	<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
+	<p class="fields-key clearfix">
+		<strong>Bold</strong> = Required&nbsp;&nbsp;|&nbsp;&nbsp;<em>Italic</em> = Optional
+		<mvt:if expr="g.Error_Message_Count">
+			&nbsp;&nbsp;|&nbsp;&nbsp;<span class="red">Red</span> = Invalid
+		</mvt:if>
+	</p>
+	<div class="&mvte:global:WishList_Title_Row; form-row">
+		<label for="l-WishList_Title" class="required">Title:</label>
+		<input type="text" name="WishList_Title" id="l-WishList_Title" value="&mvte:global:WishList_Title;" required />
+	</div>
+	<div class="&mvte:global:WishList_Notes_Row; form-row">
+		<label for="l-WishList_Notes" class="italic">Notes:</label>
+		<textarea name="WishList_Notes" id="l-WishList_Notes">&mvte:global:WishList_Notes;</textarea>
+	</div>
+	<div class="&mvte:global:WishList_Shared_Row; form-row">
+		<mvt:if expr="g.WishList_Shared">
+			<label for="l-WishList_Shared"><input type="checkbox" name="WishList_Shared" id="l-WishList_Shared" value="Yes" checked /> Public</label>
+		<mvt:else>
+			<label for="l-WishList_Shared"><input type="checkbox" name="WishList_Shared" id="l-WishList_Shared" value="Yes" /> Public</label>
+		</mvt:if>
+	</div>
+	<div class="column half">
+		<span onClick="if ( !confirm( 'Are you sure you want to delete your wish list? This action cannot be undone
+
+Continue?' ) ) { return false; } else { document.forms.jsWledForm.elements.Action.value = 'DWSH'; }">
+			<input type="submit" value="Delete" class="button button-square bg-gray" />
+		</span>
+	</div>
+	<div class="column half align-right">
+		<mvt:item name="buttons" param="Save"  file="cssui-buttonSave-item.htm" />
+	</div>
+</form>

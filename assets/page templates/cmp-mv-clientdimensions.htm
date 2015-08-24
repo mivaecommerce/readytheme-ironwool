@@ -1,0 +1,80 @@
+<mvt:if expr="s.request_method NE 'POST'">
+	<script language="JavaScript">
+		function clientdimensions_cookieIsSet( name )
+		{
+			var i, cookies, cookie_name, values;
+
+			cookies = document.cookie.split( ';' );
+
+			for ( i = 0; i < cookies.length; i++ )
+			{
+				values = cookies[ i ].split( '=' );
+
+				if ( values.length )
+				{
+					cookie_name = values[ 0 ].replace( /^\s+|\s+$/g, '' );
+
+					if ( name == cookie_name )
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
+		}
+
+		function clientdimensions_getWindowWidth()
+		{
+			if ( window.innerWidth )														return window.innerWidth;
+			else if ( document.documentElement && document.documentElement.clientWidth )	return document.documentElement.clientWidth;
+			else if ( document.body && document.body.clientWidth )							return document.body.clientWidth;
+		}
+
+		function clientdimensions_getWindowHeight()
+		{
+			if ( window.innerHeight )														return window.innerHeight;
+			else if ( document.documentElement && document.documentElement.clientHeight )	return document.documentElement.clientHeight;
+			else if ( document.body && document.body.clientHeight )							return document.body.clientHeight;
+		}
+
+		setTimeout( function()
+		{
+			var clientdimensions_reload;
+
+			clientdimensions_reload = !clientdimensions_cookieIsSet( 'mm-clientdimensions-width' ) || !clientdimensions_cookieIsSet( 'mm-clientdimensions-height' );
+			document.cookie 		= 'mm-clientdimensions-width=' + clientdimensions_getWindowWidth();
+			document.cookie 		= 'mm-clientdimensions-height=' + clientdimensions_getWindowHeight();
+
+			if ( clientdimensions_reload )
+			{
+				if ( window.stop )
+				{
+					window.stop();
+				}
+
+				location.reload( true );
+			}
+
+			window.onresize = function( event )
+			{
+				document.cookie = 'mm-clientdimensions-width=' + clientdimensions_getWindowWidth();
+				document.cookie = 'mm-clientdimensions-height=' + clientdimensions_getWindowHeight();
+			}
+		}, 0 );
+	</script>
+</mvt:if>
+
+<mvt:if expr="l.settings:clientdimensions:detected">
+	<mvt:if expr="l.settings:clientdimensions:width GE 1170">
+		<mvt:assign name="l.settings:clientdimensions:class" value="'x-large'" />
+	<mvt:elseif expr="l.settings:clientdimensions:width GE 960">
+		<mvt:assign name="l.settings:clientdimensions:class" value="'large'" />
+	<mvt:elseif expr="l.settings:clientdimensions:width GE 768">
+		<mvt:assign name="l.settings:clientdimensions:class" value="'medium'" />
+	<mvt:elseif expr="l.settings:clientdimensions:width GE 640">
+		<mvt:assign name="l.settings:clientdimensions:class" value="'small'" />
+	<mvt:else>
+		<mvt:assign name="l.settings:clientdimensions:class" value="'x-small'" />
+	</mvt:if>
+</mvt:if>

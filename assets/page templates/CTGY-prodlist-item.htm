@@ -1,15 +1,13 @@
 <div class="row bg-white bottom-shadow filter-items-container">
 	<div class="column whole medium-half large-one-third sorting">
 		<mvt:if expr="l.settings:category_listing:products_on_page_count GT 1">
-			<form method="get" action="&mvte:global:sessionurl;" class="inline-labeling nm">
-				<input type="hidden" name="Screen" value="&mvte:global:Screen;" />
-				<input type="hidden" name="Store_Code" value="&mvte:global:Store_Code;" />
+			<form method="get" action="&mvte:urls:_self:auto;" class="inline-labeling nm">
 				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
 				<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
 				<input type="hidden" name="Search" value="&mvte:global:Search;" /> 
 				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 				<label for="l-sort-by" class="medium uppercase">Sort By</label>
-				<select name="Sort_By" id="l-sort-by" class="input-medium" onchange="this.form.submit();">
+				<select name="Sort_By" id="l-sort-by" class="input-medium" onChange="this.form.submit();">
 					<mvt:if expr="ISNULL g.Sort_By">
 						<option value="disp_order" selected="selected">Sort By&hellip;</option>
 					<mvt:else>
@@ -56,19 +54,19 @@
 			<ul>
 				<li class="medium uppercase">View</li>
 				<mvt:if expr="g.Per_Page EQ 12">
-					<li><a href="&mvte:global:sessionurl;Screen=&mvte:global:Screen;&Store_Code=&mvte:global:Store_Code;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=12" data-selected="selected">12</a> &#47;</li>
+					<li><a href="&mvte:urls:_self:auto_sep;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=12" data-selected="selected">12</a> &#47;</li>
 				<mvt:else>
-					<li><a href="&mvte:global:sessionurl;Screen=&mvte:global:Screen;&Store_Code=&mvte:global:Store_Code;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=12">12</a> &#47;</li>
+					<li><a href="&mvte:urls:_self:auto_sep;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=12">12</a> &#47;</li>
 				</mvt:if>
 				<mvt:if expr="g.Per_Page EQ 24">
-					<li><a href="&mvte:global:sessionurl;Screen=&mvte:global:Screen;&Store_Code=&mvte:global:Store_Code;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=24" data-selected="selected">24</a> &#47;</li>
+					<li><a href="&mvte:urls:_self:auto_sep;Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=24" data-selected="selected">24</a> &#47;</li>
 				<mvt:else>
-					<li><a href="&mvte:global:sessionurl;Screen=&mvte:global:Screen;&Store_Code=&mvte:global:Store_Code;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=24">24</a> &#47;</li>
+					<li><a href="&mvte:urls:_self:auto_sep;Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=24">24</a> &#47;</li>
 				</mvt:if>
 				<mvt:if expr="g.Per_Page EQ -1">
-					<li><a href="&mvte:global:sessionurl;Screen=&mvte:global:Screen;&Store_Code=&mvte:global:Store_Code;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=-1" data-selected="selected">All</a></li>
+					<li><a href="&mvte:urls:_self:auto_sep;Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=-1" data-selected="selected">All</a></li>
 				<mvt:else>
-					<li><a href="&mvte:global:sessionurl;Screen=&mvte:global:Screen;&Store_Code=&mvte:global:Store_Code;&Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=-1">All</a></li>
+					<li><a href="&mvte:urls:_self:auto_sep;Category_Code=&mvte:global:Category_Code;&Product_Code=&mvte:global:Product_Code;&Search=&mvte:global:Search;&Sort_By=&mvte:global:Sort_By;&Per_Page=-1">All</a></li>
 				</mvt:if>
 			</ul>
 			<!-- end per-page -->
@@ -78,25 +76,25 @@
 		<mvt:if expr="l.settings:category_listing:page_links:last_page GT 1">
 			<span class="page-links-container">
 				<mvt:if expr="l.settings:category_listing:page_links:current_page NE 1">
-					<a href="&mvte:category_listing:page_links:prev_link;" class="page-links-previous rt-icon-arrow-left"></a>
+					<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:prev_link_params;" class="page-links-previous rt-icon-arrow-left"></a>
 				<mvt:else>
 					<span class="page-links-previous page-links-deactivated rt-icon-arrow-left"></span>
 				</mvt:if>
 				<mvt:if expr="NOT l.settings:category_listing:page_links:contains_first">
-					<a href="&mvte:category_listing:page_links:first_link;" class="page-links-inactive">1 &hellip;</a>
+					<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:first_link_params;" class="page-links-inactive">1 &hellip;</a>
 				</mvt:if>
 				<mvt:foreach iterator="pages" array="category_listing:page_links:pages">
 					<mvt:if expr="l.settings:category_listing:page_links:current_page EQ l.settings:pages:page_num">
 						<span class="page-links-active">&mvte:pages:page_num;</span>
 					<mvt:else>
-						<a href="&mvte:pages:link;" class="page-links-inactive">&mvte:pages:page_num;</a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:pages:link_params;" class="page-links-inactive">&mvte:pages:page_num;</a>
 					</mvt:if>
 				</mvt:foreach>
 				<mvt:if expr="NOT l.settings:category_listing:page_links:contains_last">
-					<a href="&mvte:category_listing:page_links:last_link;" class="page-links-inactive">&hellip; &mvte:category_listing:page_links:last_page;</a>
+					<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:last_link_params;" class="page-links-inactive">&hellip; &mvte:category_listing:page_links:last_page;</a>
 				</mvt:if>
 				<mvt:if expr="l.settings:category_listing:page_links:current_page NE l.settings:category_listing:page_links:last_page">
-					<a href="&mvte:category_listing:page_links:next_link;" class="page-links-next rt-icon-arrow-right"></a>
+					<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:next_link_params;" class="page-links-next rt-icon-arrow-right"></a>
 				<mvt:else>
 					<span class="page-links-next page-links-deactivated rt-icon-arrow-right"></span>
 				</mvt:if>
@@ -119,11 +117,7 @@
 					<mvt:else>
 						<img src="../images/img_no_thumb.jpg" alt="&mvte:product:name;" title="&mvte:product:name;" />
 					</mvt:if>
-					<mvt:if expr="l.settings:seo_settings:sl_active">
-						<span class="button button-square bg-yellow white uppercase quick-view" data-product-link="&mvte:product:link;?show=quickview">Quick View</span>
-					<mvt:else>
-						<span class="button button-square bg-yellow white uppercase quick-view" data-product-link="&mvte:product:link;&show=quickview">Quick View</span>
-					</mvt:if>
+					<span class="button button-square bg-yellow white uppercase quick-view" data-product-link="&mvte:urls:PROD:auto_sep;product_code=&mvte:product:code;&amp;show=quickview">Quick View</span>
 				</span>
 				<span class="breaker"></span>
 				<p>&mvte:product:name;</p>
@@ -143,25 +137,25 @@
 			<div class="column whole align-center medium-align-right page-links">
 				<span class="page-links-container">
 					<mvt:if expr="l.settings:category_listing:page_links:current_page NE 1">
-						<a href="&mvte:category_listing:page_links:prev_link;" class="page-links-previous rt-icon-arrow-left"></a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:prev_link_params;" class="page-links-previous rt-icon-arrow-left"></a>
 					<mvt:else>
 						<span class="page-links-previous page-links-deactivated rt-icon-arrow-left"></span>
 					</mvt:if>
 					<mvt:if expr="NOT l.settings:category_listing:page_links:contains_first">
-						<a href="&mvte:category_listing:page_links:first_link;" class="page-links-inactive">1 &hellip;</a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:first_link_params;" class="page-links-inactive">1 &hellip;</a>
 					</mvt:if>
 					<mvt:foreach iterator="pages" array="category_listing:page_links:pages">
 						<mvt:if expr="l.settings:category_listing:page_links:current_page EQ l.settings:pages:page_num">
 							<span class="page-links-active">&mvte:pages:page_num;</span>
 						<mvt:else>
-							<a href="&mvte:pages:link;" class="page-links-inactive">&mvte:pages:page_num;</a>
+							<a href="&mvte:urls:_self:auto_sep;&mvte:pages:link_params;" class="page-links-inactive">&mvte:pages:page_num;</a>
 						</mvt:if>
 					</mvt:foreach>
 					<mvt:if expr="NOT l.settings:category_listing:page_links:contains_last">
-						<a href="&mvte:category_listing:page_links:last_link;" class="page-links-inactive">&hellip; &mvte:category_listing:page_links:last_page;</a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:last_link_params;" class="page-links-inactive">&hellip; &mvte:category_listing:page_links:last_page;</a>
 					</mvt:if>
 					<mvt:if expr="l.settings:category_listing:page_links:current_page NE l.settings:category_listing:page_links:last_page">
-						<a href="&mvte:category_listing:page_links:next_link;" class="page-links-next rt-icon-arrow-right"></a>
+						<a href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:next_link_params;" class="page-links-next rt-icon-arrow-right"></a>
 					<mvt:else>
 						<span class="page-links-next page-links-deactivated rt-icon-arrow-right"></span>
 					</mvt:if>
